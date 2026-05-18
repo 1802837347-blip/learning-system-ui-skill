@@ -14,11 +14,10 @@
 
 ## 使用方式
 
-将本目录放入 Codex skills 目录后，在相关任务中使用 `学习系统UI-skill`。
+将本目录放入项目或 AI 助手可访问的位置。在生成相关页面前，让助手先阅读：
 
-生成完整页面前，先阅读：
-
-`references/ui-style-guide.md`
+- SKILL.md
+- references/ui-style-guide.md
 
 它包含画布、色彩、字体、组件、状态、文案和检查清单。
 
