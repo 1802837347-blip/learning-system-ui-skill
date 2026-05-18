@@ -31,8 +31,4 @@
     └── ui-style-guide.md
 ```
 
-## GitHub 描述建议
 
-```text
-Codex skill for AI自主学习系统 mobile UI, learning plans, course pages,作文批改 flows, reports, and history states.
-```
