@@ -41,9 +41,10 @@ Plan creation flow order:
 1. Status bar and mini-program title bar
 2. Three-step progress stepper
 3. `伴学规划建议` gradient advice card
-4. Learning information form: scores, target score, frequency, or period cards
-5. Date picker sheet when selecting dates
-6. Fixed bottom action button
+4. Step-specific form or selector: learning information, period setup, or knowledge-point selection
+5. Date picker sheet or knowledge-point selection sheet when needed
+6. Generation loading state
+7. Generated plan overview and APP learning-plan handoff
 
 Login page order:
 
@@ -90,7 +91,14 @@ First-use setup modal order:
 - Stepper active gradient: `#00B3E8` to `#0288FF`
 - Stepper inactive fill: `rgba(18,128,162,0.14)`
 - Stepper inactive text: `#2D5C78` and `#6F93A8`
+- Stepper completed green: `#15C691`
 - Advice note fill: `rgba(204,233,251,0.5)`, text `#00639E`
+- Selection sheet background: `#F3F5F7`
+- Recommendation card border: `rgba(0,203,249,0.6)`
+- Knowledge-point selected blue: `#00639E`
+- Learning-plan blue cell: `#F0F6FD`
+- Learning-plan peach cell: `#FDEEEE`
+- Difficulty colors: 1-star `#31B9FF`, 2-star `#46DBA0`, 3-star `#F3D335`, 4-star `#9082FF`
 
 Subject colors:
 
@@ -229,6 +237,11 @@ History subject tag colors:
   - Label color `#6F93A8`.
 - Dividers between steps are 2px high, `#C4C7CA`, inset by about 8px.
 - Keep the stepper light; do not wrap it in a card.
+- Completed steps:
+  - Replace the number with a 14px white check icon.
+  - Circle fill becomes `#15C691`.
+  - Label returns to main text `#191C1E`.
+  - In step 2, step 1 is completed; in final result pages, all three steps are completed.
 
 ### Companion Planning Advice Card
 
@@ -248,6 +261,35 @@ History subject tag colors:
   - Single-subject spring can show two columns: `2 课时 / 周一至周五上限` and `4 课时 / 周末上限`.
   - Multi-subject or simplified season can show one centered metric: `4 课时 / 建议单日上限`.
   - Metric number uses MiSans 22px Demibold `#071D39`; unit/label uses PingFang SC 13px `#2E3641`.
+
+Step 2 planning advice variant:
+
+- Use when the user has completed learning information and is selecting knowledge points.
+- Height grows to about 306px; width remains about 362px.
+- Subtitle can be `已匹配 2026年3~6月春季 学习节奏`.
+- Keep the season/enrollment context on the title line, e.g. `春季学季 · 在读 1 科`.
+- Replace the first-step bullet copy with outcome-oriented guidance:
+  - `根据你目前的在读学科数量，和当前所在学季周期，建议该学季学习课时40-60个，且建议学习的课时数大约覆盖考点数13-20个`
+  - `目前成绩为89分，希望提升到120分，建议春季重点学习2~3星难度的视频，先把核心基础打牢！按照节奏推进，很有希望达到心仪分数，加油！`
+- Metric panel:
+  - About 320px by 75px, translucent white, radius 10px.
+  - Two columns: `40-60 个 / 建议学习课时`, `13-20 个 / 建议学习考点`.
+  - Use a 28px vertical divider between metric columns.
+- Use small decorative bullet/quote marks at the start of explanatory lines; text remains 14px `#071D39`.
+
+Previous-season review card:
+
+- Use on season update flows when there is previous learning data.
+- White or pale gray card, width about 362px, height about 270px, radius 16px.
+- Header title: `上学季学习情况回顾`, 20px display/heavy.
+- Subtitle: `已完成 8 个考点 · 24 个视频`, 13px Regular.
+- Inner white translucent panel about 330px by 129px, radius 10px.
+- Metrics: three equal columns with MiSans 22px numbers and 13px labels:
+  - `1 个 / 未完成专题`
+  - `1 个 / 未完成考点`
+  - `1 个 / 未完成视频`
+- Under metrics, show short bullet insights, e.g. `未完成考点：集合的概念与基本性质`.
+- Bottom recommendation note: fill `rgba(204,233,251,0.8)`, radius 8px, copy `建议本学季优先补齐未完成考点（下方可一键勾选）`.
 
 ### Learning Information Form
 
@@ -341,6 +383,98 @@ History subject tag colors:
   - `目标分不能超过满分`
 - When errors exist or required fields are incomplete, the fixed `下一步` button remains visible but uses 50% opacity.
 - Disabled bottom button should still preserve the black gradient, dimensions, and shadow relationship; change opacity rather than introducing a gray replacement style.
+
+### Knowledge-Point Selection Field
+
+- Use in step 2 under the planning advice card.
+- Group starts with label `计划学习{学科}考点（多选）`, 16px Medium, `#191C1E`.
+- Selector row:
+  - Width 362px, height 56px, fill `#F1F4F7`, radius 10px, padding 16px.
+  - Empty state: `请选择`, 16px Medium `#A9ABAE`.
+  - Selected state: `已选24个考点，79个视频`, 16px Medium `#191C1E`.
+  - Right chevron is 24px, rotated to indicate drill-in.
+- Bottom action for step 2 is `开始生成学习计划`, 17px Medium, black gradient button.
+- If previous-season recommendations exist, the selector can appear below a review card around y 770px; otherwise it can sit directly below the advice card around y 487px.
+
+### Knowledge-Point Selection Sheet
+
+- Use after tapping the knowledge-point selector.
+- It is a bottom sheet over a dimmed background, with the sheet starting around y 72px, width 390px, height about 739px, fill `#F3F5F7`, top radius 16px.
+- Header:
+  - Top summary around x 24px, y 97px: `已选 9 个考点，30 个视频`.
+  - Numbers use blue `#00A7D8`; surrounding text is 16px Medium black.
+  - Close icon is 16px at the right.
+- Recommended unfinished card:
+  - White card, width 362px, radius 16px, border `rgba(0,203,249,0.6)`, shadow `0 4px 20px rgba(0,99,158,0.08)`.
+  - Title `上学季未学习推荐`, 17px display/heavy `#00639E`.
+  - Subtitle `优先补齐未完成考点`, 12px `#5B5F61`.
+  - Right pill `一键勾选未学习`, height 36px, radius 100px, pale blue fill, blue text.
+- Topic sections:
+  - Topic row uses 24px expand/collapse icon, 16px Medium title, and right `全选` pill.
+  - Subtopic row uses 24px expand/collapse icon, 16px Medium title, and right `全选` pill.
+  - Selected `全选` pill is fill `#00639E`, white text; unselected is pale blue fill with blue text.
+  - Use thin divider lines `#E6E8EA` between groups.
+- Knowledge-point rows:
+  - Indent to x about 60px, width about 300px, height about 69px.
+  - Title 15px Regular `#191C1E`, e.g. `2.1.1.1 圆锥曲线标准方程与解答`.
+  - Show star difficulty under the title, about 56px wide.
+  - Optional `已学习` tag: 16px high, 0.5px blue border, 11px blue text.
+  - Selection control at right is 22px circle:
+    - Selected: fill `#00639E`, white check.
+    - Unselected: white fill, 1.5px `#00639E` border.
+- Bottom sheet action:
+  - Fixed translucent white container.
+  - Button width 342px, height 44px, radius 8px, black gradient, text `确认`.
+- Keep content scrollable; the first recommendation card may stay near top while topic groups continue below.
+
+### Generation Loading
+
+- Use immediately after `开始生成学习计划`.
+- Page background `#F0F2FA`, cyan top atmosphere height about 256px.
+- Keep the normal title bar with the plan title.
+- Center a 170px circular glow around y 109px; inside place a 56px assistant/robot mark.
+- Main title: `正在生成学习计划`, 20px MiSans Demibold, centered.
+- Under the title, add a 320px horizontal cyan gradient divider, 2px high, about 40% opacity.
+- Helper copy: `整合学习节奏与知识点分布，生成专属学习计划`, 14px Regular `#5B5F61`, centered.
+- Do not show bottom CTA or tabbar in this transient state.
+
+### Generated Plan Overview
+
+- Use after plan generation completes.
+- Stepper shows all three steps completed with green check circles.
+- Title bar changes from `{年级}{学科}-{季节}自主计划` to `{年级}{学科}-{季节}计划`.
+- Sync success card:
+  - Width 362px, height about 92px, x 14px, y about 154px.
+  - Blue gradient, radius 14px, white border, blue shadow.
+  - Text: `计划已同步至“领航伴学APP-学习计划”`, 14px Medium `#071D39`.
+  - Helper: `当前仅展示首月明细，更多月份计划请查阅“学习计划”完整内容。`, 13px `#2F5079`.
+  - Right black pill button `去学习`, about 74px by 36px.
+- Plan overview card:
+  - Blue-green gradient card, width about 361px, height about 354px, radius 16px.
+  - Use concise explanatory paragraphs with bold inline numbers/terms: `4大核心模块`, `24个高频考点`, `占比超 85%`.
+  - Inner glass/white panel shows `知识点总览`.
+  - Metric strip: four columns `4 模块`, `11 专题`, `24 考点`, `79 视频`.
+  - Difficulty overview:
+    - Stacked 8px rounded bar with 1-star blue, 2-star green, 3-star yellow, 4-star purple.
+    - Legend examples: `1星 25%`, `2星 35%`, `3星 25%`, `4星 15%`.
+- Month arrangement section:
+  - Section title `3月学习安排` with a 3px x 20px blue vertical accent.
+  - Large white card, radius 16px, containing a month calendar preview.
+  - Calendar cells are compact rectangles; planned days show small course labels, star marks, and color by difficulty/type.
+  - This is a generated-plan preview, so it can be denser than the daily learning-plan week strip.
+
+### APP Learning Plan Handoff Page
+
+- Use for the APP-side learning plan after a generated plan is synced.
+- It follows the regular daily plan style but can start without the plan-generation stepper.
+- Top channel tabs:
+  - `学习计划` active with the cyan underline and gradient title.
+  - `全部课程` secondary at the right.
+- Assistant bubble copy uses the student name and daily plan state, e.g. `刘佳宁同学，请完成今天的学习计划吧`.
+- Month block may omit subject legend if only one subject is shown.
+- Week strip has weekday row, then 7 date blocks; selected date uses black gradient, planned dates show blue/green dots.
+- Task cards follow the normal course task card pattern.
+- Bottom tabbar active item is `学习`, color `#FF6200`.
 
 ### Greeting Row
 
@@ -541,16 +675,25 @@ History subject tag colors:
 
 ## Copy Patterns
 
-- Section titles: `待办事项`, `各科历史计划`, `{年份}年{月份}月计划`, `热门推荐`.
-- Plan titles: `{年份}{学科}{季节}学习计划`, `高中{学科}-学习计划制定`.
+- Section titles: `待办事项`, `各科历史计划`, `{年份}年{月份}月计划`, `热门推荐`, `伴学规划建议`, `上学季学习情况回顾`, `计划学习{学科}考点（多选）`, `{月份}月学习安排`.
+- Plan titles: `{年份}{学科}{季节}学习计划`, `高中{学科}-学习计划制定`, `{年级}{学科}-{季节}自主计划`, `{年级}{学科}-{季节}计划`.
 - Course titles: `{章节编号} {知识点名称}`.
+- Knowledge-point titles: `专题一 集合与常用逻辑用语`, `1.1.1 集合的概念`, `1.1.1.1 集合的概念与基本性质`.
 - Course recommendation titles: `名师-高一{学科}`, `(25H2+26H1全年）...`.
-- Buttons: `去制定`, `去学习`, `查看计划`, `查看详情`, `展开日历`.
+- Buttons: `去制定`, `下一步`, `开始生成学习计划`, `去学习`, `确认`, `查看计划`, `查看详情`, `展开日历`, `全选`, `一键勾选未学习`.
 - Auth/setup buttons: `获取验证码`, `立即登录`, `游客模式`, `开始使用`.
 - Tags: `{年份}寒季`, `{年份}春季`, `{学科}`, `首次`, `更新`, `{年份}-寒季`, `{年份}-春季`, `已学习`.
 - Hero/welcome copy: `欢迎进入领航甄选自主学习系统`, `开始定制你的学习计划吧`, `您已完成所有学习计划的制定~`, `太棒了!`.
 - Auth copy: `领航伴学`, `陪伴学习日常，助力学习跃升`, `为了同步您的课程权益，请务必使用购课时的手机号进行登录验证`, `登录即代表同意《服务条款》与《隐私政策》`.
 - Setup copy: `开启伴学之旅`, `请完善您的基础信息，制定专属学习计划`, `当前年级`, `高考省份`.
+- Plan creation copy:
+  - Steps: `学习信息`, `计划考点`, `生成计划`.
+  - Matched rhythm: `已匹配 2026年3~6月春季 学习节奏`.
+  - Selector empty: `请选择`.
+  - Selector selected: `已选24个考点，79个视频`.
+  - Loading: `正在生成学习计划`, `整合学习节奏与知识点分布，生成专属学习计划`.
+  - Sync success: `计划已同步至“领航伴学APP-学习计划”`.
+  - Generated overview: `这份计划聚焦4大核心模块`, `知识点总览`, `视频难度总览`.
 - Full date range: `2026.01.01-2026.02.28`.
 - Short season range: `1～2月`.
 - Spring season range: `3～6月`.
@@ -572,6 +715,11 @@ History subject tag colors:
 - History cards support multiple subject tag colors, not only blue.
 - Success pages use the calm blue success card with `太棒了!`, not a loud marketing celebration.
 - Daily plan screens include month title, subject legend, week calendar, date dots, and task cards or empty state.
+- Plan creation step 2 includes completed-step green checks, a taller planning advice card, suggested lesson/knowledge ranges, and a knowledge-point selector.
+- Knowledge-point selection sheets include selected-count summary, recommendation card, expandable topic/subtopic groups, `全选`, `一键勾选未学习`, star difficulty, `已学习` tags, and circular selection controls.
+- Generation loading screens are simple and centered, with no bottom CTA.
+- Generated plan overview pages include sync success, `去学习`, knowledge-point overview metrics, difficulty distribution, and first-month calendar preview.
+- APP learning-plan handoff pages preserve the daily plan tab/channel structure and active `学习` bottom tab.
 - Incomplete, completed, and no-plan states are visually and textually distinct.
 - Text fits within cards and does not collide with right-side buttons.
 - Subject color is carried through legends, date dots, and tags.

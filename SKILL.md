@@ -1,6 +1,6 @@
 ---
 name: 学习系统UI-skill
-description: Use this skill when creating or extending mobile mini-program UI pages for the AI自主学习系统, including login and phone verification, onboarding/profile setup modals, learning home pages, purchased/unpurchased states, pending/update/completed plan states, welcome cards, plan setup cards, plan creation flows, learning information forms, date picker sheets, validation/error states, daily study plans, course recommendation grids, course commerce cards, plan history, sticky filters, calendar states, empty states, and related education-product screens in the same visual style.
+description: Use this skill when creating or extending mobile mini-program UI pages for the AI自主学习系统, including login and phone verification, onboarding/profile setup modals, learning home pages, purchased/unpurchased states, pending/update/completed plan states, welcome cards, plan setup cards, plan creation flows, learning information forms, plan knowledge-point selection, date picker sheets, validation/error states, generation loading states, generated plan overview pages, APP learning-plan pages, daily study plans, course recommendation grids, course commerce cards, plan history, sticky filters, calendar states, empty states, and related education-product screens in the same visual style.
 metadata:
   short-description: Generate AI自主学习系统 mobile UI pages
 ---
@@ -24,7 +24,7 @@ Use this skill for:
 - Home recommendation pages with brand header, grade selector, welcome/plan setup card, and hot course recommendations.
 - Login, phone verification, guest mode, and first-use grade/province setup flows.
 - Purchased/unpurchased learning home states, including no-history empty states and sticky history filters.
-- Plan creation flows, especially `学习信息` -> `计划考点` -> `生成计划`, score inputs, study-frequency chips, daily course-hour steppers, period cards, date picker sheets, and validation states.
+- Plan creation flows, especially `学习信息` -> `计划考点` -> `生成计划`, score inputs, study-frequency chips, daily course-hour steppers, period cards, date picker sheets, knowledge-point selection sheets, generation loading, generated plan overview, and validation states.
 - Daily learning plan pages with month title, subject legend, week calendar, and task cards.
 - Incomplete, completed, and no-plan learning states.
 - Plan detail, course task detail, subject selection, and progress pages that extend the same system.
@@ -68,6 +68,13 @@ For plan creation flows:
 - For multi-period planning, group start/end dates and daily hours in white period cards, then add a bordered `＋ 添加时间段` row.
 - For date selection, use a dimmed page overlay and a bottom sheet with rounded top corners; keep the calendar clean and confirm with a fixed black button.
 - Show validation with red `#E70000` input borders and 14px red helper text directly below the field; disable the bottom action until errors are resolved.
+- In step 2, completed prior steps use a green check circle; the active `计划考点` step keeps the cyan-blue numbered circle.
+- Step 2 advice cards can be taller, around 306px, and should show matched season rhythm, suggested lesson and knowledge-point ranges, score-to-target guidance, and optional previous-season review.
+- Use a compact selector row for `计划学习{学科}考点（多选）`; empty state says `请选择`, selected state says `已选{n}个考点，{n}个视频`.
+- Knowledge-point selection opens a dimmed bottom sheet with selected-count summary, recommendation card, expandable topic/subtopic groups, `全选`, `一键勾选未学习`, star difficulty, `已学习` tags, circular check controls, and fixed `确认`.
+- The final generation action is `开始生成学习计划`; use loading copy `正在生成学习计划` while generating.
+- Generated plan pages use all three stepper items as green completed checks, a sync success card with `去学习`, a plan overview card, difficulty distribution, and a first-month calendar preview.
+- APP learning-plan pages should keep the existing learning tab patterns while reflecting generated plan content from the creation flow.
 
 ## State Rules
 
