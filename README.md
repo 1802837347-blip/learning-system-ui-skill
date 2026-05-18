@@ -1,6 +1,6 @@
 # 学习系统UI-skill
 
-用于生成或扩展「AI 自主学习系统」移动端小程序页面的 Codex skill，覆盖学习计划、课程学习、作文批改和批改报告等核心产品界面。
+用于生成或扩展「AI 自主学习系统」移动端小程序页面的 UI 规则包，覆盖学习计划、课程学习、作文批改和批改报告等核心产品界面。可作为 Codex skill 使用，也可供 Claude Code 或其他 AI 助手读取后参考。
 
 ## 适用场景
 
@@ -14,13 +14,38 @@
 
 ## 使用方式
 
-将本目录放入 Codex skills 目录后，在相关任务中使用 `学习系统UI-skill`。
+### Codex
 
-生成完整页面前，先阅读：
+将本目录放入 Codex skills 目录后，可以直接在相关任务中说：
 
-`references/ui-style-guide.md`
+```text
+使用 学习系统UI-skill 优化这个页面
+```
 
-它包含画布、色彩、字体、组件、状态、文案和检查清单。
+或：
+
+```text
+使用 学习系统UI-skill 生成一个 AI 自主学习系统的作文批改页面
+```
+
+Codex 会通过 `SKILL.md` 触发 skill，并按其中指引读取 `references/ui-style-guide.md`。
+
+### Claude Code 或其他 AI 助手
+
+这类工具通常不会自动识别 Codex skill，可以把本仓库当作 UI 规则文档使用：
+
+```text
+使用 learning-system-ui-skill 里的规则优化这个页面
+```
+
+如果助手没有自动读取规则，请明确要求它先读取：
+
+```text
+SKILL.md
+references/ui-style-guide.md
+```
+
+`references/ui-style-guide.md` 包含画布、色彩、字体、组件、状态、文案和检查清单。
 
 ## 文件结构
 
@@ -35,5 +60,5 @@
 ## GitHub 描述建议
 
 ```text
-Codex skill for AI自主学习系统 mobile UI, learning plans, course pages,作文批改 flows, reports, and history states.
+AI UI rules / Codex skill for AI自主学习系统 mobile pages, learning plans, course pages,作文批改 flows, reports, and history states.
 ```
