@@ -14,7 +14,8 @@ Use this file as the final review pass before delivering optimized UI. These gat
 | 6 | State clarity | Loading, disabled, selected, completed, locked, and error states are visually distinct | Controls that look tappable when disabled, or state shown only by color |
 | 7 | Product consistency | Colors, shadows, radii, icons, and spacing follow `ui-style-guide.md` | Random per-screen colors, mixed icon styles, excessive decoration |
 | 8 | Content asset fidelity | Core images such as作文 photos remain visually meaningful and inspectable | Replacing content images with abstract placeholders or repeated gray bars |
-| 9 | Accessibility basics | Meaningful controls have labels; contrast is readable; touch targets are not tiny | Icon-only controls without labels or low-contrast gray-on-gray text |
+| 9 | Interaction polish | Tappable elements have feedback, disabled semantics, and stable layout bounds | No tap feedback, layout-shifting press states, or fake disabled controls |
+| 10 | Accessibility basics | Meaningful controls have labels; contrast is readable; touch targets are not tiny | Icon-only controls without labels or low-contrast gray-on-gray text |
 
 ## Output Workflow
 
@@ -23,7 +24,48 @@ Use this file as the final review pass before delivering optimized UI. These gat
 3. Review each card from outside to inside: parent size, padding, row gaps, text wrapping, metrics, badges, action buttons.
 4. Test the narrow target width first: 375px for compact pages, 390px for newer APP learning-plan pages.
 5. If any required text or control is clipped, increase container space or adjust layout. Do not hide the issue with `overflow: hidden`.
-6. For HTML output, visually inspect the rendered page before final delivery whenever a browser is available.
+6. Check interaction states: pressed, selected, disabled, loading, locked, expanded, and empty.
+7. For HTML output, visually inspect the rendered page before final delivery whenever a browser is available.
+
+## Professional UI Baseline
+
+- Use one visual language per screen. Do not mix unrelated icon styles, shadows, gradients, or border treatments.
+- Use semantic tokens from `ui-style-guide.md` before inventing new colors.
+- Keep elevation consistent: cards, sheets, modals, sticky bars, and floating controls should not each use unrelated shadow styles.
+- Use vector icons or existing product icons for structural controls. Do not use emoji as navigation, tabbar, toolbar, or action icons.
+- Keep icon stroke width consistent within the same hierarchy, usually 1.5px to 2px.
+- Use color, opacity, or shadow for press feedback; do not animate size or position in a way that shifts surrounding layout.
+- Each screen should have one clear primary action. Secondary actions must be visually quieter.
+- Use functional decoration only: atmosphere, gradients, and illustrations should support hierarchy or state, not compete with content.
+
+## Touch And Interaction QA
+
+- Tappable controls should have at least a 44px by 44px hit area, even when the visible icon is smaller.
+- Keep at least 8px space between adjacent touch targets.
+- Buttons and cards that trigger actions need visible press feedback within about 80ms to 150ms.
+- Disabled controls must use real disabled semantics when possible and lower visual emphasis; they should not respond to taps.
+- Loading buttons should prevent duplicate action and show progress, spinner, or changed copy.
+- Gesture-heavy regions should have one primary gesture. Avoid nested drag/tap conflicts, especially in photo sorting and calendar areas.
+- Icon-only controls need meaningful labels in code output, such as `aria-label` or platform accessibility labels.
+
+## Contrast And Readability QA
+
+- Primary text on light surfaces should be dark enough to read comfortably; avoid pale gray body text.
+- Secondary text may be muted but must remain legible on white cards and pale blue backgrounds.
+- Important status colors need supporting text or icons; do not communicate meaning by color alone.
+- Dividers, borders, and selected states must be visible against their surface.
+- Body copy should normally stay at 12px or above in dense mobile cards, and 14px to 16px for normal reading.
+- Use stable line-height. Dense card text should still have enough line box to avoid clipping Chinese characters.
+- If a special font is missing, use fallback fonts without collapsing layout or hiding text.
+
+## Responsive And Safe-Area QA
+
+- Verify phone-width output at 375px and 390px. For HTML previews, no horizontal scroll should appear.
+- Fixed headers, bottom tabbars, and sticky CTA bars must reserve content padding so scroll content is not hidden underneath.
+- Respect the status bar, mini-program capsule area, and iPhone home indicator in visual mockups.
+- Do not use viewport-height assumptions that break on mobile browser chrome; prefer content-driven height or `min-height`.
+- Calendar grids, course lists, and photo panels should adapt with fixed internal proportions rather than squeezing text.
+- Landscape or wider previews may add side gutters, but the core phone layout should remain centered and readable.
 
 ## Card QA
 
@@ -98,6 +140,10 @@ Use this pattern as a starting point, then adapt dimensions to the exact compone
 - [ ] 作文 image areas use a real photo or believable manuscript fallback, not repeated generic horizontal bars.
 - [ ] Fixed tabbars and bottom actions do not cover scroll content.
 - [ ] Touch targets are comfortable on mobile.
+- [ ] Tappable elements have visible pressed/disabled/loading states without shifting layout.
+- [ ] Structural icons use a consistent vector/icon style, not emoji.
+- [ ] Primary and secondary text remain readable against their card or page backgrounds.
+- [ ] Color is not the only way important state or meaning is communicated.
 - [ ] Selected, disabled, loading, locked, completed, and error states are distinguishable.
 - [ ] The page has been checked at 375px or 390px width.
 - [ ] The result still matches the AI自主学习系统 visual language in `ui-style-guide.md`.

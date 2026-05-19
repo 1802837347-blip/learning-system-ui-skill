@@ -54,7 +54,7 @@ references/quality-gates.md
 
 `references/ui-style-guide.md` 包含画布、色彩、字体、组件、状态、文案和检查清单。
 
-`references/quality-gates.md` 用于优化和验收，重点检查卡片内容是否出界、按钮是否在容器内、文字/指标是否被裁切、标签描边是否异常、固定底栏是否遮挡内容。
+`references/quality-gates.md` 用于优化和验收，重点检查卡片内容是否出界、按钮是否在容器内、文字/指标是否被裁切、标签描边是否异常、真实图片是否被占位替代、固定底栏是否遮挡内容，以及触控、可读性、状态和安全区等通用 UI 质量问题。
 
 ## 字体说明
 

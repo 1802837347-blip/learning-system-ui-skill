@@ -36,7 +36,8 @@ Skip it for pure backend logic, database/API work, or non-visual automation.
 3. If optimizing or reviewing a generated page, also read [references/quality-gates.md](references/quality-gates.md) and run the priority checks before final output.
 4. Preserve the user's original text and information architecture unless they explicitly ask for content changes.
 5. When outputting HTML or code, prefer resilient layout primitives: flex/grid, `box-sizing: border-box`, `min-height`, safe-area padding, and content-driven spacing.
-6. Before final delivery, verify the screen at the target phone width and fix any overflow, clipping, or misaligned borders.
+6. Treat real images, course covers,作文 photos, icons, and report previews as primary content assets. Preserve them when provided; create meaningful fallbacks only when assets are unavailable.
+7. Before final delivery, verify the screen at the target phone width and fix any overflow, clipping, hidden fixed-bar content, low-contrast text, tiny tap targets, or misaligned borders.
 
 ## Page Types
 
