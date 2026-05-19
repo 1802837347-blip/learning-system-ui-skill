@@ -63,6 +63,7 @@ For every generated screen:
 - Use `min-height` instead of tight fixed heights when card content includes stats, two-line copy, badges, or buttons.
 - Before final output, check that no text, tag, button, icon, or border crosses its parent card edge or is clipped by insufficient height.
 - Tags and stage badges use a single clear fill plus one border; avoid doubled outlines, misaligned pseudo-element borders, or clipped gradient strokes.
+- Treat作文 photos as content assets, not decorative placeholders. If no real image asset is provided, create a believable handwritten essay sheet with Chinese text strokes, grid paper, score marks, and colored annotations; never replace the essay image with only generic horizontal bars.
 
 For home-like pages:
 
@@ -90,6 +91,7 @@ For作文批改 capture flows:
 - OCR flow uses a centered recognition loading state, then `核对识别文字` with an assistant reminder, editable recognized title/body sections, and bottom actions `返回拍照` and `确认文字并批改`.
 - Before final correction, confirm quota consumption with `确认开始批改？`; then show the dark expert-correction loading screen with scan/progress treatment and no extra CTA.
 - After correction, support `作文讲解` screens that pair annotated作文 photos on the left with a narrow teacher commentary card on the right and fixed audio controls at the bottom.
+- The作文 photo area is the core evidence of this flow. Preserve real photo texture when available; otherwise render a plausible essay manuscript, not a skeleton placeholder.
 - Use distinct walkthrough stages for起评分/审题立意, 加分项, 扣分项, 整体评价, and the final `查看批改报告` handoff.
 - Report flow can include a promotional intro, report-generation loading, a scrollable report document preview, `重看讲解`/`下载报告`, and feedback bottom sheets.
 - History flow can include `历史批改记录`, a monthly badge summary, score/category rows, `待解锁` rows, empty records, and a bottom month selector sheet.
