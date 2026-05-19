@@ -37,7 +37,8 @@ Skip it for pure backend logic, database/API work, or non-visual automation.
 4. Preserve the user's original text and information architecture unless they explicitly ask for content changes.
 5. When outputting HTML or code, prefer resilient layout primitives: flex/grid, `box-sizing: border-box`, `min-height`, safe-area padding, and content-driven spacing.
 6. Treat real images, course covers,作文 photos, icons, and report previews as primary content assets. Preserve them when provided; create meaningful fallbacks only when assets are unavailable.
-7. Before final delivery, verify the screen at the target phone width and fix any overflow, clipping, hidden fixed-bar content, low-contrast text, tiny tap targets, or misaligned borders.
+7. If the source is a high-resolution screenshot, normalize it to a 375px or 390px CSS canvas before choosing font sizes, spacing, and icon sizes. Do not copy raw screenshot pixels as CSS pixels.
+8. Before final delivery, verify the screen at the target phone width and fix any oversized type, missing icons, overflow, clipping, hidden fixed-bar content, low-contrast text, tiny tap targets, or misaligned borders.
 
 ## Page Types
 
@@ -51,6 +52,7 @@ Use this skill for:
 - Plan creation flows, especially `学习信息` -> `计划考点` -> `生成计划`, score inputs, study-frequency chips, daily course-hour steppers, period cards, date picker sheets, knowledge-point selection sheets, generation loading, generated plan overview, and validation states.
 - Daily learning plan pages with month title, subject legend, collapsed week calendar, expanded full-month calendar, scrolled calendar state, and task cards.
 - APP learning-plan incomplete state, with `学习计划` active, assistant reminder, month/week calendar, subject legend, unfinished course cards, and active `学习` bottom tab.
+- Knowledge-point study overview pages with grade/subject segmented controls, progress summary metrics, `推荐你学` card, `全考点学习` / `主观题专项` tabs, expandable topic cards, progress rails, lock states, and discount badges.
 - APP `全部课程` pages with subject chips, course-cover carousel, course summary, module tabs, topic sidebar, video list, learning-status tags, and knowledge graph entry.
 - APP learning-plan unauthenticated states that keep the product shell and either preserve or omit calendar context.
 - Incomplete, completed, and no-plan learning states.
@@ -109,6 +111,13 @@ For daily learning-plan pages:
 - In incomplete state, show unfinished course task cards with subject tag, knowledge point, title, star/progress indicator, time progress, and circular play action.
 - Show a light illustration and `今日无计划~` only for the no-plan/empty state, not for incomplete state.
 - Keep the bottom tabbar fixed with `首页`、`学习`、`我的`; active learning tab uses orange.
+
+For knowledge-point study overview pages:
+
+- Preserve the compact mobile scale. Do not enlarge text because the prompt screenshot is high resolution.
+- Keep the top controls, summary metrics, recommendation card, tabs, topic cards, progress rail, expand/collapse icons, and lock icons aligned to the same grid.
+- Every structural icon must render: back arrow, status icons, segmented-control markers, sparkle/discount badge accents, expand/collapse circles, progress dots, and lock icons.
+- Use `全考点学习` and `主观题专项` as learning tabs; active tab gets the cyan underline. Do not replace them with generic section headings.
 
 For APP all-courses pages:
 

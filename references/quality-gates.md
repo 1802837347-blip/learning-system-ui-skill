@@ -15,8 +15,10 @@ Use this file as the final review pass before delivering optimized UI. These gat
 | 7 | Product consistency | Colors, shadows, radii, icons, and spacing follow `ui-style-guide.md` | Random per-screen colors, mixed icon styles, excessive decoration |
 | 8 | Content asset fidelity | Core images such as作文 photos remain visually meaningful and inspectable | Replacing content images with abstract placeholders or repeated gray bars |
 | 9 | Interaction polish | Tappable elements have feedback, disabled semantics, and stable layout bounds | No tap feedback, layout-shifting press states, or fake disabled controls |
-| 10 | Domain fidelity | Learning-plan pages preserve education copy, task structure, and APP navigation | CRM/work dashboard copy, office task tabs, customer communication cards |
-| 11 | Accessibility basics | Meaningful controls have labels; contrast is readable; touch targets are not tiny | Icon-only controls without labels or low-contrast gray-on-gray text |
+| 10 | Icon completeness | Structural icons render with the right size, stroke, and alignment | Missing back, lock, expand, play, tabbar, or status icons |
+| 11 | Pixel-scale normalization | Screenshot-derived UI is scaled to 375px/390px CSS width | Copying raw 2x/3x screenshot pixels into CSS sizes |
+| 12 | Domain fidelity | Learning-plan pages preserve education copy, task structure, and APP navigation | CRM/work dashboard copy, office task tabs, customer communication cards |
+| 13 | Accessibility basics | Meaningful controls have labels; contrast is readable; touch targets are not tiny | Icon-only controls without labels or low-contrast gray-on-gray text |
 
 ## Output Workflow
 
@@ -35,9 +37,37 @@ Use this file as the final review pass before delivering optimized UI. These gat
 - Keep elevation consistent: cards, sheets, modals, sticky bars, and floating controls should not each use unrelated shadow styles.
 - Use vector icons or existing product icons for structural controls. Do not use emoji as navigation, tabbar, toolbar, or action icons.
 - Keep icon stroke width consistent within the same hierarchy, usually 1.5px to 2px.
+- When source material is a screenshot, estimate its scale factor and normalize to the intended mobile CSS canvas before choosing font sizes or coordinates.
 - Use color, opacity, or shadow for press feedback; do not animate size or position in a way that shifts surrounding layout.
 - Each screen should have one clear primary action. Secondary actions must be visually quieter.
 - Use functional decoration only: atmosphere, gradients, and illustrations should support hierarchy or state, not compete with content.
+
+## Typography Scale QA
+
+- Do not size UI text from the raw screenshot pixel dimensions. Normalize to 375px or 390px CSS width first.
+- Ordinary mobile body/list text should usually be 15px to 17px.
+- Small labels, metadata, tags, and status text should usually be 12px to 15px.
+- Card titles and section titles should usually be 18px to 24px.
+- Large active tabs may reach 24px to 26px when the reference clearly uses display emphasis.
+- Metric numbers may reach 28px to 36px. Their labels must stay much smaller.
+- If every text element looks bold and oversized, the output fails even when it technically fits.
+
+## Alignment Grid QA
+
+- Use explicit grid/flex columns for repeated structures. Do not manually eyeball each row independently.
+- In topic cards, keep the left progress rail, expand/collapse icon, dots, and vertical line on one shared x-axis.
+- Row text, dividers, tags, progress numbers, and lock icons must align to stable column edges.
+- Tab labels that sit on one row must share a baseline; underline should attach to the active label, not float.
+- Metric summary columns must have equal widths and aligned baselines.
+- Right-side values and icons should align to the same right edge across rows.
+
+## Icon Completeness QA
+
+- Structural icons are required content, not optional decoration.
+- If the original has an icon, the output must render an equivalent: back chevron, dropdown caret, sparkle/diamond, expand/collapse circle, vertical progress dots, lock, play, status battery/wifi/cell, tabbar icons, help/share/close icons.
+- Use inline SVG, existing project icons, or a simple CSS/SVG fallback. Never leave a blank space because the asset was unavailable.
+- Icon size should follow the reference scale: small inline icons around 12px to 16px, control icons around 20px to 28px, large assistant/tool icons around 40px.
+- Icons must be centered within their hit areas and aligned to nearby text.
 
 ## Domain Fidelity QA
 
@@ -151,6 +181,9 @@ Use this pattern as a starting point, then adapt dimensions to the exact compone
 - [ ] Touch targets are comfortable on mobile.
 - [ ] Tappable elements have visible pressed/disabled/loading states without shifting layout.
 - [ ] Structural icons use a consistent vector/icon style, not emoji.
+- [ ] All source icons are represented by real SVG/icon/CSS fallbacks; none are silently missing.
+- [ ] Font sizes are normalized to a 375px/390px CSS canvas and are not inflated from screenshot pixels.
+- [ ] Repeated rows use stable alignment columns for left rail, content, tags, progress, and lock/play icons.
 - [ ] Primary and secondary text remain readable against their card or page backgrounds.
 - [ ] Color is not the only way important state or meaning is communicated.
 - [ ] Learning-plan screens do not drift into CRM/work schedule semantics or unrelated tab labels.

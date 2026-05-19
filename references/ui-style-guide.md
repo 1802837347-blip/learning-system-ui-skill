@@ -139,6 +139,14 @@ History subject tag colors:
 - If an exact display font is unavailable, preserve visual intent with the closest available fallback: PingFang SC Semibold/Heavy for Chinese display, MiSans for numbers, and Inter/Space Grotesk for compact numeric emphasis.
 - Use `font-display: swap` or equivalent fallback behavior in web output so missing fonts do not hide text.
 - Do not use negative letter spacing. Avoid viewport-scaled font sizes.
+- When working from a screenshot, first infer the intended CSS canvas width, usually 375px or 390px. If the screenshot is 2x or 3x, divide visual measurements before assigning CSS font sizes.
+- Typical mobile text scale:
+  - Status/time and small labels: 12px to 15px.
+  - Body/list item text: 15px to 17px.
+  - Card titles and section titles: 18px to 22px.
+  - Large tab labels: 23px to 26px only when the reference clearly uses display emphasis.
+  - Metric numbers: 28px to 36px, rarely larger.
+- Do not use 30px+ for ordinary list rows, tags, metadata, or tabbar labels.
 
 ## Radius And Shadows
 
@@ -176,6 +184,58 @@ History subject tag colors:
 - Outlined badges should have enough horizontal padding that the border does not visually touch the text.
 
 ## Components
+
+### Knowledge-Point Study Overview Page
+
+- Use for pages like `全考点学习` / `主观题专项`, where the user studies exam knowledge points and sees progress by topic.
+- Canvas:
+  - Mobile canvas is 390px wide; keep all sizing in CSS px after normalizing high-resolution screenshots.
+  - Background uses a soft cyan/blue atmosphere similar to `#BFF9FF` fading into pale blue content.
+  - Page has no bottom tabbar in the shown reference; it scrolls through large white topic cards.
+- Status and top controls:
+  - Status time is about 15px to 17px, not oversized.
+  - Back icon is a real chevron/back SVG around 24px inside a 44px hit area.
+  - Top segmented control contains `中学`、`科一`、`科二`, each about 15px to 17px; active `科二` is 17px to 18px Semibold with cyan underline and small sparkle/diamond mark.
+  - `优惠中` is an orange rounded badge around 64px by 31px, text about 14px to 15px.
+- Progress summary card:
+  - White translucent card, radius about 16px to 18px.
+  - Three equal columns: `0/284` + `整体进度`, `0个` + `今日掌握`, `0天` + `连续学习`.
+  - Metric number uses about 31px to 34px bold; unit/denominator around 17px to 18px; label around 15px to 16px.
+  - Column baselines must align horizontally.
+- Recommendation card:
+  - Outer pale blue/white glass card, radius about 16px.
+  - Header `推荐你学` has a 4px vertical cyan accent and 17px to 18px Semibold text.
+  - Optional pale `RECOMMEND` watermark sits in the top-right but stays subtle.
+  - Inner white row contains title `必考｜教育的由来和概念`, 18px to 20px Semibold, and a right cyan pill `快速试学` around 92px by 38px, text 15px to 16px.
+- Study tabs:
+  - Place below recommendation card.
+  - `全考点学习` active uses 24px to 26px bold with cyan underline about 68px by 6px.
+  - `主观题专项` inactive uses 24px to 26px, gray `#60666C`.
+  - Both tabs share one baseline; avoid vertical jitter.
+- Topic cards:
+  - White card width about 362px, radius about 16px to 18px, generous vertical padding.
+  - Use a grid with a fixed left rail column, content column, and right progress/lock column.
+  - Left rail width about 24px to 32px; its expand/collapse circle is 20px to 22px, and the vertical line/dots align on one x-axis.
+  - Card title row: expand/collapse icon, title such as `教育与教育学`, optional score badge `2-8分`, and a subtle right progress dash.
+  - Topic title font is about 21px to 24px Semibold; score badge text is 13px to 14px.
+  - Child rows use 16px to 18px text, not display-size type.
+  - Row height around 54px to 64px; dividers start at the content column, not under the rail.
+  - Required tag `必考` is a small mint badge about 38px by 24px, 13px to 14px text.
+  - Difficulty tag `一般` is a small gray badge with the same vertical centering.
+  - Right progress values such as `0/7`, `0/9`, `0/1` align to the same right edge.
+  - Lock state uses a visible lock icon around 22px to 26px at the far right; do not omit it.
+- Collapsed topic cards:
+  - Keep the expand/collapse icon visible.
+  - Show title, score range, and problem-type chips such as `单选/辨析/简答/材料`.
+  - Do not show empty large white cards without icons or metadata.
+
+### Icon Rendering Rules
+
+- Basic structural icons must be rendered, not silently omitted.
+- Prefer inline SVG or the project icon library for: back chevron, dropdown caret, sparkle/diamond, expand/collapse chevron-in-circle, lock, play, close, calendar arrows, tabbar icons, status/help/share icons.
+- Keep one stroke style per screen: usually round caps/joins and 1.5px to 2px stroke.
+- If an icon asset is unavailable, draw a simple inline SVG fallback matching the reference instead of leaving a blank square or text-only control.
+- Icons must align visually to the text baseline or control centerline.
 
 ### Generic Practice Card
 
