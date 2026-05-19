@@ -1,0 +1,91 @@
+# AI自主学习系统 UI Quality Gates
+
+Use this file as the final review pass before delivering optimized UI. These gates prevent common failures such as escaped buttons, clipped metrics, broken tag borders, unsafe fixed bars, and low-polish interactions.
+
+## Priority Gates
+
+| Priority | Gate | Must Pass | Avoid |
+|---|---|---|---|
+| 1 | Layout containment | Every card, sheet, modal, calendar cell, and list row contains its visible children | Buttons, badges, metrics, or icons floating outside their parent |
+| 2 | Content capacity | Cards use enough `min-height`, padding, and gaps for the real text and metric rows | Tight fixed heights that crop `正确率`, time, progress, or status labels |
+| 3 | Touch and fixed bars | Primary actions are easy to tap and not hidden behind tabbars, home indicator, or sticky footers | CTA bars covering scroll content or buttons too close to screen edges |
+| 4 | Badge and border quality | Tags use one clean fill/border treatment with consistent radius and centered text | Double borders, offset pseudo-elements, clipped strokes, or border/text collision |
+| 5 | Typography fit | Text wraps or truncates intentionally and stays readable at the target width | Accidental clipping, squeezed font sizes, broken line-height, or overlapping rows |
+| 6 | State clarity | Loading, disabled, selected, completed, locked, and error states are visually distinct | Controls that look tappable when disabled, or state shown only by color |
+| 7 | Product consistency | Colors, shadows, radii, icons, and spacing follow `ui-style-guide.md` | Random per-screen colors, mixed icon styles, excessive decoration |
+| 8 | Accessibility basics | Meaningful controls have labels; contrast is readable; touch targets are not tiny | Icon-only controls without labels or low-contrast gray-on-gray text |
+
+## Output Workflow
+
+1. Build or revise the UI with normal flow layout first: flex/grid, clear gaps, `box-sizing: border-box`, and semantic sections.
+2. Reserve space for fixed headers, bottom tabbars, sticky CTA bars, and the iPhone home indicator before placing scroll content.
+3. Review each card from outside to inside: parent size, padding, row gaps, text wrapping, metrics, badges, action buttons.
+4. Test the narrow target width first: 375px for compact pages, 390px for newer APP learning-plan pages.
+5. If any required text or control is clipped, increase container space or adjust layout. Do not hide the issue with `overflow: hidden`.
+6. For HTML output, visually inspect the rendered page before final delivery whenever a browser is available.
+
+## Card QA
+
+- Card children must stay inside the card padding box.
+- Use `min-height` when a card has more than one content row, stats, tags, or a CTA.
+- Use `display: flex` or `display: grid` for title/metric/action arrangements.
+- Do not position `开始练习`, `去学习`, `查看详情`, or orange CTA pills outside normal card flow.
+- Right-side actions need a reserved column width; left text should wrap before colliding with the action.
+- Metric rows need at least 18px to 20px line box plus vertical breathing room.
+- If text is two lines in the source or likely to wrap in Chinese, design for the wrapped state from the start.
+- Use `overflow: hidden` only for images or decorative masks, not for text-heavy cards.
+
+## Badge QA
+
+- Stage tags such as `强化阶段` should use one border, one radius, and one fill strategy.
+- Use `box-sizing: border-box` so the badge border does not enlarge the measured size.
+- Keep at least 4px vertical padding and 8px horizontal padding inside small badges.
+- Border radius must match the badge height; all corners should render evenly.
+- Avoid pseudo-element borders unless they are required for a special effect and have been visually checked.
+- If a badge sits in a row with text, align it to the text baseline or centerline; do not let it float upward/downward.
+
+## HTML/CSS Guardrails
+
+```css
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  min-height: var(--card-min-height);
+  overflow: visible;
+}
+
+.card-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.card-title,
+.card-meta {
+  min-width: 0;
+}
+
+.card-action {
+  flex: 0 0 auto;
+}
+```
+
+Use this pattern as a starting point, then adapt dimensions to the exact component in `ui-style-guide.md`.
+
+## Pre-Delivery Checklist
+
+- [ ] The screen still uses the requested original copy and layout hierarchy unless the user asked to change them.
+- [ ] No card content escapes its parent boundary.
+- [ ] No required text, metric, tag, button, icon, or calendar dot is clipped.
+- [ ] `开始练习` and other CTAs sit inside their cards or fixed action areas.
+- [ ] `强化阶段` and similar badges have clean, single-layer borders.
+- [ ] Fixed tabbars and bottom actions do not cover scroll content.
+- [ ] Touch targets are comfortable on mobile.
+- [ ] Selected, disabled, loading, locked, completed, and error states are distinguishable.
+- [ ] The page has been checked at 375px or 390px width.
+- [ ] The result still matches the AI自主学习系统 visual language in `ui-style-guide.md`.

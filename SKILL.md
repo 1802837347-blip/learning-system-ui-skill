@@ -16,6 +16,28 @@ Use this skill to generate new pages that match the existing AI自主学习系�
 - Use a pale cool background, soft blue top atmosphere, rounded white cards, compact tags, and direct task-oriented content.
 - Do not create a marketing hero. The first screen should show useful learning content or the current learning state.
 
+## When to Apply
+
+Use this skill when the task changes how an AI自主学习系统 page looks, feels, lays out content, or handles visible state.
+
+Must use it for:
+
+- Creating or extending learning-plan, course,作文批改, report, history, login, or onboarding screens.
+- Optimizing existing HTML, mini-program, React, or mobile UI output to match this product family.
+- Reviewing UI for spacing, containment, card structure, states, typography, or visual consistency.
+- Fixing visible layout bugs such as clipped text, escaped buttons, broken badge borders, crowded metrics, or hidden fixed bars.
+
+Skip it for pure backend logic, database/API work, or non-visual automation.
+
+## Workflow
+
+1. Identify the page family and state: home, daily plan, all courses, plan creation,作文批改 capture, report, history, auth, or empty/loading/error state.
+2. Read [references/ui-style-guide.md](references/ui-style-guide.md) for the matching component and copy patterns.
+3. If optimizing or reviewing a generated page, also read [references/quality-gates.md](references/quality-gates.md) and run the priority checks before final output.
+4. Preserve the user's original text and information architecture unless they explicitly ask for content changes.
+5. When outputting HTML or code, prefer resilient layout primitives: flex/grid, `box-sizing: border-box`, `min-height`, safe-area padding, and content-driven spacing.
+6. Before final delivery, verify the screen at the target phone width and fix any overflow, clipping, or misaligned borders.
+
 ## Page Types
 
 Use this skill for:
@@ -33,6 +55,14 @@ Use this skill for:
 - Plan detail, course task detail, subject selection, and progress pages that extend the same system.
 
 ## Required Patterns
+
+For every generated screen:
+
+- Treat every visible card as a real containment boundary: titles, metrics, tags, and primary CTAs must sit inside the card's padding box.
+- Prefer flex/grid layout for card internals. Avoid absolute-positioning CTAs or tags inside cards unless the parent is `position: relative` and the card reserves enough right/bottom padding for them.
+- Use `min-height` instead of tight fixed heights when card content includes stats, two-line copy, badges, or buttons.
+- Before final output, check that no text, tag, button, icon, or border crosses its parent card edge or is clipped by insufficient height.
+- Tags and stage badges use a single clear fill plus one border; avoid doubled outlines, misaligned pseudo-element borders, or clipped gradient strokes.
 
 For home-like pages:
 
@@ -114,3 +144,5 @@ For plan creation flows:
 ## Reference
 
 Before generating a full screen, read [references/ui-style-guide.md](references/ui-style-guide.md) for exact tokens, component dimensions, copy patterns, and checklist.
+
+Before delivering an optimized or reviewed screen, read [references/quality-gates.md](references/quality-gates.md) and pass the critical layout, containment, and interaction checks.

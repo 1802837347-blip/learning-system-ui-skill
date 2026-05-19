@@ -30,6 +30,12 @@
 
 Codex 会通过 `SKILL.md` 触发 skill，并按其中指引读取 `references/ui-style-guide.md`。
 
+如果是在修 UI 问题或优化已有页面，可以这样说：
+
+```text
+使用 学习系统UI-skill 优化这个页面，并按 references/quality-gates.md 做交付前检查
+```
+
 ### Claude Code 或其他 AI 助手
 
 这类工具通常不会自动识别 Codex skill，可以把本仓库当作 UI 规则文档使用：
@@ -43,9 +49,18 @@ Codex 会通过 `SKILL.md` 触发 skill，并按其中指引读取 `references/u
 ```text
 SKILL.md
 references/ui-style-guide.md
+references/quality-gates.md
 ```
 
 `references/ui-style-guide.md` 包含画布、色彩、字体、组件、状态、文案和检查清单。
+
+`references/quality-gates.md` 用于优化和验收，重点检查卡片内容是否出界、按钮是否在容器内、文字/指标是否被裁切、标签描边是否异常、固定底栏是否遮挡内容。
+
+## 字体说明
+
+本仓库默认不附带字体安装包。特殊字体会在 `references/ui-style-guide.md` 中记录名称和兜底方案，实际生成页面时优先使用目标环境已有字体。
+
+如果需要像素级复刻某些标题字形，应先确认字体授权允许再单独加入字体文件。
 
 ## 文件结构
 
@@ -54,11 +69,12 @@ references/ui-style-guide.md
 ├── SKILL.md
 ├── README.md
 └── references
-    └── ui-style-guide.md
+    ├── ui-style-guide.md
+    └── quality-gates.md
 ```
 
 ## GitHub 描述建议
 
 ```text
-AI UI rules / Codex skill for AI自主学习系统 mobile pages, learning plans, course pages,作文批改 flows, reports, and history states.
+AI UI rules / Codex skill for AI自主学习系统 mobile pages, learning plans, course pages,作文批改 flows, reports, history states, and UI quality gates.
 ```

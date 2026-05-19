@@ -134,6 +134,10 @@ History subject tag colors:
 - Numeric/supporting font: MiSans.
 - Calendar numbers: Space Grotesk or Inter Bold.
 - Display/title style: HYYakuHei or PingFang SC Semibold.
+- Special display fonts seen in source screens can include DingTalk JinBuTi, Alibaba PuHuiTi 3.0, Douyin Sans, Source Han Serif SC, and 平方战狼体. Use them only when already available in the target environment.
+- Do not bundle or redistribute font files by default. Record font names and use fallback stacks unless the user confirms the font license and asks for pixel-level reproduction.
+- If an exact display font is unavailable, preserve visual intent with the closest available fallback: PingFang SC Semibold/Heavy for Chinese display, MiSans for numbers, and Inter/Space Grotesk for compact numeric emphasis.
+- Use `font-display: swap` or equivalent fallback behavior in web output so missing fonts do not hide text.
 - Do not use negative letter spacing. Avoid viewport-scaled font sizes.
 
 ## Radius And Shadows
@@ -151,7 +155,37 @@ History subject tag colors:
 - Course task card shadow: `0 1px 1px rgba(0,0,0,0.05)`.
 - Dark selected date/action shadow: `0 10px 15px -3px rgba(0,102,134,0.2), 0 4px 6px -4px rgba(0,102,134,0.2)`.
 
+## Layout Safety Rules
+
+- Cards must contain all of their visible children. A CTA such as `开始练习`, `去学习`, `查看详情`, or an orange action button cannot float outside the card even by a few pixels.
+- Use `box-sizing: border-box` on cards, tags, buttons, and metric blocks so borders and padding do not increase the final visual size unexpectedly.
+- Prefer `min-height` plus content-driven layout over exact fixed heights. Fixed heights are only safe when every row count and text line is known.
+- A card with title, subtitle/knowledge point, metric row, stage tag, and CTA needs enough vertical space for all rows plus padding; never compress the metric row to make the card fit.
+- In HTML output, card internals should normally be flex or grid with explicit gaps. Avoid mixing absolute-positioned children with normal-flow text in the same card.
+- If a right-side CTA is needed, use a two-column grid or a flex row with `align-items: center`; reserve the CTA column width before laying out text.
+- Metric labels such as `正确率`, `用时`, `进度`, and `得分` need a minimum line box around 18px to 20px and must not be cropped by the card bottom.
+- When text may wrap to two lines, test the wrapped state and increase the card min-height instead of shrinking font size below the system scale.
+- Card overflow should not hide required information. Use `overflow: hidden` only for decorative media masks, not for content cards with text and CTAs.
+
+## Badge And Border Safety
+
+- Stage badges such as `强化阶段` use a single 1px border, a clean fill, and `box-sizing: border-box`.
+- Do not create badge outlines with both `border` and an overlapping pseudo-element unless the result has been visually checked.
+- Badge borders should follow the radius evenly on all corners; no clipped, offset, doubled, or broken stroke is acceptable.
+- Filled status badges keep the text vertically centered with at least 4px top/bottom padding.
+- Outlined badges should have enough horizontal padding that the border does not visually touch the text.
+
 ## Components
+
+### Generic Practice Card
+
+- Use for stage practice, exercise tasks, or any card with `开始练习`.
+- The whole card is one white rounded container; all content, metrics, stage badge, and CTA must be inside the same card.
+- Recommended structure: left/main content column, optional right CTA column, bottom metric/status row if needed.
+- Minimum card height should be content-driven; for title + stage + metrics + CTA, start around 112px to 128px on a 390px screen and expand if copy wraps.
+- Primary CTA `开始练习` is an orange rounded pill or button inside the card, aligned to the right or bottom-right with at least 12px spacing from every card edge.
+- Metric row must reserve space for labels such as `正确率`; do not place it flush against the card bottom.
+- Stage tag `强化阶段` should be a compact pill with one clean orange border/fill treatment; its stroke must not look doubled or clipped.
 
 ### Brand Header And Grade Selector
 
