@@ -32,15 +32,17 @@ Skip it for pure backend logic, database/API work, or non-visual automation.
 ## Workflow
 
 1. Identify the page family and state: home, daily plan, all courses, plan creation,作文批改 capture, report, history, auth, or empty/loading/error state.
-2. Read [references/ui-style-guide.md](references/ui-style-guide.md) for the matching component and copy patterns.
-3. If optimizing or reviewing a generated page, also read [references/quality-gates.md](references/quality-gates.md) and run the priority checks before final output.
-4. Preserve the user's original text and information architecture unless they explicitly ask for content changes.
-5. When outputting HTML or code, prefer resilient layout primitives: flex/grid, `box-sizing: border-box`, `min-height`, safe-area padding, and content-driven spacing.
-6. Treat real images, course covers,作文 photos, icons, and report previews as primary content assets. Preserve them when provided; create meaningful fallbacks only when assets are unavailable.
-7. If the source is a high-resolution screenshot, normalize it to a 375px or 390px CSS canvas before choosing font sizes, spacing, and icon sizes. Do not copy raw screenshot pixels as CSS pixels.
-8. If a Figma node or screenshot is provided, treat every visible text string, tab, date, subject legend item, card count, and icon family as locked unless the user asks to redesign content.
-9. For APP learning-plan screens, preserve the foundational UI tokens from the Figma reference: top tab selected style, assistant avatar/bubble, collapsed calendar heights and date states, course-card anatomy, and right play button style.
-10. Before final delivery, verify the screen at the target phone width and fix any oversized type, missing icons, overflow, clipping, hidden fixed-bar content, low-contrast text, tiny tap targets, or misaligned borders.
+2. Read [references/page-patterns.md](references/page-patterns.md) and choose the closest page pattern. For arbitrary pages, map the source to the nearest pattern instead of inventing a new visual system.
+3. Read [references/component-specs.md](references/component-specs.md) for reusable component anatomy, dimensions, spacing, colors, radius, shadows, and icon rules.
+4. Read [references/ui-style-guide.md](references/ui-style-guide.md) for the matching detailed page/component guidance.
+5. If optimizing or reviewing a generated page, also read [references/quality-gates.md](references/quality-gates.md) and run the priority checks before final output.
+6. Preserve the user's original text and information architecture unless they explicitly ask for content changes.
+7. When outputting HTML or code, prefer resilient layout primitives: flex/grid, `box-sizing: border-box`, `min-height`, safe-area padding, and content-driven spacing.
+8. Treat real images, course covers,作文 photos, icons, and report previews as primary content assets. Preserve them when provided; create meaningful fallbacks only when assets are unavailable.
+9. If the source is a high-resolution screenshot, normalize it to a 375px or 390px CSS canvas before choosing font sizes, spacing, and icon sizes. Do not copy raw screenshot pixels as CSS pixels.
+10. If a Figma node or screenshot is provided, treat every visible text string, tab, date, subject legend item, card count, and icon family as locked unless the user asks to redesign content.
+11. For APP learning-plan screens, preserve the foundational UI tokens from the Figma reference: top tab selected style, assistant avatar/bubble, collapsed calendar heights and date states, course-card anatomy, and right play button style.
+12. Before final delivery, verify the screen at the target phone width and fix any oversized type, missing icons, overflow, clipping, hidden fixed-bar content, low-contrast text, tiny tap targets, or misaligned borders.
 
 ## Page Types
 
@@ -76,11 +78,13 @@ For every generated screen:
 For home-like pages:
 
 - Start with either a greeting row or a brand header plus grade selector.
+- Use the Home page pattern for 首页 states: 未购课 welcome guide, 已购课待制定/有更新 pending plan card, and 完成全部计划 success card.
 - Use a prominent blue-green gradient card for welcome, plan setup, pending plans, or completed-plan success.
 - When present, place `AI学习工具` between the plan card and `热门推荐`; use it for focused utility cards such as作文批改 rather than marketing banners.
 - Use white rounded cards for history and secondary content; use compact two-column cards for course recommendations.
 - Keep filters small: white background, light border, 10px radius, text plus down arrow.
 - Distinguish `首次` and `更新` badges in pending-plan rows.
+- `热门推荐` course products use two columns with real course covers, red price, and orange `抢` badge; do not replace them with generic cards.
 
 For entry/auth flows:
 
@@ -176,5 +180,7 @@ For plan creation flows:
 ## Reference
 
 Before generating a full screen, read [references/ui-style-guide.md](references/ui-style-guide.md) for exact tokens, component dimensions, copy patterns, and checklist.
+
+For arbitrary page style-transfer, first read [references/page-patterns.md](references/page-patterns.md), then [references/component-specs.md](references/component-specs.md), then the relevant section of [references/ui-style-guide.md](references/ui-style-guide.md).
 
 Before delivering an optimized or reviewed screen, read [references/quality-gates.md](references/quality-gates.md) and pass the critical layout, containment, and interaction checks.

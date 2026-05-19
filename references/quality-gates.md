@@ -25,13 +25,28 @@ Use this file as the final review pass before delivering optimized UI. These gat
 
 ## Output Workflow
 
-1. Build or revise the UI with normal flow layout first: flex/grid, clear gaps, `box-sizing: border-box`, and semantic sections.
-2. Reserve space for fixed headers, bottom tabbars, sticky CTA bars, and the iPhone home indicator before placing scroll content.
-3. Review each card from outside to inside: parent size, padding, row gaps, text wrapping, metrics, badges, action buttons.
-4. Test the narrow target width first: 375px for compact pages, 390px for newer APP learning-plan pages.
-5. If any required text or control is clipped, increase container space or adjust layout. Do not hide the issue with `overflow: hidden`.
-6. Check interaction states: pressed, selected, disabled, loading, locked, expanded, and empty.
-7. For HTML output, visually inspect the rendered page before final delivery whenever a browser is available.
+1. Identify the closest page pattern from `page-patterns.md`.
+2. List the components used and check their specs in `component-specs.md`.
+3. Build or revise the UI with normal flow layout first: flex/grid, clear gaps, `box-sizing: border-box`, and semantic sections.
+4. Reserve space for fixed headers, bottom tabbars, sticky CTA bars, and the iPhone home indicator before placing scroll content.
+5. Review each card from outside to inside: parent size, padding, row gaps, text wrapping, metrics, badges, action buttons.
+6. Test the narrow target width first: 375px for compact pages, 390px for newer APP learning-plan pages.
+7. If any required text or control is clipped, increase container space or adjust layout. Do not hide the issue with `overflow: hidden`.
+8. Check interaction states: pressed, selected, disabled, loading, locked, expanded, and empty.
+9. For HTML output, visually inspect the rendered page before final delivery whenever a browser is available.
+
+## Hard Failures
+
+If any item below occurs, revise before delivery:
+
+- Text escapes a card, button, tag, date cell, tab, modal, or fixed bar.
+- A source icon is missing, replaced by emoji, or replaced by a visibly unrelated shape.
+- A gradient panel, CTA, or selected state is flattened into a plain block when the source uses gradient/depth.
+- A component listed in `component-specs.md` has obviously wrong size, radius, spacing, or state treatment.
+- Course cards become schedule cards, CRM cards, or generic task cards.
+- Calendar cells lose their selected/default/planned states or become a different component.
+- Fixed tabbars or CTAs cover scroll content.
+- The implementation changes source text, data, card count, or information order without user instruction.
 
 ## Professional UI Baseline
 
@@ -128,6 +143,18 @@ Use this file as the final review pass before delivering optimized UI. These gat
 - Course cards must remain about 362px by 124px with metadata row, title row, star/progress row, and 32px pale circular play button. Time-slot rows or status badges fail.
 - Verify foundational tokens together: page margins, colors, corner radii, cell heights, card height, and icon size should match the Figma page before judging the UI polished.
 
+## Home Foundation QA
+
+- Home pages must keep the white background, brand header, grade selector, one primary state card, `热门推荐`, two-column course product grid, and bottom tabbar with `首页` active.
+- Do not turn 首页 into a dashboard, learning-plan calendar page, CRM page, or generic course catalog.
+- Home state card must match the state:
+  - 未购课 uses `HomeWelcomeGuideCard` around 347px by 196px.
+  - 已购课待制定/有更新 uses `HomePendingPlanCard` around 347px by 305px.
+  - 完成全部计划 uses `HomeSuccessPlanCard` around 347px by 211px.
+- Recommendation product covers must stay visual and subject-specific; blank pastel cards, gray placeholders, or missing teacher/course imagery fail.
+- `热门推荐` vertical position should follow the state card height; it should not overlap the main card or disappear behind the tabbar.
+- Product cards must keep cover, title, price, and `抢` badge aligned in the two-column grid.
+
 ## Touch And Interaction QA
 
 - Tappable controls should have at least a 44px by 44px hit area, even when the visible icon is smaller.
@@ -223,6 +250,8 @@ Use this pattern as a starting point, then adapt dimensions to the exact compone
 ## Pre-Delivery Checklist
 
 - [ ] The screen still uses the requested original copy and layout hierarchy unless the user asked to change them.
+- [ ] The closest page pattern from `page-patterns.md` was selected.
+- [ ] All repeated components were checked against `component-specs.md`.
 - [ ] No card content escapes its parent boundary.
 - [ ] No required text, metric, tag, button, icon, or calendar dot is clipped.
 - [ ] `开始练习` and other CTAs sit inside their cards or fixed action areas.

@@ -52,7 +52,11 @@ references/ui-style-guide.md
 references/quality-gates.md
 ```
 
-`references/ui-style-guide.md` 包含画布、色彩、字体、组件、状态、文案和检查清单。
+`references/page-patterns.md` 用于先判断页面属于哪类模式，例如学习计划、全部课程、知识点学习、简答题闯关、作文批改、弹窗/底部表单等。
+
+`references/component-specs.md` 用于沉淀可复用组件规格，包括顶部标签、AI 助手气泡、日历、课程卡、底部导航、按钮、标签、渐变卡和基础 icon fallback。
+
+`references/ui-style-guide.md` 包含画布、色彩、字体、页面细节、状态和文案规范。
 
 `references/quality-gates.md` 用于优化和验收，重点检查卡片内容是否出界、按钮是否在容器内、文字/指标是否被裁切、标签描边是否异常、真实图片是否被占位替代、固定底栏是否遮挡内容，以及触控、可读性、状态和安全区等通用 UI 质量问题。
 
@@ -73,6 +77,8 @@ references/quality-gates.md
 ├── assets
 │   └── assistant-avatar.png
 └── references
+    ├── component-specs.md
+    ├── page-patterns.md
     ├── ui-style-guide.md
     └── quality-gates.md
 ```
