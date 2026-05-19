@@ -38,7 +38,8 @@ Skip it for pure backend logic, database/API work, or non-visual automation.
 5. When outputting HTML or code, prefer resilient layout primitives: flex/grid, `box-sizing: border-box`, `min-height`, safe-area padding, and content-driven spacing.
 6. Treat real images, course covers,作文 photos, icons, and report previews as primary content assets. Preserve them when provided; create meaningful fallbacks only when assets are unavailable.
 7. If the source is a high-resolution screenshot, normalize it to a 375px or 390px CSS canvas before choosing font sizes, spacing, and icon sizes. Do not copy raw screenshot pixels as CSS pixels.
-8. Before final delivery, verify the screen at the target phone width and fix any oversized type, missing icons, overflow, clipping, hidden fixed-bar content, low-contrast text, tiny tap targets, or misaligned borders.
+8. If a Figma node or screenshot is provided, treat every visible text string, tab, date, subject legend item, card count, and icon family as locked unless the user asks to redesign content.
+9. Before final delivery, verify the screen at the target phone width and fix any oversized type, missing icons, overflow, clipping, hidden fixed-bar content, low-contrast text, tiny tap targets, or misaligned borders.
 
 ## Page Types
 
@@ -105,11 +106,13 @@ For daily learning-plan pages:
 
 - Do not reinterpret this page as a generic CRM, work schedule, customer communication, or office task dashboard. Keep all copy and information architecture in the education/learning-plan domain.
 - Top channel title: active `学习计划` with cyan underline, secondary `全部课程`.
-- Assistant bubble under the title with state-specific copy.
-- Month section: `{年份}年{月份}月计划`, `展开日历`, subject legend, weekday row, and date blocks.
+- Do not add controls that are absent from the Figma target, such as a search button, greeting headline, task-completion counter, or extra section title.
+- Assistant bubble under the title uses the source's state-specific one-line copy; do not append estimated duration, task counts, or schedule summary.
+- Month section: `{年份}年{月份}月计划`, `展开日历`, subject legend, weekday row, and date blocks. Keep the exact visible year/month, weekday order, dates, selected day, and subject dots from the source.
 - Expanded calendar switches the action to `收起日历`, shows month-switch controls, and uses the full 7-column month grid.
 - Login-required APP plan states keep the top channel and active `学习` tab; use `请登录查看学习计划` and `立即登录`.
-- In incomplete state, show unfinished course task cards with subject tag, knowledge point, title, star/progress indicator, time progress, and circular play action.
+- In incomplete state, show unfinished course task cards with subject tag, knowledge point, title, star/progress indicator, time progress, and circular play action. Do not turn them into time-slot schedule cards with `未开始` badges.
+- In the Figma `APP-学习计划-未完成` reference, the task cards start immediately after the collapsed week calendar; there is no separate `今日任务` / `今日安排` header row.
 - Show a light illustration and `今日无计划~` only for the no-plan/empty state, not for incomplete state.
 - Keep the bottom tabbar fixed with `首页`、`学习`、`我的`; active learning tab uses orange.
 

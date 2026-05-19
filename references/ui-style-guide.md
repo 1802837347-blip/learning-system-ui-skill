@@ -667,11 +667,16 @@ Previous-season review card:
 
 - Use for `APP-学习计划-未完成`, where the student has unfinished learning tasks for the selected day.
 - This page must remain an education learning-plan screen. Do not convert it into a CRM, work-schedule, customer communication, office dashboard, or generic calendar task app.
+- Figma fidelity lock:
+  - Preserve visible copy and data from the target node. Do not invent a different student name, month, week, date range, task title, progress value, or subject list.
+  - The canonical reference shows `刘佳宁同学，请完成今天的学习计划吧`, `2026年3月计划`, dates `04` to `10`, selected `09`, and two math task cards.
+  - Do not add absent UI such as search, `今日任务`, `已完成 1/4`, time-slot rows, `学习中` / `未开始` badges, or estimated-minute summaries.
 - Canvas and background:
   - Width 390px.
   - Base background `#ECEEF5`.
   - Top atmosphere gradient from `#BFF9FF` to transparent, height about 256px.
   - Quiet content sheet starts around y 148px, fill `#F7F8F9`, full width.
+  - The calendar and task list live directly on this quiet sheet; the collapsed calendar is not wrapped in a separate white rounded card.
 - Top channel:
   - Status bar height about 46px.
   - `学习计划` active near x 23px, y about 56px, 19px display font, black-to-`#1251A9` gradient text, 1px letter spacing.
@@ -683,13 +688,16 @@ Previous-season review card:
   - Speech bubble starts around x 45px, y 102px, height about 30px.
   - Copy pattern: `{学生名}同学，请完成今天的学习计划吧`.
   - Text 14px Medium `#071D39`, line height 28px.
+  - The source bubble is a compact one-line pill-like vector. Do not make it a tall two-line card, and do not replace the assistant icon with a text `AI` square.
 - Month and legend:
   - Month title around x 20px, y 169px: `2026年3月计划`, 18px Semibold black.
   - `展开日历` action around x 302px, y 168px, 14px Medium black, with small down triangle.
   - Subject legend sits around x 20px, y 202px, five items in order: 语文、数学、物理、化学、生物.
   - Legend uses 4px square color dots and 12px text; use exact subject colors.
+  - The legend is complete and ordered. Missing `物理`, changing order, or using circular dots instead of 4px squares fails the reference.
 - Collapsed week calendar:
   - Weekday row around y 234px, width about 350px, seven equal columns, 14px Medium `#737C82`.
+  - Weekday order for this reference is `周一` to `周日`, not `日` to `六`.
   - Date blocks start around y 262px, each 54px high, 6px gaps, 8px radius.
   - Normal dates use `#EBEEF1`; date numbers use Space Grotesk/Inter Bold 16px.
   - Selected day, such as `09`, uses black-to-`#383838` gradient, white number, and the blue subject dot underneath.
@@ -697,6 +705,13 @@ Previous-season review card:
 - Task list:
   - Starts around x 14px, y 336px, width 362px, vertical gap 10px.
   - In incomplete state, show course task cards immediately after the collapsed week calendar. Do not show a generic empty state, CRM schedule card, or office event card.
+  - Do not insert a section header like `今日任务` or a progress counter above the cards; the first task card starts at y about 336px.
+  - Task cards are 362px by about 124px, radius 12px, white fill, 1px very light blue-gray border, and subtle 1px shadow.
+  - Card layout has a top metadata row and a lower title/progress/action row, not a time-schedule layout.
+  - Top metadata row: subject tag `数学` is a compact blue pill, followed by `考点3.1.1 导数的基本概念` in 14px muted text.
+  - Title row uses 16px Medium black and preserves the exact title.
+  - Progress row uses a 66px star asset or five compact star glyphs followed by `12:30/37:01` or `00:00/37:01`; do not replace with difficulty text such as `难度 3 星`.
+  - Right action is a circular 32px play button using the source asset style. Do not add status badges such as `学习中` or `未开始`.
   - Example card titles:
     - `3.1.1.1 导数的概念与计算(一轮)`
     - `3.1.1.3 导函数原型构造速解技巧`

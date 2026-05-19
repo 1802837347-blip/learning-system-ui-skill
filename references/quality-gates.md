@@ -102,8 +102,23 @@ Use this file as the final review pass before delivering optimized UI. These gat
 - Keep page semantics in the AI自主学习系统 domain: learning plans, subjects, courses, knowledge points, progress,作文批改, reports, and history.
 - Do not replace education copy with CRM, sales, work status, customer communication, office schedule, or generic productivity wording.
 - For `学习计划-未完成`, the page must show `学习计划` / `全部课程`, assistant study reminder, month plan calendar, subject legend, course task cards, and bottom tabs `首页`、`学习`、`我的`.
+- When a Figma target is provided, preserve its visible data exactly: student name, month, dates, selected day, subject legend order, task count, task titles, and progress values.
+- For the `APP-学习计划-未完成` reference, the collapsed calendar is part of the `#F7F8F9` sheet, not a separate white calendar card.
+- For the `APP-学习计划-未完成` reference, task cards start immediately after the week strip; there is no `今日任务`, `今日安排`, or `已完成 1/4` section header.
 - Unfinished course cards should use subject tag, knowledge point, course title, star/progress indicator, time progress, and play action.
-- Reject implementations that show `Hi, Sorcerer`, `今日安排`, `数据看板`, `代办事项`, `工作状态`, `CRM`, `办公`, `消息`, client报价沟通, or vertical schedule bars for this learning-plan page.
+- Reject implementations that show `Hi, Sorcerer`, `Sorcerer同学`, `今日任务`, `今日安排`, `已完成 1/4`, `预计学习`, `学习中`, `未开始`, `数据看板`, `代办事项`, `工作状态`, `CRM`, `办公`, `消息`, client报价沟通, or vertical schedule bars for this learning-plan page.
+
+## Figma Data Lock QA
+
+- Do not improve a Figma-based optimization by inventing new content. UI polish can change surface treatment, but the source's visible strings and layout hierarchy stay fixed.
+- Compare generated output against the Figma node for:
+  - same top tabs and no extra controls,
+  - same assistant copy length and icon treatment,
+  - same year/month, date range, weekday order, selected day, and calendar dots,
+  - same subject legend items and order,
+  - same number of visible cards,
+  - same task titles, knowledge-point text, star/progress treatment, and play action.
+- If any of those change without user instruction, the output fails even if it looks polished.
 
 ## Touch And Interaction QA
 
