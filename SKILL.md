@@ -32,17 +32,19 @@ Skip it for pure backend logic, database/API work, or non-visual automation.
 ## Workflow
 
 1. Identify the page family and state: home, daily plan, all courses, plan creation,作文批改 capture, report, history, auth, or empty/loading/error state.
-2. Read [references/page-patterns.md](references/page-patterns.md) and choose the closest page pattern. For arbitrary pages, map the source to the nearest pattern instead of inventing a new visual system.
-3. Read [references/component-specs.md](references/component-specs.md) for reusable component anatomy, dimensions, spacing, colors, radius, shadows, and icon rules.
-4. Read [references/ui-style-guide.md](references/ui-style-guide.md) for the matching detailed page/component guidance.
-5. If optimizing or reviewing a generated page, also read [references/quality-gates.md](references/quality-gates.md) and run the priority checks before final output.
-6. Preserve the user's original text and information architecture unless they explicitly ask for content changes.
-7. When outputting HTML or code, prefer resilient layout primitives: flex/grid, `box-sizing: border-box`, `min-height`, safe-area padding, and content-driven spacing.
-8. Treat real images, course covers,作文 photos, icons, and report previews as primary content assets. Preserve them when provided; create meaningful fallbacks only when assets are unavailable.
-9. If the source is a high-resolution screenshot, normalize it to a 375px or 390px CSS canvas before choosing font sizes, spacing, and icon sizes. Do not copy raw screenshot pixels as CSS pixels.
-10. If a Figma node or screenshot is provided, treat every visible text string, tab, date, subject legend item, card count, and icon family as locked unless the user asks to redesign content.
-11. For APP learning-plan screens, preserve the foundational UI tokens from the Figma reference: top tab selected style, assistant avatar/bubble, collapsed calendar heights and date states, course-card anatomy, and right play button style.
-12. Before final delivery, verify the screen at the target phone width and fix any oversized type, missing icons, overflow, clipping, hidden fixed-bar content, low-contrast text, tiny tap targets, or misaligned borders.
+2. For UI generation and review, first read [references/design.md](references/design.md) and [references/design.tokens.json](references/design.tokens.json). These are the primary source of truth for spacing, type scale, radius, color, gradients, icons, and component behavior.
+3. For implementation work, also use [references/tokens.css](references/tokens.css) and [references/tailwind.config.ts](references/tailwind.config.ts) when relevant instead of inventing one-off CSS values.
+4. Read [references/page-patterns.md](references/page-patterns.md) and choose the closest page pattern. For arbitrary pages, map the source to the nearest pattern instead of inventing a new visual system.
+5. Read [references/component-specs.md](references/component-specs.md) for reusable component anatomy, dimensions, spacing, colors, radius, shadows, and icon rules.
+6. Read [references/ui-style-guide.md](references/ui-style-guide.md) when the task needs older extracted page details or a page-specific fallback not yet covered by `design.md`.
+7. If optimizing or reviewing a generated page, also read [references/quality-gates.md](references/quality-gates.md) and run the priority checks before final output.
+8. Preserve the user's original text and information architecture unless they explicitly ask for content changes.
+9. When outputting HTML or code, prefer resilient layout primitives: flex/grid, `box-sizing: border-box`, `min-height`, safe-area padding, and content-driven spacing.
+10. Treat real images, course covers,作文 photos, icons, and report previews as primary content assets. Preserve them when provided; create meaningful fallbacks only when assets are unavailable.
+11. If the source is a high-resolution screenshot, normalize it to a 375px or 390px CSS canvas before choosing font sizes, spacing, and icon sizes. Do not copy raw screenshot pixels as CSS pixels.
+12. If a Figma node or screenshot is provided, treat every visible text string, tab, date, subject legend item, card count, and icon family as locked unless the user asks to redesign content.
+13. For APP learning-plan screens, preserve the foundational UI tokens from the Figma reference: top tab selected style, assistant avatar/bubble, collapsed calendar heights and date states, course-card anatomy, and right play button style.
+14. Before final delivery, verify the screen at the target phone width and fix any oversized type, missing icons, overflow, clipping, hidden fixed-bar content, low-contrast text, tiny tap targets, or misaligned borders.
 
 ## Page Types
 
@@ -179,8 +181,20 @@ For plan creation flows:
 
 ## Reference
 
-Before generating a full screen, read [references/ui-style-guide.md](references/ui-style-guide.md) for exact tokens, component dimensions, copy patterns, and checklist.
+For UI generation and review, read:
 
-For arbitrary page style-transfer, first read [references/page-patterns.md](references/page-patterns.md), then [references/component-specs.md](references/component-specs.md), then the relevant section of [references/ui-style-guide.md](references/ui-style-guide.md).
+- [references/design.md](references/design.md)
+- [references/design.tokens.json](references/design.tokens.json)
+
+For implementation work, also use when relevant:
+
+- [references/tokens.css](references/tokens.css)
+- [references/tailwind.config.ts](references/tailwind.config.ts)
+
+For page-specific patterns, use:
+
+- [references/page-patterns.md](references/page-patterns.md)
+- [references/component-specs.md](references/component-specs.md)
+- [references/ui-style-guide.md](references/ui-style-guide.md)
 
 Before delivering an optimized or reviewed screen, read [references/quality-gates.md](references/quality-gates.md) and pass the critical layout, containment, and interaction checks.

@@ -1,0 +1,2791 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$description": "AI自主学习系统 design tokens v0. Derived from Figma nodes 581:3019 and 4394:8992, design.md, and learning-system-ui-skill references. Figma did not have variables, so this is a semantic first-pass token source.",
+  "meta": {
+    "project": "AI自主学习系统",
+    "version": "0.2.0",
+    "status": "audit",
+    "source": {
+      "figmaFileKey": "RbXpJaiNDZs1jwLQCWznDT",
+      "figmaNodes": {
+        "learningPlan": "581:3019",
+        "compositionCorrection": "4394:8992",
+        "allCourses": "1598:2617",
+        "planSetupLearningInfoDefault": "1825:2896"
+      },
+      "designDoc": "/Users/huahua/Documents/Codex/2026-05-19/figma-ui-skill-design-md/design.md",
+      "uiSkill": "https://github.com/1802837347-blip/learning-system-ui-skill/tree/main"
+    }
+  },
+  "color": {
+    "primitive": {
+      "white": {
+        "$type": "color",
+        "$value": "#FFFFFF"
+      },
+      "black": {
+        "$type": "color",
+        "$value": "#000000"
+      },
+      "gray": {
+        "50": {
+          "$type": "color",
+          "$value": "#F7F8F9"
+        },
+        "100": {
+          "$type": "color",
+          "$value": "#F3F5F7"
+        },
+        "150": {
+          "$type": "color",
+          "$value": "#F1F4F7"
+        },
+        "200": {
+          "$type": "color",
+          "$value": "#ECEEF5"
+        },
+        "250": {
+          "$type": "color",
+          "$value": "#EBEEF1"
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#E9E8E8"
+        },
+        "500": {
+          "$type": "color",
+          "$value": "#A9B1B8"
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#8E9194"
+        },
+        "650": {
+          "$type": "color",
+          "$value": "#828B94"
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#78818D"
+        },
+        "800": {
+          "$type": "color",
+          "$value": "#44474A"
+        },
+        "850": {
+          "$type": "color",
+          "$value": "#292929"
+        },
+        "900": {
+          "$type": "color",
+          "$value": "#191C1E"
+        },
+        "950": {
+          "$type": "color",
+          "$value": "#030409"
+        }
+      },
+      "blue": {
+        "50": {
+          "$type": "color",
+          "$value": "#F0F6FD"
+        },
+        "100": {
+          "$type": "color",
+          "$value": "#CCE9FB"
+        },
+        "400": {
+          "$type": "color",
+          "$value": "#00A7D8"
+        },
+        "500": {
+          "$type": "color",
+          "$value": "#00639E"
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#071D39"
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#1F242E"
+        }
+      },
+      "cyan": {
+        "100": {
+          "$type": "color",
+          "$value": "#BFF9FF"
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#47EFF9"
+        },
+        "400": {
+          "$type": "color",
+          "$value": "#00B3E8"
+        },
+        "500": {
+          "$type": "color",
+          "$value": "#0EC5FF"
+        }
+      },
+      "orange": {
+        "400": {
+          "$type": "color",
+          "$value": "#FFAA41"
+        },
+        "500": {
+          "$type": "color",
+          "$value": "#FF811A"
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#FF6200"
+        }
+      },
+      "red": {
+        "500": {
+          "$type": "color",
+          "$value": "#E70000"
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#FF0000"
+        }
+      },
+      "green": {
+        "500": {
+          "$type": "color",
+          "$value": "#15C691"
+        }
+      },
+      "gold": {
+        "400": {
+          "$type": "color",
+          "$value": "#F1D79E"
+        },
+        "500": {
+          "$type": "color",
+          "$value": "#E1B676"
+        },
+        "800": {
+          "$type": "color",
+          "$value": "#674B20"
+        }
+      }
+    },
+    "semantic": {
+      "background": {
+        "page": {
+          "$type": "color",
+          "$value": "#F0F2FA"
+        },
+        "pageAlt": {
+          "$type": "color",
+          "$value": "{color.primitive.gray.200}"
+        },
+        "content": {
+          "$type": "color",
+          "$value": "{color.primitive.gray.50}"
+        },
+        "surface": {
+          "$type": "color",
+          "$value": "{color.primitive.white}"
+        },
+        "surfaceGlass": {
+          "$type": "color",
+          "$value": "rgba(255,255,255,0.7)"
+        },
+        "input": {
+          "$type": "color",
+          "$value": "{color.primitive.gray.150}"
+        },
+        "sheet": {
+          "$type": "color",
+          "$value": "{color.primitive.gray.100}"
+        },
+        "camera": {
+          "$type": "color",
+          "$value": "{color.primitive.black}"
+        },
+        "overlay": {
+          "$type": "color",
+          "$value": "rgba(38,38,38,0.5)"
+        }
+      },
+      "text": {
+        "primary": {
+          "$type": "color",
+          "$value": "{color.primitive.gray.950}"
+        },
+        "primaryBlue": {
+          "$type": "color",
+          "$value": "{color.primitive.blue.600}"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "{color.primitive.gray.700}"
+        },
+        "tertiary": {
+          "$type": "color",
+          "$value": "{color.primitive.gray.650}"
+        },
+        "muted": {
+          "$type": "color",
+          "$value": "{color.primitive.gray.500}"
+        },
+        "inverse": {
+          "$type": "color",
+          "$value": "{color.primitive.white}"
+        },
+        "link": {
+          "$type": "color",
+          "$value": "{color.primitive.blue.500}"
+        }
+      },
+      "border": {
+        "light": {
+          "$type": "color",
+          "$value": "{color.primitive.gray.300}"
+        },
+        "white": {
+          "$type": "color",
+          "$value": "{color.primitive.white}"
+        },
+        "brand": {
+          "$type": "color",
+          "$value": "{color.primitive.blue.500}"
+        },
+        "tabbar": {
+          "$type": "color",
+          "$value": "rgba(0,0,0,0.08)"
+        },
+        "recommendation": {
+          "$type": "color",
+          "$value": "rgba(0,203,249,0.6)"
+        },
+        "danger": {
+          "$type": "color",
+          "$value": "{color.primitive.red.500}"
+        }
+      },
+      "action": {
+        "primary": {
+          "$type": "color",
+          "$value": "{color.primitive.blue.500}"
+        },
+        "activeTab": {
+          "$type": "color",
+          "$value": "{color.primitive.orange.600}"
+        },
+        "underline": {
+          "$type": "color",
+          "$value": "{color.primitive.cyan.300}"
+        },
+        "success": {
+          "$type": "color",
+          "$value": "{color.primitive.green.500}"
+        },
+        "danger": {
+          "$type": "color",
+          "$value": "{color.primitive.red.500}"
+        },
+        "price": {
+          "$type": "color",
+          "$value": "{color.primitive.red.600}"
+        }
+      }
+    },
+    "subject": {
+      "chinese": {
+        "$type": "color",
+        "$value": "#FF3333",
+        "$description": "语文"
+      },
+      "math": {
+        "$type": "color",
+        "$value": "#338BFF",
+        "$description": "数学"
+      },
+      "physics": {
+        "$type": "color",
+        "$value": "#22C6DF",
+        "$description": "物理"
+      },
+      "chemistry": {
+        "$type": "color",
+        "$value": "#AE51FA",
+        "$description": "化学"
+      },
+      "biology": {
+        "$type": "color",
+        "$value": "#21CC75",
+        "$description": "生物"
+      }
+    }
+  },
+  "gradient": {
+    "action": {
+      "dark": {
+        "$type": "gradient",
+        "$value": "linear-gradient(180deg, #000000 0%, #383838 100%)"
+      },
+      "darkAlt": {
+        "$type": "gradient",
+        "$value": "linear-gradient(180deg, #000000 0%, #252525 100%)"
+      }
+    },
+    "card": {
+      "plan": {
+        "$type": "gradient",
+        "$value": "radial-gradient(circle at 50% 26%, #C7F6FF 0%, #96E5F2 49.424%, #77CBF7 100%)"
+      },
+      "topAtmosphere": {
+        "$type": "gradient",
+        "$value": "linear-gradient(180deg, #BFF9FF 0%, rgba(191,249,255,0) 100%)"
+      }
+    },
+    "stepper": {
+      "active": {
+        "$type": "gradient",
+        "$value": "linear-gradient(180deg, #00B3E8 0%, #0288FF 100%)"
+      }
+    },
+    "badge": {
+      "gold": {
+        "$type": "gradient",
+        "$value": "linear-gradient(90deg, #F1D79E 0%, #E1B676 100%)"
+      },
+      "update": {
+        "$type": "gradient",
+        "$value": "linear-gradient(90deg, #FFAA41 0%, #FF811A 100%)"
+      }
+    },
+    "courseCover": {
+      "blue": {
+        "$type": "gradient",
+        "$value": "linear-gradient(170deg, #D2F6FF 10.69%, #B1E0FF 92.884%)"
+      },
+      "green": {
+        "$type": "gradient",
+        "$value": "linear-gradient(170deg, #ECFFD7 10.69%, #CCF7D2 92.884%)"
+      },
+      "purple": {
+        "$type": "gradient",
+        "$value": "linear-gradient(170deg, #E4E9FF 10.69%, #E2DBFF 92.884%)"
+      }
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "primary": {
+        "$type": "fontFamily",
+        "$value": "PingFang SC, -apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+      },
+      "numeric": {
+        "$type": "fontFamily",
+        "$value": "MiSans, Inter, PingFang SC, system-ui, sans-serif"
+      },
+      "calendar": {
+        "$type": "fontFamily",
+        "$value": "Space Grotesk, Inter, MiSans, system-ui, sans-serif"
+      },
+      "displayFallback": {
+        "$type": "fontFamily",
+        "$value": "PingFang SC, MiSans, system-ui, sans-serif"
+      }
+    },
+    "fontWeight": {
+      "regular": {
+        "$type": "fontWeight",
+        "$value": "400"
+      },
+      "medium": {
+        "$type": "fontWeight",
+        "$value": "500"
+      },
+      "semibold": {
+        "$type": "fontWeight",
+        "$value": "600"
+      },
+      "bold": {
+        "$type": "fontWeight",
+        "$value": "700"
+      },
+      "heavy": {
+        "$type": "fontWeight",
+        "$value": "800"
+      }
+    },
+    "size": {
+      "caption": {
+        "$type": "dimension",
+        "$value": "11px"
+      },
+      "xs": {
+        "$type": "dimension",
+        "$value": "12px"
+      },
+      "sm": {
+        "$type": "dimension",
+        "$value": "13px"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "14px"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "15px"
+      },
+      "xl": {
+        "$type": "dimension",
+        "$value": "16px"
+      },
+      "title": {
+        "$type": "dimension",
+        "$value": "20px"
+      },
+      "metric": {
+        "$type": "dimension",
+        "$value": "22px"
+      },
+      "display": {
+        "$type": "dimension",
+        "$value": "24px"
+      }
+    },
+    "lineHeight": {
+      "tight": {
+        "$type": "dimension",
+        "$value": "16px"
+      },
+      "normal": {
+        "$type": "dimension",
+        "$value": "20px"
+      },
+      "comfortable": {
+        "$type": "dimension",
+        "$value": "22px"
+      },
+      "title": {
+        "$type": "dimension",
+        "$value": "28px"
+      },
+      "display": {
+        "$type": "dimension",
+        "$value": "32px"
+      }
+    }
+  },
+  "space": {
+    "0": {
+      "$type": "dimension",
+      "$value": "0px"
+    },
+    "1": {
+      "$type": "dimension",
+      "$value": "4px"
+    },
+    "2": {
+      "$type": "dimension",
+      "$value": "8px"
+    },
+    "3": {
+      "$type": "dimension",
+      "$value": "12px"
+    },
+    "4": {
+      "$type": "dimension",
+      "$value": "16px"
+    },
+    "5": {
+      "$type": "dimension",
+      "$value": "20px"
+    },
+    "6": {
+      "$type": "dimension",
+      "$value": "24px"
+    },
+    "7": {
+      "$type": "dimension",
+      "$value": "28px"
+    },
+    "8": {
+      "$type": "dimension",
+      "$value": "32px"
+    },
+    "10": {
+      "$type": "dimension",
+      "$value": "40px"
+    }
+  },
+  "radius": {
+    "none": {
+      "$type": "dimension",
+      "$value": "0px"
+    },
+    "xs": {
+      "$type": "dimension",
+      "$value": "4px"
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": "6px"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "8px"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "10px"
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": "12px"
+    },
+    "2xl": {
+      "$type": "dimension",
+      "$value": "14px"
+    },
+    "3xl": {
+      "$type": "dimension",
+      "$value": "16px"
+    },
+    "4xl": {
+      "$type": "dimension",
+      "$value": "18px"
+    },
+    "5xl": {
+      "$type": "dimension",
+      "$value": "20px"
+    },
+    "pill": {
+      "$type": "dimension",
+      "$value": "999px"
+    }
+  },
+  "shadow": {
+    "card": {
+      "plan": {
+        "$type": "shadow",
+        "$value": "0 9px 18px rgba(50,131,198,0.22)"
+      },
+      "advice": {
+        "$type": "shadow",
+        "$value": "0 4px 24px rgba(50,131,198,0.16)"
+      },
+      "task": {
+        "$type": "shadow",
+        "$value": "0 1px 1px rgba(0,0,0,0.05)"
+      },
+      "login": {
+        "$type": "shadow",
+        "$value": "0 20px 40px rgba(0,99,158,0.08)"
+      },
+      "sheetRecommendation": {
+        "$type": "shadow",
+        "$value": "0 4px 20px rgba(0,99,158,0.08)"
+      }
+    },
+    "button": {
+      "primary": {
+        "$type": "shadow",
+        "$value": "0 6px 7.5px rgba(23,166,210,0.2)"
+      },
+      "darkPill": {
+        "$type": "shadow",
+        "$value": "0 3.152px 6.85px rgba(0,102,134,0.2)"
+      }
+    },
+    "stepper": {
+      "activeHalo": {
+        "$type": "shadow",
+        "$value": "0 0 0 4.9px rgba(19,196,242,0.2)"
+      }
+    }
+  },
+  "layout": {
+    "canvas": {
+      "legacyWidth": {
+        "$type": "dimension",
+        "$value": "375px"
+      },
+      "appWidth": {
+        "$type": "dimension",
+        "$value": "390px"
+      }
+    },
+    "page": {
+      "marginCompact": {
+        "$type": "dimension",
+        "$value": "14px"
+      },
+      "margin": {
+        "$type": "dimension",
+        "$value": "16px"
+      },
+      "safeAreaBottom": {
+        "$type": "dimension",
+        "$value": "34px"
+      },
+      "statusBarHeight": {
+        "$type": "dimension",
+        "$value": "44px"
+      },
+      "titleBarHeight": {
+        "$type": "dimension",
+        "$value": "48px"
+      }
+    },
+    "card": {
+      "widthLegacy": {
+        "$type": "dimension",
+        "$value": "347px"
+      },
+      "widthApp": {
+        "$type": "dimension",
+        "$value": "362px"
+      }
+    }
+  },
+  "component": {
+    "bottomTabbar": {
+      "height": {
+        "$type": "dimension",
+        "$value": "88px"
+      },
+      "contentHeight": {
+        "$type": "dimension",
+        "$value": "54px"
+      },
+      "background": {
+        "$type": "color",
+        "$value": "rgba(255,255,255,0.88)"
+      },
+      "borderTop": {
+        "$type": "color",
+        "$value": "{color.semantic.border.tabbar}"
+      },
+      "iconSize": {
+        "$type": "dimension",
+        "$value": "27px"
+      },
+      "labelSize": {
+        "$type": "dimension",
+        "$value": "{typography.size.caption}"
+      },
+      "activeColor": {
+        "$type": "color",
+        "$value": "{color.semantic.action.activeTab}"
+      },
+      "inactiveColor": {
+        "$type": "color",
+        "$value": "#7C88B4"
+      }
+    },
+    "button": {
+      "primary": {
+        "height": {
+          "$type": "dimension",
+          "$value": "44px"
+        },
+        "radius": {
+          "$type": "dimension",
+          "$value": "{radius.md}"
+        },
+        "background": {
+          "$type": "gradient",
+          "$value": "{gradient.action.dark}"
+        },
+        "textColor": {
+          "$type": "color",
+          "$value": "{color.semantic.text.inverse}"
+        },
+        "disabledOpacity": {
+          "$type": "number",
+          "$value": 0.5
+        }
+      },
+      "capsule": {
+        "height": {
+          "$type": "dimension",
+          "$value": "24px"
+        },
+        "radius": {
+          "$type": "dimension",
+          "$value": "{radius.2xl}"
+        },
+        "paddingX": {
+          "$type": "dimension",
+          "$value": "9px"
+        },
+        "paddingY": {
+          "$type": "dimension",
+          "$value": "4px"
+        }
+      },
+      "captureShutter": {
+        "size": {
+          "$type": "dimension",
+          "$value": "66px"
+        }
+      },
+      "captureTool": {
+        "size": {
+          "$type": "dimension",
+          "$value": "44px"
+        }
+      }
+    },
+    "badge": {
+      "first": {
+        "background": {
+          "$type": "gradient",
+          "$value": "{gradient.badge.gold}"
+        },
+        "textColor": {
+          "$type": "color",
+          "$value": "{color.primitive.gold.800}"
+        },
+        "fontSize": {
+          "$type": "dimension",
+          "$value": "{typography.size.xs}"
+        },
+        "radius": {
+          "$type": "dimension",
+          "$value": "{radius.md}"
+        }
+      },
+      "update": {
+        "background": {
+          "$type": "gradient",
+          "$value": "{gradient.badge.update}"
+        },
+        "textColor": {
+          "$type": "color",
+          "$value": "{color.semantic.text.inverse}"
+        },
+        "fontSize": {
+          "$type": "dimension",
+          "$value": "{typography.size.xs}"
+        },
+        "radius": {
+          "$type": "dimension",
+          "$value": "{radius.md}"
+        }
+      },
+      "learned": {
+        "border": {
+          "$type": "color",
+          "$value": "rgba(0,99,158,0.5)"
+        },
+        "textColor": {
+          "$type": "color",
+          "$value": "{color.primitive.blue.500}"
+        }
+      }
+    },
+    "planSetupCard": {
+      "width": {
+        "$type": "dimension",
+        "$value": "347px"
+      },
+      "height": {
+        "$type": "dimension",
+        "$value": "305px"
+      },
+      "radius": {
+        "$type": "dimension",
+        "$value": "{radius.4xl}"
+      },
+      "background": {
+        "$type": "gradient",
+        "$value": "{gradient.card.plan}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{color.semantic.border.white}"
+      },
+      "shadow": {
+        "$type": "shadow",
+        "$value": "{shadow.card.plan}"
+      },
+      "row": {
+        "width": {
+          "$type": "dimension",
+          "$value": "315px"
+        },
+        "height": {
+          "$type": "dimension",
+          "$value": "64px"
+        },
+        "radius": {
+          "$type": "dimension",
+          "$value": "{radius.xl}"
+        },
+        "background": {
+          "$type": "gradient",
+          "$value": "linear-gradient(79deg, rgba(255,255,255,0.7) 0%, #FFFFFF 100%)"
+        }
+      },
+      "subjectIcon": {
+        "size": {
+          "$type": "dimension",
+          "$value": "36px"
+        },
+        "radius": {
+          "$type": "dimension",
+          "$value": "{radius.lg}"
+        },
+        "background": {
+          "$type": "color",
+          "$value": "rgba(255,255,255,0.8)"
+        }
+      }
+    },
+    "homeEntry": {
+      "canvasWidth": {
+        "$type": "dimension",
+        "$value": "{layout.canvas.legacyWidth}",
+        "$description": "首页入口使用 375px 画布，不使用 390px APP 学习页壳。"
+      },
+      "statusBarHeight": {
+        "$type": "dimension",
+        "$value": "44px"
+      },
+      "brandHeaderHeight": {
+        "$type": "dimension",
+        "$value": "44px"
+      },
+      "brandLogoWidth": {
+        "$type": "dimension",
+        "$value": "89px"
+      },
+      "brandLogoHeight": {
+        "$type": "dimension",
+        "$value": "31px"
+      },
+      "gradePillWidth": {
+        "$type": "dimension",
+        "$value": "66.5px"
+      },
+      "gradePillHeight": {
+        "$type": "dimension",
+        "$value": "27px"
+      },
+      "gradePillRadius": {
+        "$type": "dimension",
+        "$value": "{radius.md}"
+      },
+      "planCardTop": {
+        "$type": "dimension",
+        "$value": "104px"
+      },
+      "planCardX": {
+        "$type": "dimension",
+        "$value": "14px"
+      },
+      "seasonRibbonWidth": {
+        "$type": "dimension",
+        "$value": "84px"
+      },
+      "seasonRibbonHeight": {
+        "$type": "dimension",
+        "$value": "26px"
+      },
+      "aiIconSize": {
+        "$type": "dimension",
+        "$value": "44px"
+      },
+      "taskRowCount": {
+        "$type": "number",
+        "$value": 3
+      },
+      "taskRowGap": {
+        "$type": "dimension",
+        "$value": "10px"
+      },
+      "taskRowTextStartX": {
+        "$type": "dimension",
+        "$value": "90px"
+      },
+      "taskRowButtonWidth": {
+        "$type": "dimension",
+        "$value": "57px"
+      },
+      "taskRowButtonHeight": {
+        "$type": "dimension",
+        "$value": "24px"
+      },
+      "hotRecommendationTop": {
+        "$type": "dimension",
+        "$value": "438px"
+      },
+      "bottomTabbarItems": {
+        "$type": "number",
+        "$value": 3
+      },
+      "activeTab": {
+        "$type": "string",
+        "$value": "首页"
+      },
+      "allowedSections": {
+        "$type": "string",
+        "$value": "brandHeader,planSetupCard,hotRecommendationGrid,bottomTabbar",
+        "$description": "首页入口不得新增快速开始、今日建议、计划/课程四项底栏等非目标画板模块。"
+      }
+    },
+    "courseCard": {
+      "coverWidth": {
+        "$type": "dimension",
+        "$value": "169px"
+      },
+      "coverHeight": {
+        "$type": "dimension",
+        "$value": "110px"
+      },
+      "coverRadius": {
+        "$type": "dimension",
+        "$value": "7px"
+      },
+      "titleColor": {
+        "$type": "color",
+        "$value": "#292929"
+      },
+      "priceColor": {
+        "$type": "color",
+        "$value": "{color.semantic.action.price}"
+      },
+      "saleButtonSize": {
+        "$type": "dimension",
+        "$value": "30px"
+      },
+      "gridColumnGap": {
+        "$type": "dimension",
+        "$value": "9px"
+      },
+      "gridRowGap": {
+        "$type": "dimension",
+        "$value": "24px"
+      }
+    },
+    "progressStepper": {
+      "height": {
+        "$type": "dimension",
+        "$value": "62px"
+      },
+      "circleSize": {
+        "$type": "dimension",
+        "$value": "22px"
+      },
+      "labelSize": {
+        "$type": "dimension",
+        "$value": "{typography.size.xl}"
+      },
+      "activeCircle": {
+        "$type": "gradient",
+        "$value": "{gradient.stepper.active}"
+      },
+      "activeLabel": {
+        "$type": "color",
+        "$value": "#008EBA"
+      },
+      "inactiveCircle": {
+        "$type": "color",
+        "$value": "rgba(18,128,162,0.14)"
+      },
+      "inactiveNumber": {
+        "$type": "color",
+        "$value": "#2D5C78"
+      },
+      "inactiveLabel": {
+        "$type": "color",
+        "$value": "#6F93A8"
+      },
+      "completedCircle": {
+        "$type": "color",
+        "$value": "{color.semantic.action.success}"
+      },
+      "divider": {
+        "$type": "color",
+        "$value": "#C4C7CA"
+      }
+    },
+    "formControl": {
+      "height": {
+        "$type": "dimension",
+        "$value": "52px"
+      },
+      "radius": {
+        "$type": "dimension",
+        "$value": "{radius.md}"
+      },
+      "background": {
+        "$type": "color",
+        "$value": "{color.semantic.background.input}"
+      },
+      "textColor": {
+        "$type": "color",
+        "$value": "{color.primitive.gray.900}"
+      },
+      "placeholderColor": {
+        "$type": "color",
+        "$value": "#A9ABAE"
+      },
+      "errorBorder": {
+        "$type": "color",
+        "$value": "{color.semantic.border.danger}"
+      },
+      "helperErrorColor": {
+        "$type": "color",
+        "$value": "{color.semantic.action.danger}"
+      }
+    },
+    "calendar": {
+      "cellHeight": {
+        "$type": "dimension",
+        "$value": "54px"
+      },
+      "cellRadius": {
+        "$type": "dimension",
+        "$value": "{radius.md}"
+      },
+      "cellGap": {
+        "$type": "dimension",
+        "$value": "6px"
+      },
+      "selectedBackground": {
+        "$type": "gradient",
+        "$value": "{gradient.action.dark}"
+      },
+      "plannedMathBackground": {
+        "$type": "color",
+        "$value": "#F0F6FD"
+      },
+      "plannedChineseBackground": {
+        "$type": "color",
+        "$value": "#FDEEEE"
+      }
+    },
+    "appLearningPlan": {
+      "canvasWidth": {
+        "$type": "dimension",
+        "$value": "{layout.canvas.appWidth}",
+        "$description": "APP 学习计划页使用 390px 画布。"
+      },
+      "pageBackground": {
+        "$type": "color",
+        "$value": "{color.semantic.background.pageAlt}"
+      },
+      "topAtmosphereHeight": {
+        "$type": "dimension",
+        "$value": "256px"
+      },
+      "contentBackground": {
+        "$type": "color",
+        "$value": "{color.semantic.background.content}"
+      },
+      "contentTop": {
+        "$type": "dimension",
+        "$value": "148px"
+      },
+      "expandedContentTop": {
+        "$type": "dimension",
+        "$value": "149px",
+        "$description": "学习计划-展开日历状态中，浅灰内容层从 y=149 开始。"
+      },
+      "activeChannel": {
+        "$type": "string",
+        "$value": "学习计划"
+      },
+      "secondaryChannel": {
+        "$type": "string",
+        "$value": "全部课程"
+      },
+      "activeChannelX": {
+        "$type": "dimension",
+        "$value": "20px"
+      },
+      "activeChannelTop": {
+        "$type": "dimension",
+        "$value": "56px"
+      },
+      "activeChannelText": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "HYYakuHei, PingFang SC, MiSans, system-ui, sans-serif",
+          "fontSize": "19px",
+          "fontWeight": "800",
+          "lineHeight": "24px"
+        }
+      },
+      "activeUnderlineWidth": {
+        "$type": "dimension",
+        "$value": "53px"
+      },
+      "activeUnderlineHeight": {
+        "$type": "dimension",
+        "$value": "8px"
+      },
+      "activeUnderlineTop": {
+        "$type": "dimension",
+        "$value": "74px"
+      },
+      "secondaryChannelX": {
+        "$type": "dimension",
+        "$value": "126px"
+      },
+      "secondaryChannelTop": {
+        "$type": "dimension",
+        "$value": "58px"
+      },
+      "secondaryChannelColor": {
+        "$type": "color",
+        "$value": "#6F7D7F"
+      },
+      "assistantIconSize": {
+        "$type": "dimension",
+        "$value": "40px"
+      },
+      "assistantIconX": {
+        "$type": "dimension",
+        "$value": "12px"
+      },
+      "assistantIconTop": {
+        "$type": "dimension",
+        "$value": "96px"
+      },
+      "assistantBubbleX": {
+        "$type": "dimension",
+        "$value": "45px"
+      },
+      "assistantBubbleTop": {
+        "$type": "dimension",
+        "$value": "102px"
+      },
+      "assistantBubbleHeight": {
+        "$type": "dimension",
+        "$value": "30px"
+      },
+      "assistantBubbleText": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.primary}",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "28px"
+        }
+      },
+      "monthTitleX": {
+        "$type": "dimension",
+        "$value": "20px"
+      },
+      "monthTitleTop": {
+        "$type": "dimension",
+        "$value": "168px"
+      },
+      "monthTitleText": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.primary}",
+          "fontSize": "18px",
+          "fontWeight": "600",
+          "lineHeight": "24px"
+        }
+      },
+      "calendarActionX": {
+        "$type": "dimension",
+        "$value": "302px"
+      },
+      "calendarActionTop": {
+        "$type": "dimension",
+        "$value": "168px"
+      },
+      "expandedCalendarActionCopy": {
+        "$type": "string",
+        "$value": "收起日历"
+      },
+      "monthSwitchControlSize": {
+        "$type": "dimension",
+        "$value": "24px"
+      },
+      "monthSwitchControlRadius": {
+        "$type": "dimension",
+        "$value": "5.769px"
+      },
+      "monthSwitchControlBackground": {
+        "$type": "color",
+        "$value": "#EBEEF1"
+      },
+      "monthSwitchControlTop": {
+        "$type": "dimension",
+        "$value": "166px"
+      },
+      "monthSwitchPrevX": {
+        "$type": "dimension",
+        "$value": "158px"
+      },
+      "monthSwitchNextX": {
+        "$type": "dimension",
+        "$value": "190px"
+      },
+      "legendX": {
+        "$type": "dimension",
+        "$value": "20px"
+      },
+      "legendTop": {
+        "$type": "dimension",
+        "$value": "202px"
+      },
+      "legendGap": {
+        "$type": "dimension",
+        "$value": "13px"
+      },
+      "legendDotSize": {
+        "$type": "dimension",
+        "$value": "4px"
+      },
+      "weekdayRowX": {
+        "$type": "dimension",
+        "$value": "20px"
+      },
+      "weekdayRowTop": {
+        "$type": "dimension",
+        "$value": "234px"
+      },
+      "weekdayRowWidth": {
+        "$type": "dimension",
+        "$value": "350px"
+      },
+      "weekGridX": {
+        "$type": "dimension",
+        "$value": "20px"
+      },
+      "weekGridTop": {
+        "$type": "dimension",
+        "$value": "262px"
+      },
+      "weekGridWidth": {
+        "$type": "dimension",
+        "$value": "350px"
+      },
+      "expandedCalendarCellWidth": {
+        "$type": "dimension",
+        "$value": "44.857px"
+      },
+      "expandedCalendarCellHeight": {
+        "$type": "dimension",
+        "$value": "{component.calendar.cellHeight}"
+      },
+      "expandedCalendarRowGap": {
+        "$type": "dimension",
+        "$value": "8px"
+      },
+      "expandedCalendarRows": {
+        "$type": "number",
+        "$value": 5
+      },
+      "expandedCalendarFocusedBackground": {
+        "$type": "color",
+        "$value": "rgba(204,233,251,0.7)"
+      },
+      "expandedCalendarFocusedBorder": {
+        "$type": "color",
+        "$value": "rgba(0,99,158,0.3)"
+      },
+      "expandedCalendarAccentDateText": {
+        "$type": "color",
+        "$value": "#0072B5"
+      },
+      "expandedCalendarNumberText": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.primary}",
+          "fontSize": "16px",
+          "fontWeight": "700",
+          "lineHeight": "24px"
+        }
+      },
+      "taskListX": {
+        "$type": "dimension",
+        "$value": "14px"
+      },
+      "taskListTop": {
+        "$type": "dimension",
+        "$value": "336px"
+      },
+      "expandedTaskListTop": {
+        "$type": "dimension",
+        "$value": "584px",
+        "$description": "展开日历后课程任务卡列表下移到 y=584。"
+      },
+      "taskListWidth": {
+        "$type": "dimension",
+        "$value": "362px"
+      },
+      "taskListGap": {
+        "$type": "dimension",
+        "$value": "10px"
+      },
+      "taskCardHeight": {
+        "$type": "dimension",
+        "$value": "124px"
+      },
+      "taskCardRadius": {
+        "$type": "dimension",
+        "$value": "{radius.xl}"
+      },
+      "taskCardBorder": {
+        "$type": "color",
+        "$value": "rgba(188,200,208,0.2)"
+      },
+      "taskCardShadow": {
+        "$type": "shadow",
+        "$value": "{shadow.card.task}"
+      },
+      "subjectTagBackground": {
+        "$type": "color",
+        "$value": "#D1E5FF"
+      },
+      "subjectTagText": {
+        "$type": "color",
+        "$value": "#2361B2"
+      },
+      "knowledgeTextColor": {
+        "$type": "color",
+        "$value": "#77838B"
+      },
+      "playButtonSize": {
+        "$type": "dimension",
+        "$value": "32px"
+      },
+      "bottomTabbarItems": {
+        "$type": "number",
+        "$value": 3
+      },
+      "activeBottomTab": {
+        "$type": "string",
+        "$value": "学习"
+      },
+      "allowedSections": {
+        "$type": "string",
+        "$value": "statusBar,topChannelTabs,assistantBubble,monthCalendar,subjectLegend,weekCalendar,courseTaskCards,bottomTabbar",
+        "$description": "学习计划-未完成不得新增计划详情 summary、补学提醒、今日任务 checkbox 清单、固定继续学习按钮、四项底栏或标题栏返回/日历按钮。"
+      },
+      "expandedAllowedSections": {
+        "$type": "string",
+        "$value": "statusBar,topChannelTabs,assistantBubble,monthTitle,monthSwitchControls,subjectLegend,expandedMonthCalendar,courseTaskCards,bottomTabbar",
+        "$description": "学习计划-展开日历不得生成 app header、返回按钮、居中标题“学习计划”、学习日历 monthbar、选中日期说明卡、固定继续学习按钮、四项底栏或课程 tab。"
+      }
+    },
+    "composition": {
+      "entryCard": {
+        "width": {
+          "$type": "dimension",
+          "$value": "358px"
+        },
+        "height": {
+          "$type": "dimension",
+          "$value": "270px"
+        },
+        "radius": {
+          "$type": "dimension",
+          "$value": "{radius.5xl}"
+        }
+      },
+      "cameraPreview": {
+        "width": {
+          "$type": "dimension",
+          "$value": "390px"
+        },
+        "height": {
+          "$type": "dimension",
+          "$value": "520px"
+        },
+        "radius": {
+          "$type": "dimension",
+          "$value": "{radius.xl}"
+        },
+        "top": {
+          "$type": "dimension",
+          "$value": "96px"
+        }
+      },
+      "thumbnail": {
+        "width": {
+          "$type": "dimension",
+          "$value": "60px"
+        },
+        "height": {
+          "$type": "dimension",
+          "$value": "80px"
+        },
+        "radius": {
+          "$type": "dimension",
+          "$value": "7.5px"
+        },
+        "selectedBorder": {
+          "$type": "color",
+          "$value": "#07A0FF"
+        }
+      },
+      "bottomSheet": {
+        "width": {
+          "$type": "dimension",
+          "$value": "390px"
+        },
+        "topRadius": {
+          "$type": "dimension",
+          "$value": "{radius.3xl}"
+        }
+      },
+      "permissionModal": {
+        "width": {
+          "$type": "dimension",
+          "$value": "285px"
+        },
+        "radius": {
+          "$type": "dimension",
+          "$value": "{radius.3xl}"
+        }
+      },
+      "quotaDepleted": {
+        "buttonBackground": {
+          "$type": "color",
+          "$value": "rgba(149,157,186,0.45)"
+        },
+        "badgeText": {
+          "$type": "color",
+          "$value": "#7E4F0F"
+        }
+      },
+      "scoreSheet": {
+        "height": {
+          "$type": "dimension",
+          "$value": "332px"
+        },
+        "optionWidth": {
+          "$type": "dimension",
+          "$value": "112px"
+        },
+        "optionHeight": {
+          "$type": "dimension",
+          "$value": "74px"
+        },
+        "optionRadius": {
+          "$type": "dimension",
+          "$value": "{radius.lg}"
+        },
+        "optionBackground": {
+          "$type": "color",
+          "$value": "#F1F5F9"
+        },
+        "selectedBorder": {
+          "$type": "color",
+          "$value": "#0195F0"
+        },
+        "selectedText": {
+          "$type": "color",
+          "$value": "#0195F0"
+        },
+        "sheetShadow": {
+          "$type": "shadow",
+          "$value": "0 20px 28px rgba(19,28,67,0.32)"
+        }
+      },
+      "order": {
+        "previewWidth": {
+          "$type": "dimension",
+          "$value": "366px"
+        },
+        "previewHeight": {
+          "$type": "dimension",
+          "$value": "492px"
+        },
+        "previewRadius": {
+          "$type": "dimension",
+          "$value": "{radius.md}"
+        },
+        "secondaryActionBackground": {
+          "$type": "color",
+          "$value": "rgba(255,255,255,0.2)"
+        },
+        "primaryActionBackground": {
+          "$type": "gradient",
+          "$value": "{gradient.stepper.active}"
+        },
+        "primaryActionBorder": {
+          "$type": "color",
+          "$value": "#95DCFF"
+        }
+      },
+      "ocr": {
+        "pageBackground": {
+          "$type": "color",
+          "$value": "#F7F8F9"
+        },
+        "accent": {
+          "$type": "color",
+          "$value": "#47BCFE"
+        },
+        "progressText": {
+          "$type": "color",
+          "$value": "#0CA8E6"
+        },
+        "progressWidth": {
+          "$type": "dimension",
+          "$value": "328px"
+        },
+        "progressHeight": {
+          "$type": "dimension",
+          "$value": "4px"
+        },
+        "textCardBackground": {
+          "$type": "color",
+          "$value": "#FAFAFA"
+        },
+        "textCardBorder": {
+          "$type": "color",
+          "$value": "#EAEAEA"
+        },
+        "sectionWidth": {
+          "$type": "dimension",
+          "$value": "358px"
+        }
+      },
+      "correctionLoading": {
+        "statusText": {
+          "$type": "color",
+          "$value": "#AAD9FC"
+        },
+        "previewWidth": {
+          "$type": "dimension",
+          "$value": "366px"
+        },
+        "previewHeight": {
+          "$type": "dimension",
+          "$value": "492px"
+        },
+        "progressWidth": {
+          "$type": "dimension",
+          "$value": "317px"
+        },
+        "headlineGradient": {
+          "$type": "gradient",
+          "$value": "linear-gradient(90deg, #47EFF9 0%, #9082FF 100%)"
+        }
+      },
+      "explanation": {
+        "essayColumnWidth": {
+          "$type": "dimension",
+          "$value": "206px"
+        },
+        "commentaryWidth": {
+          "$type": "dimension",
+          "$value": "144px"
+        },
+        "commentaryRadius": {
+          "$type": "dimension",
+          "$value": "{radius.3xl}"
+        },
+        "audioSideWidth": {
+          "$type": "dimension",
+          "$value": "64px"
+        },
+        "audioSideHeight": {
+          "$type": "dimension",
+          "$value": "52px"
+        },
+        "audioPrimaryWidth": {
+          "$type": "dimension",
+          "$value": "222px"
+        },
+        "audioPrimaryHeight": {
+          "$type": "dimension",
+          "$value": "44px"
+        },
+        "stageBlueBackground": {
+          "$type": "gradient",
+          "$value": "linear-gradient(180deg, #EDF5FF 0%, #FAFCFF 100%)"
+        },
+        "stageBlueText": {
+          "$type": "color",
+          "$value": "#2352D8"
+        },
+        "stageWarmBackground": {
+          "$type": "gradient",
+          "$value": "linear-gradient(180deg, #FFF7F0 0%, #FFFBF7 100%)"
+        },
+        "stageWarmText": {
+          "$type": "color",
+          "$value": "#D67A00"
+        },
+        "stageRedBackground": {
+          "$type": "gradient",
+          "$value": "linear-gradient(180deg, #FFF2F0 0%, #FFFAFC 100%)"
+        },
+        "stageRedText": {
+          "$type": "color",
+          "$value": "#E0422D"
+        }
+      },
+      "report": {
+        "previewBackground": {
+          "$type": "color",
+          "$value": "#F1F5F9"
+        },
+        "pageWidth": {
+          "$type": "dimension",
+          "$value": "374px"
+        },
+        "pageRadius": {
+          "$type": "dimension",
+          "$value": "{radius.xs}"
+        },
+        "pageShadow": {
+          "$type": "shadow",
+          "$value": "0 4px 8px #D8E2EC"
+        },
+        "coverRed": {
+          "$type": "color",
+          "$value": "#B83C2E"
+        },
+        "bottomButtonRadius": {
+          "$type": "dimension",
+          "$value": "{radius.xl}"
+        }
+      },
+      "history": {
+        "headerGradient": {
+          "$type": "gradient",
+          "$value": "linear-gradient(180deg, #28BEE3 0%, #129CC6 100%)"
+        },
+        "sheetTop": {
+          "$type": "dimension",
+          "$value": "212px"
+        },
+        "sheetRadius": {
+          "$type": "dimension",
+          "$value": "{radius.5xl}"
+        },
+        "filterBackground": {
+          "$type": "color",
+          "$value": "#F5F7FC"
+        },
+        "rowDivider": {
+          "$type": "color",
+          "$value": "#F1F1F1"
+        },
+        "categoryGold": {
+          "$type": "gradient",
+          "$value": "linear-gradient(90deg, #F1D79E 0%, #E1B676 100%)"
+        },
+        "monthSheetHeight": {
+          "$type": "dimension",
+          "$value": "369px"
+        },
+        "monthCellBackground": {
+          "$type": "color",
+          "$value": "#F4F7FA"
+        },
+        "selectedMonthBorder": {
+          "$type": "color",
+          "$value": "#0195F0"
+        }
+      },
+      "feedback": {
+        "sheetHeight": {
+          "$type": "dimension",
+          "$value": "451px"
+        },
+        "chipHeight": {
+          "$type": "dimension",
+          "$value": "40px"
+        },
+        "chipRadius": {
+          "$type": "dimension",
+          "$value": "{radius.lg}"
+        },
+        "chipBorder": {
+          "$type": "color",
+          "$value": "#E4E4EB"
+        },
+        "selectedChipBorder": {
+          "$type": "color",
+          "$value": "{color.primitive.black}"
+        },
+        "uploadTileSize": {
+          "$type": "dimension",
+          "$value": "83px"
+        },
+        "uploadTileBackground": {
+          "$type": "color",
+          "$value": "#F6F7F9"
+        },
+        "uploadTileBorder": {
+          "$type": "color",
+          "$value": "rgba(0,0,0,0.18)"
+        },
+        "textareaHeight": {
+          "$type": "dimension",
+          "$value": "84px"
+        }
+      }
+    },
+    "courseCatalog": {
+      "canvasWidth": {
+        "$type": "dimension",
+        "$value": "{layout.canvas.appWidth}"
+      },
+      "pageBackground": {
+        "$type": "color",
+        "$value": "{color.semantic.background.pageAlt}"
+      },
+      "topAtmosphereHeight": {
+        "$type": "dimension",
+        "$value": "316px"
+      },
+      "topAtmosphereBackground": {
+        "$type": "gradient",
+        "$value": "linear-gradient(180deg, #FFFFFF 0%, #E1E6F5 100%)"
+      },
+      "activeChannel": {
+        "$type": "string",
+        "$value": "全部课程"
+      },
+      "secondaryChannel": {
+        "$type": "string",
+        "$value": "学习计划"
+      },
+      "activeChannelCenterX": {
+        "$type": "dimension",
+        "$value": "151px"
+      },
+      "activeChannelCenterY": {
+        "$type": "dimension",
+        "$value": "69.5px"
+      },
+      "activeChannelText": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.primary}",
+          "fontSize": "18px",
+          "fontWeight": "600",
+          "lineHeight": "normal"
+        }
+      },
+      "activeUnderlineX": {
+        "$type": "dimension",
+        "$value": "124px"
+      },
+      "activeUnderlineTop": {
+        "$type": "dimension",
+        "$value": "74px"
+      },
+      "activeUnderlineWidth": {
+        "$type": "dimension",
+        "$value": "53px"
+      },
+      "activeUnderlineHeight": {
+        "$type": "dimension",
+        "$value": "8px"
+      },
+      "secondaryChannelCenterX": {
+        "$type": "dimension",
+        "$value": "54px"
+      },
+      "secondaryChannelCenterY": {
+        "$type": "dimension",
+        "$value": "69px"
+      },
+      "secondaryChannelText": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.primary}",
+          "fontSize": "17px",
+          "fontWeight": "400",
+          "lineHeight": "normal"
+        }
+      },
+      "secondaryChannelColor": {
+        "$type": "color",
+        "$value": "#6F7D7F"
+      },
+      "subjectChipTop": {
+        "$type": "dimension",
+        "$value": "101px"
+      },
+      "subjectChipStartX": {
+        "$type": "dimension",
+        "$value": "21px"
+      },
+      "subjectChipGap": {
+        "$type": "dimension",
+        "$value": "8px"
+      },
+      "subjectChipHeight": {
+        "$type": "dimension",
+        "$value": "26px"
+      },
+      "subjectChipRadius": {
+        "$type": "dimension",
+        "$value": "13px"
+      },
+      "subjectChipPaddingX": {
+        "$type": "dimension",
+        "$value": "12px"
+      },
+      "subjectChipText": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.primary}",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "normal"
+        }
+      },
+      "subjectActiveBackground": {
+        "$type": "gradient",
+        "$value": "{gradient.action.dark}"
+      },
+      "subjectActiveShadow": {
+        "$type": "shadow",
+        "$value": "0 4px 5.2px rgba(0,102,134,0.2)"
+      },
+      "subjectInactiveBackground": {
+        "$type": "color",
+        "$value": "{color.primitive.white}"
+      },
+      "subjectInactiveText": {
+        "$type": "color",
+        "$value": "#7D898C"
+      },
+      "bookCarouselTop": {
+        "$type": "dimension",
+        "$value": "149px"
+      },
+      "bookCoverFeaturedX": {
+        "$type": "dimension",
+        "$value": "128.44px"
+      },
+      "bookCoverFeaturedWidth": {
+        "$type": "dimension",
+        "$value": "128.96px"
+      },
+      "bookCoverFeaturedHeight": {
+        "$type": "dimension",
+        "$value": "143.52px"
+      },
+      "bookCoverSideWidth": {
+        "$type": "dimension",
+        "$value": "108.16px"
+      },
+      "bookCoverSideHeight": {
+        "$type": "dimension",
+        "$value": "120.64px"
+      },
+      "bookCoverSideOpacity": {
+        "$type": "number",
+        "$value": 0.4
+      },
+      "bookCoverBlue": {
+        "$type": "color",
+        "$value": "#1C7BB7"
+      },
+      "bookCoverPurple": {
+        "$type": "color",
+        "$value": "#7065AD"
+      },
+      "bookCoverGreen": {
+        "$type": "color",
+        "$value": "#79B66D"
+      },
+      "bookPageIndicatorTop": {
+        "$type": "dimension",
+        "$value": "306.56px"
+      },
+      "bookPageIndicatorWidth": {
+        "$type": "dimension",
+        "$value": "22.88px"
+      },
+      "contentSheetTop": {
+        "$type": "dimension",
+        "$value": "315.92px"
+      },
+      "contentSheetBackground": {
+        "$type": "gradient",
+        "$value": "linear-gradient(180deg, #FFFFFF 0%, #F3F5F7 100%)"
+      },
+      "courseHeaderHeight": {
+        "$type": "dimension",
+        "$value": "102.96px"
+      },
+      "courseTitleX": {
+        "$type": "dimension",
+        "$value": "14.56px"
+      },
+      "courseTitleTop": {
+        "$type": "dimension",
+        "$value": "14.56px"
+      },
+      "courseTitleText": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.primary}",
+          "fontSize": "17.68px",
+          "fontWeight": "500",
+          "lineHeight": "normal"
+        }
+      },
+      "courseMetaTop": {
+        "$type": "dimension",
+        "$value": "43.68px"
+      },
+      "courseMetaText": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.primary}",
+          "fontSize": "12.48px",
+          "fontWeight": "400",
+          "lineHeight": "normal"
+        }
+      },
+      "courseMetaColor": {
+        "$type": "color",
+        "$value": "#696C6F"
+      },
+      "teacherAvatarSize": {
+        "$type": "dimension",
+        "$value": "20.8px"
+      },
+      "teacherRowTop": {
+        "$type": "dimension",
+        "$value": "69.68px"
+      },
+      "knowledgeMapPillX": {
+        "$type": "dimension",
+        "$value": "258.96px"
+      },
+      "knowledgeMapPillTop": {
+        "$type": "dimension",
+        "$value": "59.28px"
+      },
+      "knowledgeMapPillWidth": {
+        "$type": "dimension",
+        "$value": "120.64px"
+      },
+      "knowledgeMapPillHeight": {
+        "$type": "dimension",
+        "$value": "31.2px"
+      },
+      "knowledgeMapPillRadius": {
+        "$type": "dimension",
+        "$value": "29.477px"
+      },
+      "moduleStripTop": {
+        "$type": "dimension",
+        "$value": "102.96px"
+      },
+      "moduleStripHeight": {
+        "$type": "dimension",
+        "$value": "54.08px"
+      },
+      "moduleChipHeight": {
+        "$type": "dimension",
+        "$value": "29.12px"
+      },
+      "moduleChipRadius": {
+        "$type": "dimension",
+        "$value": "5.2px"
+      },
+      "moduleChipGap": {
+        "$type": "dimension",
+        "$value": "8.32px"
+      },
+      "moduleActiveBackground": {
+        "$type": "color",
+        "$value": "#FFEDE2"
+      },
+      "moduleActiveBorder": {
+        "$type": "color",
+        "$value": "#FFA167"
+      },
+      "moduleActiveText": {
+        "$type": "color",
+        "$value": "{color.primitive.orange.600}"
+      },
+      "moduleInactiveBackground": {
+        "$type": "color",
+        "$value": "#E8EBED"
+      },
+      "topicSidebarWidth": {
+        "$type": "dimension",
+        "$value": "83.2px"
+      },
+      "topicSidebarTop": {
+        "$type": "dimension",
+        "$value": "163.28px"
+      },
+      "topicItemPaddingX": {
+        "$type": "dimension",
+        "$value": "10.4px"
+      },
+      "topicItemPaddingY": {
+        "$type": "dimension",
+        "$value": "12.48px"
+      },
+      "topicItemRadius": {
+        "$type": "dimension",
+        "$value": "6.24px"
+      },
+      "topicActiveIndicatorWidth": {
+        "$type": "dimension",
+        "$value": "4.16px"
+      },
+      "topicActiveIndicatorHeight": {
+        "$type": "dimension",
+        "$value": "22.88px"
+      },
+      "topicActiveIndicatorColor": {
+        "$type": "color",
+        "$value": "{color.primitive.orange.600}"
+      },
+      "videoListWidth": {
+        "$type": "dimension",
+        "$value": "283.92px"
+      },
+      "videoListX": {
+        "$type": "dimension",
+        "$value": "93.6px"
+      },
+      "sectionTitleX": {
+        "$type": "dimension",
+        "$value": "97.76px"
+      },
+      "sectionTitleText": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.primary}",
+          "fontSize": "16.64px",
+          "fontWeight": "500",
+          "lineHeight": "normal"
+        }
+      },
+      "videoCardRadius": {
+        "$type": "dimension",
+        "$value": "14.56px"
+      },
+      "videoCardBorder": {
+        "$type": "color",
+        "$value": "#E3E3E3"
+      },
+      "videoRowHeight": {
+        "$type": "dimension",
+        "$value": "94.64px"
+      },
+      "videoCardPaddingX": {
+        "$type": "dimension",
+        "$value": "12.48px"
+      },
+      "videoCardPaddingY": {
+        "$type": "dimension",
+        "$value": "6.24px"
+      },
+      "videoTitleText": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.primary}",
+          "fontSize": "15.6px",
+          "fontWeight": "400",
+          "lineHeight": "normal"
+        }
+      },
+      "videoMetaText": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.primary}",
+          "fontSize": "12.48px",
+          "fontWeight": "400",
+          "lineHeight": "12.48px"
+        }
+      },
+      "videoMetaColor": {
+        "$type": "color",
+        "$value": "#A9B1B8"
+      },
+      "videoDividerWidth": {
+        "$type": "dimension",
+        "$value": "254.8px"
+      },
+      "playButtonSize": {
+        "$type": "dimension",
+        "$value": "29.12px"
+      },
+      "statusTagHeight": {
+        "$type": "dimension",
+        "$value": "17px"
+      },
+      "statusTagRadius": {
+        "$type": "dimension",
+        "$value": "3.12px"
+      },
+      "statusLearnedText": {
+        "$type": "color",
+        "$value": "#00639E"
+      },
+      "statusLearnedBorder": {
+        "$type": "color",
+        "$value": "rgba(0,99,158,0.7)"
+      },
+      "statusLastLearnedText": {
+        "$type": "color",
+        "$value": "#FF6200"
+      },
+      "statusLastLearnedBorder": {
+        "$type": "color",
+        "$value": "#FFB282"
+      },
+      "lastLearnedRailWidth": {
+        "$type": "dimension",
+        "$value": "43.68px"
+      },
+      "lastLearnedRailHeight": {
+        "$type": "dimension",
+        "$value": "49.92px"
+      },
+      "lastLearnedRailTop": {
+        "$type": "dimension",
+        "$value": "666.92px"
+      },
+      "floatingShortcutBackground": {
+        "$type": "gradient",
+        "$value": "{gradient.stepper.active}"
+      },
+      "bottomTabbarItems": {
+        "$type": "number",
+        "$value": 3
+      },
+      "activeBottomTab": {
+        "$type": "string",
+        "$value": "学习"
+      },
+      "allowedSections": {
+        "$type": "string",
+        "$value": "statusBar,topChannelTabs,subjectChips,bookCarousel,courseHeader,knowledgeMapPill,moduleTabs,topicSidebar,videoCourseList,lastLearnedRail,bottomTabbar",
+        "$description": "学习-全部课程不得生成返回标题栏、搜索按钮、营销 hero、学科大筛选区、浮动学习计划按钮、四项底栏或独立课程卡片网格。"
+      }
+    },
+    "planSetupLearningInfo": {
+      "canvasWidth": {
+        "$type": "dimension",
+        "$value": "{layout.canvas.appWidth}"
+      },
+      "pageBackground": {
+        "$type": "color",
+        "$value": "{color.primitive.white}"
+      },
+      "topAtmosphereHeight": {
+        "$type": "dimension",
+        "$value": "224px"
+      },
+      "topAtmosphereBackground": {
+        "$type": "gradient",
+        "$value": "linear-gradient(180deg, #BFF9FF 0%, rgba(204,243,252,0) 59.546%)"
+      },
+      "titleBarTop": {
+        "$type": "dimension",
+        "$value": "44px"
+      },
+      "titleBarHeight": {
+        "$type": "dimension",
+        "$value": "48px"
+      },
+      "title": {
+        "$type": "string",
+        "$value": "高二数学-春季自主计划"
+      },
+      "titleText": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.primary}",
+          "fontSize": "17px",
+          "fontWeight": "500",
+          "lineHeight": "24.96px"
+        }
+      },
+      "miniProgramButtonWidth": {
+        "$type": "dimension",
+        "$value": "77px"
+      },
+      "miniProgramButtonHeight": {
+        "$type": "dimension",
+        "$value": "28px"
+      },
+      "miniProgramButtonRadius": {
+        "$type": "dimension",
+        "$value": "56px"
+      },
+      "stepperTop": {
+        "$type": "dimension",
+        "$value": "92px"
+      },
+      "stepperHeight": {
+        "$type": "dimension",
+        "$value": "54px"
+      },
+      "stepperPaddingX": {
+        "$type": "dimension",
+        "$value": "24px"
+      },
+      "stepCircleSize": {
+        "$type": "dimension",
+        "$value": "22px"
+      },
+      "stepActiveLabel": {
+        "$type": "color",
+        "$value": "#008EBA"
+      },
+      "stepInactiveCircle": {
+        "$type": "color",
+        "$value": "rgba(18,128,162,0.14)"
+      },
+      "stepInactiveText": {
+        "$type": "color",
+        "$value": "#6F93A8"
+      },
+      "stepDivider": {
+        "$type": "color",
+        "$value": "#C4C7CA"
+      },
+      "recommendationCardX": {
+        "$type": "dimension",
+        "$value": "14px"
+      },
+      "recommendationCardTop": {
+        "$type": "dimension",
+        "$value": "154px"
+      },
+      "recommendationCardWidth": {
+        "$type": "dimension",
+        "$value": "362px"
+      },
+      "recommendationCardHeight": {
+        "$type": "dimension",
+        "$value": "217px"
+      },
+      "recommendationCardRadius": {
+        "$type": "dimension",
+        "$value": "14px"
+      },
+      "recommendationCardBackground": {
+        "$type": "gradient",
+        "$value": "{gradient.card.plan}"
+      },
+      "recommendationCardBorder": {
+        "$type": "color",
+        "$value": "{color.primitive.white}"
+      },
+      "recommendationCardShadow": {
+        "$type": "shadow",
+        "$value": "0 4px 24px rgba(50,131,198,0.16)"
+      },
+      "recommendationTitleX": {
+        "$type": "dimension",
+        "$value": "30px"
+      },
+      "recommendationTitleTop": {
+        "$type": "dimension",
+        "$value": "171px"
+      },
+      "recommendationTitleText": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "HYYakuHei, PingFang SC, MiSans, system-ui, sans-serif",
+          "fontSize": "20px",
+          "fontWeight": "800",
+          "lineHeight": "normal"
+        }
+      },
+      "seasonSummaryX": {
+        "$type": "dimension",
+        "$value": "228px"
+      },
+      "seasonSummaryTop": {
+        "$type": "dimension",
+        "$value": "170px"
+      },
+      "seasonSummaryText": {
+        "$type": "string",
+        "$value": "春季学季 · 在读 1 科"
+      },
+      "recommendationBodyX": {
+        "$type": "dimension",
+        "$value": "30px"
+      },
+      "recommendationBodyTop": {
+        "$type": "dimension",
+        "$value": "207px"
+      },
+      "recommendationBodyWidth": {
+        "$type": "dimension",
+        "$value": "330px"
+      },
+      "recommendationMetricTop": {
+        "$type": "dimension",
+        "$value": "289px"
+      },
+      "recommendationMetricWidth": {
+        "$type": "dimension",
+        "$value": "330px"
+      },
+      "recommendationMetricHeight": {
+        "$type": "dimension",
+        "$value": "66px"
+      },
+      "recommendationMetricRadius": {
+        "$type": "dimension",
+        "$value": "10px"
+      },
+      "recommendationMetricBackground": {
+        "$type": "color",
+        "$value": "rgba(255,255,255,0.77)"
+      },
+      "metricNumberText": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "MiSans, PingFang SC, system-ui, sans-serif",
+          "fontSize": "22px",
+          "fontWeight": "700",
+          "lineHeight": "normal"
+        }
+      },
+      "formStackX": {
+        "$type": "dimension",
+        "$value": "14px"
+      },
+      "formStackTop": {
+        "$type": "dimension",
+        "$value": "393px"
+      },
+      "formStackWidth": {
+        "$type": "dimension",
+        "$value": "362px"
+      },
+      "formGroupGap": {
+        "$type": "dimension",
+        "$value": "24px"
+      },
+      "fieldLabelText": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.primary}",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "normal"
+        }
+      },
+      "inputHeight": {
+        "$type": "dimension",
+        "$value": "52px"
+      },
+      "inputRadius": {
+        "$type": "dimension",
+        "$value": "{radius.md}"
+      },
+      "inputBackground": {
+        "$type": "color",
+        "$value": "#F1F4F7"
+      },
+      "scoreInputWidth": {
+        "$type": "dimension",
+        "$value": "168px"
+      },
+      "scoreInputGap": {
+        "$type": "dimension",
+        "$value": "26px"
+      },
+      "frequencyOptionsTopGap": {
+        "$type": "dimension",
+        "$value": "12px"
+      },
+      "frequencyOptionWidth": {
+        "$type": "dimension",
+        "$value": "83px"
+      },
+      "frequencyOptionHeight": {
+        "$type": "dimension",
+        "$value": "40px"
+      },
+      "frequencyOptionRadius": {
+        "$type": "dimension",
+        "$value": "100px"
+      },
+      "frequencyOptionGap": {
+        "$type": "dimension",
+        "$value": "10px"
+      },
+      "lessonAdviceHeight": {
+        "$type": "dimension",
+        "$value": "38px"
+      },
+      "lessonAdviceRadius": {
+        "$type": "dimension",
+        "$value": "6px"
+      },
+      "lessonAdviceBackground": {
+        "$type": "color",
+        "$value": "rgba(204,233,251,0.5)"
+      },
+      "lessonAdviceText": {
+        "$type": "color",
+        "$value": "#00639E"
+      },
+      "dayPickerListHeight": {
+        "$type": "dimension",
+        "$value": "490px"
+      },
+      "dayPickerGap": {
+        "$type": "dimension",
+        "$value": "8px"
+      },
+      "dayPickerRowHeight": {
+        "$type": "dimension",
+        "$value": "64px"
+      },
+      "dayPickerRowRadius": {
+        "$type": "dimension",
+        "$value": "{radius.md}"
+      },
+      "dayPickerControlSize": {
+        "$type": "dimension",
+        "$value": "24px"
+      },
+      "dayPickerControlAccent": {
+        "$type": "color",
+        "$value": "#00639E"
+      },
+      "dayPickerValueText": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "MiSans, PingFang SC, system-ui, sans-serif",
+          "fontSize": "22px",
+          "fontWeight": "700",
+          "lineHeight": "normal"
+        }
+      },
+      "bottomActionContainerHeight": {
+        "$type": "dimension",
+        "$value": "61px"
+      },
+      "bottomActionContainerOpacity": {
+        "$type": "number",
+        "$value": 0.5
+      },
+      "bottomActionButtonWidth": {
+        "$type": "dimension",
+        "$value": "342px"
+      },
+      "bottomActionButtonHeight": {
+        "$type": "dimension",
+        "$value": "44px"
+      },
+      "bottomActionButtonRadius": {
+        "$type": "dimension",
+        "$value": "{radius.md}"
+      },
+      "bottomActionText": {
+        "$type": "string",
+        "$value": "下一步"
+      },
+      "allowedSections": {
+        "$type": "string",
+        "$value": "statusBar,miniProgramTitleBar,progressStepper,recommendationCard,scoreInputs,targetScoreInput,frequencyOptions,lessonAdvice,dayPickerRows,bottomActionButton",
+        "$description": "制定计划-学习信息默认态不得生成通用表单卡片、季节 segmented control、锁定科目卡、年级/水平/薄弱模块选择、说明 tip 卡或独立营销式进度卡。"
+      }
+    },
+    "auth": {
+      "pageBackground": {
+        "$type": "color",
+        "$value": "#F7F9FC"
+      },
+      "canvasWidth": {
+        "$type": "dimension",
+        "$value": "{layout.canvas.appWidth}",
+        "$description": "登录页使用 390px 小程序登录画布。"
+      },
+      "topAtmosphereHeight": {
+        "$type": "dimension",
+        "$value": "256px"
+      },
+      "topGlow": {
+        "$type": "color",
+        "$value": "rgba(141,198,255,0.2)"
+      },
+      "bottomGlow": {
+        "$type": "color",
+        "$value": "rgba(193,172,255,0.1)"
+      },
+      "brandHeaderTop": {
+        "$type": "dimension",
+        "$value": "79px"
+      },
+      "brandHeaderWidth": {
+        "$type": "dimension",
+        "$value": "292px"
+      },
+      "brandHeaderHeight": {
+        "$type": "dimension",
+        "$value": "136px"
+      },
+      "logoSize": {
+        "$type": "dimension",
+        "$value": "48px"
+      },
+      "logoRadius": {
+        "$type": "dimension",
+        "$value": "9.129px"
+      },
+      "brandTitle": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "HYYakuHei, PingFang SC, MiSans, system-ui, sans-serif",
+          "fontSize": "36px",
+          "fontWeight": "800",
+          "lineHeight": "40px"
+        }
+      },
+      "brandSubtitle": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.primary}",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px"
+        }
+      },
+      "brandSubtitleColor": {
+        "$type": "color",
+        "$value": "#5B5F61"
+      },
+      "cardWidth": {
+        "$type": "dimension",
+        "$value": "358px"
+      },
+      "cardHeight": {
+        "$type": "dimension",
+        "$value": "490px"
+      },
+      "cardCenterYOffset": {
+        "$type": "dimension",
+        "$value": "72px"
+      },
+      "cardRadius": {
+        "$type": "dimension",
+        "$value": "{radius.5xl}"
+      },
+      "cardBackground": {
+        "$type": "color",
+        "$value": "{color.semantic.background.surfaceGlass}"
+      },
+      "cardPadding": {
+        "$type": "dimension",
+        "$value": "24px"
+      },
+      "cardGap": {
+        "$type": "dimension",
+        "$value": "24px"
+      },
+      "cardBackdropBlur": {
+        "$type": "dimension",
+        "$value": "6px"
+      },
+      "titleText": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.primary}",
+          "fontSize": "24px",
+          "fontWeight": "600",
+          "lineHeight": "32px"
+        }
+      },
+      "helperText": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.primary}",
+          "fontSize": "13px",
+          "fontWeight": "400",
+          "lineHeight": "20px"
+        }
+      },
+      "helperTextColor": {
+        "$type": "color",
+        "$value": "#5B5F61"
+      },
+      "formHeight": {
+        "$type": "dimension",
+        "$value": "184px"
+      },
+      "formGap": {
+        "$type": "dimension",
+        "$value": "20px"
+      },
+      "labelText": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.primary}",
+          "fontSize": "15px",
+          "fontWeight": "500",
+          "lineHeight": "20px"
+        }
+      },
+      "labelColor": {
+        "$type": "color",
+        "$value": "#5B5F61"
+      },
+      "inputHeight": {
+        "$type": "dimension",
+        "$value": "55px"
+      },
+      "inputRadius": {
+        "$type": "dimension",
+        "$value": "{radius.lg}"
+      },
+      "inputPaddingX": {
+        "$type": "dimension",
+        "$value": "16px"
+      },
+      "inputText": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.fontFamily.primary}",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "22px"
+        }
+      },
+      "verifyButtonBackground": {
+        "$type": "color",
+        "$value": "{color.primitive.blue.100}"
+      },
+      "verifyButtonHeight": {
+        "$type": "dimension",
+        "$value": "39px"
+      },
+      "verifyButtonRadius": {
+        "$type": "dimension",
+        "$value": "{radius.md}"
+      },
+      "verifyButtonTextColor": {
+        "$type": "color",
+        "$value": "{color.primitive.blue.500}"
+      },
+      "agreementHeight": {
+        "$type": "dimension",
+        "$value": "21px"
+      },
+      "agreementIconSize": {
+        "$type": "dimension",
+        "$value": "22px"
+      },
+      "agreementTextColor": {
+        "$type": "color",
+        "$value": "#4D535C"
+      },
+      "primaryButtonWidth": {
+        "$type": "dimension",
+        "$value": "310px"
+      },
+      "primaryButtonHeight": {
+        "$type": "dimension",
+        "$value": "49px"
+      },
+      "primaryButtonRadius": {
+        "$type": "dimension",
+        "$value": "{radius.lg}"
+      },
+      "primaryButtonBackground": {
+        "$type": "gradient",
+        "$value": "{gradient.action.darkAlt}"
+      },
+      "guestTextColor": {
+        "$type": "color",
+        "$value": "#44474A"
+      },
+      "allowedSections": {
+        "$type": "string",
+        "$value": "statusBar,brandHeader,loginCard,agreement,primaryLoginButton,guestMode",
+        "$description": "登录页不得新增返回按钮、欢迎回来文案、登录方式 tabs、社交登录、其他方式 divider。"
+      },
+      "primaryCopy": {
+        "$type": "string",
+        "$value": "领航伴学"
+      },
+      "loginButtonCopy": {
+        "$type": "string",
+        "$value": "立即登录"
+      },
+      "agreementCopy": {
+        "$type": "string",
+        "$value": "登录即代表同意《服务条款》与《隐私政策》"
+      }
+    },
+    "setupModal": {
+      "width": {
+        "$type": "dimension",
+        "$value": "286px"
+      },
+      "height": {
+        "$type": "dimension",
+        "$value": "325px"
+      },
+      "radius": {
+        "$type": "dimension",
+        "$value": "{radius.3xl}"
+      },
+      "selectorWidth": {
+        "$type": "dimension",
+        "$value": "254px"
+      },
+      "selectorHeight": {
+        "$type": "dimension",
+        "$value": "40px"
+      },
+      "buttonHeight": {
+        "$type": "dimension",
+        "$value": "40px"
+      }
+    },
+    "emptyState": {
+      "illustrationWidth": {
+        "$type": "dimension",
+        "$value": "132px"
+      },
+      "illustrationHeight": {
+        "$type": "dimension",
+        "$value": "74px"
+      },
+      "illustrationOpacity": {
+        "$type": "number",
+        "$value": 0.8
+      },
+      "textColor": {
+        "$type": "color",
+        "$value": "{color.primitive.gray.600}"
+      },
+      "loginButtonWidth": {
+        "$type": "dimension",
+        "$value": "122px"
+      },
+      "loginButtonHeight": {
+        "$type": "dimension",
+        "$value": "40px"
+      },
+      "loginButtonRadius": {
+        "$type": "dimension",
+        "$value": "{radius.lg}"
+      }
+    }
+  }
+}

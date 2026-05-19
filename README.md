@@ -28,7 +28,7 @@
 使用 学习系统UI-skill 生成一个 AI 自主学习系统的作文批改页面
 ```
 
-Codex 会通过 `SKILL.md` 触发 skill，并按其中指引读取 `references/ui-style-guide.md`。
+Codex 会通过 `SKILL.md` 触发 skill，并按其中指引优先读取 `references/design.md` 和 `references/design.tokens.json`。
 
 如果是在修 UI 问题或优化已有页面，可以这样说：
 
@@ -48,15 +48,22 @@ Codex 会通过 `SKILL.md` 触发 skill，并按其中指引读取 `references/u
 
 ```text
 SKILL.md
-references/ui-style-guide.md
+references/design.md
+references/design.tokens.json
 references/quality-gates.md
 ```
+
+`references/design.md` 是主设计规则，适合 UI 生成、UI 优化和评审，记录 AI 自主学习系统的画布、字号、间距、圆角、渐变、卡片、图标、日历、学习计划、课程和作文批改等通用设计原则。
+
+`references/design.tokens.json` 是结构化 token 源，适合让 AI 精确读取颜色、字号、间距、圆角、阴影和组件规格。
+
+`references/tokens.css` 和 `references/tailwind.config.ts` 用于实现工作，帮助 HTML/CSS/Tailwind 页面直接复用设计变量，减少临时写错字号、圆角、渐变和间距。
 
 `references/page-patterns.md` 用于先判断页面属于哪类模式，例如学习计划、全部课程、知识点学习、简答题闯关、作文批改、弹窗/底部表单等。
 
 `references/component-specs.md` 用于沉淀可复用组件规格，包括顶部标签、AI 助手气泡、日历、课程卡、底部导航、按钮、标签、渐变卡和基础 icon fallback。
 
-`references/ui-style-guide.md` 包含画布、色彩、字体、页面细节、状态和文案规范。
+`references/ui-style-guide.md` 包含早期提炼的画布、色彩、字体、页面细节、状态和文案规范，可作为页面细节补充。
 
 `references/quality-gates.md` 用于优化和验收，重点检查卡片内容是否出界、按钮是否在容器内、文字/指标是否被裁切、标签描边是否异常、真实图片是否被占位替代、固定底栏是否遮挡内容，以及触控、可读性、状态和安全区等通用 UI 质量问题。
 
@@ -78,9 +85,13 @@ references/quality-gates.md
 │   └── assistant-avatar.png
 └── references
     ├── component-specs.md
+    ├── design.md
+    ├── design.tokens.json
     ├── page-patterns.md
+    ├── quality-gates.md
+    ├── tailwind.config.ts
+    ├── tokens.css
     ├── ui-style-guide.md
-    └── quality-gates.md
 ```
 
 ## GitHub 描述建议
