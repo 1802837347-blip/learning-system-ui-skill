@@ -13,7 +13,8 @@ Use this file as the final review pass before delivering optimized UI. These gat
 | 5 | Typography fit | Text wraps or truncates intentionally and stays readable at the target width | Accidental clipping, squeezed font sizes, broken line-height, or overlapping rows |
 | 6 | State clarity | Loading, disabled, selected, completed, locked, and error states are visually distinct | Controls that look tappable when disabled, or state shown only by color |
 | 7 | Product consistency | Colors, shadows, radii, icons, and spacing follow `ui-style-guide.md` | Random per-screen colors, mixed icon styles, excessive decoration |
-| 8 | Accessibility basics | Meaningful controls have labels; contrast is readable; touch targets are not tiny | Icon-only controls without labels or low-contrast gray-on-gray text |
+| 8 | Content asset fidelity | Core images such as作文 photos remain visually meaningful and inspectable | Replacing content images with abstract placeholders or repeated gray bars |
+| 9 | Accessibility basics | Meaningful controls have labels; contrast is readable; touch targets are not tiny | Icon-only controls without labels or low-contrast gray-on-gray text |
 
 ## Output Workflow
 
@@ -43,6 +44,16 @@ Use this file as the final review pass before delivering optimized UI. These gat
 - Border radius must match the badge height; all corners should render evenly.
 - Avoid pseudo-element borders unless they are required for a special effect and have been visually checked.
 - If a badge sits in a row with text, align it to the text baseline or centerline; do not let it float upward/downward.
+
+## Image And Manuscript QA
+
+- Treat作文 photos, course covers, report previews, and teacher/product images as primary content assets.
+- If a real image is available, preserve it; do not redraw it as a placeholder.
+- If no real作文 image is available, create a believable manuscript fallback: grid paper, varied handwritten Chinese strokes, red score marks, colored underlines, correction circles, and numbered annotation dots.
+- A fallback essay manuscript must contain visual texture and sentence-like writing density. Repeated gray bars alone are a failed output.
+- Keep annotated lines aligned to plausible manuscript rows; annotations should look attached to the essay, not floating over an empty skeleton.
+- Do not blur, darken, or crop the作文 image so aggressively that handwriting and teacher marks are no longer inspectable.
+- Promotional pages can simplify the manuscript, but they still need to communicate "this is a corrected handwritten essay photo" at first glance.
 
 ## HTML/CSS Guardrails
 
@@ -84,6 +95,7 @@ Use this pattern as a starting point, then adapt dimensions to the exact compone
 - [ ] No required text, metric, tag, button, icon, or calendar dot is clipped.
 - [ ] `开始练习` and other CTAs sit inside their cards or fixed action areas.
 - [ ] `强化阶段` and similar badges have clean, single-layer borders.
+- [ ] 作文 image areas use a real photo or believable manuscript fallback, not repeated generic horizontal bars.
 - [ ] Fixed tabbars and bottom actions do not cover scroll content.
 - [ ] Touch targets are comfortable on mobile.
 - [ ] Selected, disabled, loading, locked, completed, and error states are distinguishable.
