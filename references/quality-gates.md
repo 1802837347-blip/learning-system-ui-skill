@@ -18,7 +18,10 @@ Use this file as the final review pass before delivering optimized UI. These gat
 | 10 | Icon completeness | Structural icons render with the right size, stroke, and alignment | Missing back, lock, expand, play, tabbar, or status icons |
 | 11 | Pixel-scale normalization | Screenshot-derived UI is scaled to 375px/390px CSS width | Copying raw 2x/3x screenshot pixels into CSS sizes |
 | 12 | Domain fidelity | Learning-plan pages preserve education copy, task structure, and APP navigation | CRM/work dashboard copy, office task tabs, customer communication cards |
-| 13 | Accessibility basics | Meaningful controls have labels; contrast is readable; touch targets are not tiny | Icon-only controls without labels or low-contrast gray-on-gray text |
+| 13 | Chrome/navigation fidelity | Browser chrome, status icons, and back navigation match the visible source shell | Generic status bars, boxed back arrows, emoji icons, or missing domain pills |
+| 14 | Gradient/module fidelity | Gradient panels and decorative learning modules keep their color, border, icon, and depth | Flattening gradient modules into plain pale rectangles |
+| 15 | Step rail alignment | Timeline/step nodes, lock nodes, vertical line, and cards share a stable grid | Nodes drifting away from cards or locks not centered on the rail |
+| 16 | Accessibility basics | Meaningful controls have labels; contrast is readable; touch targets are not tiny | Icon-only controls without labels or low-contrast gray-on-gray text |
 
 ## Output Workflow
 
@@ -68,6 +71,31 @@ Use this file as the final review pass before delivering optimized UI. These gat
 - Use inline SVG, existing project icons, or a simple CSS/SVG fallback. Never leave a blank space because the asset was unavailable.
 - Icon size should follow the reference scale: small inline icons around 12px to 16px, control icons around 20px to 28px, large assistant/tool icons around 40px.
 - Icons must be centered within their hit areas and aligned to nearby text.
+
+## Browser Chrome And Navigation QA
+
+- If the reference shows a browser/webview chrome row, reproduce that shell: time, domain pill, ellipsis, Wi-Fi, battery, and home indicator.
+- Do not replace a browser domain pill such as `uinotes.com` with a native mini-program capsule or a generic iOS status bar.
+- Back controls must match the source container. A plain chevron should remain a plain chevron; do not invent a square/circle button background.
+- Use vector/CSS icons for Wi-Fi, battery, ellipsis, and back. Emoji, text glyphs, or thick default browser arrows fail this gate.
+- Status and navigation icons must share baseline, stroke style, and safe-area spacing; they should not look pasted in at different scales.
+
+## Gradient Module QA
+
+- Any source gradient card, intro module, recommendation banner, or CTA must preserve its hue direction, border, radius, and shadow relationship.
+- Do not flatten a blue/lavender intro panel into a plain light-blue rectangle.
+- If a gradient module has a decorative book/card/assistant icon, include a meaningful inline SVG or asset fallback in the same corner.
+- Text inside gradient modules must stay vertically centered with enough line-height and padding; it cannot touch borders or overlap decorative icons.
+- Fixed CTA pills must match the source color family. A blue-gradient `立即购买` should not become the generic black action button.
+
+## Step Rail QA
+
+- Timeline and level-progress rails use one explicit grid: left rail column, right card column.
+- Active number node, locked node circles, and the vertical line must share the exact same x-axis.
+- Nodes should align to the vertical center or header center of their corresponding card, not to arbitrary viewport coordinates.
+- Locked nodes must contain visible lock SVGs centered within the circle.
+- Cards should start at a consistent x position and keep a stable gap from the rail; the rail must not overlap card content.
+- When scrolling content is cropped by a fixed CTA, reserve bottom padding so the last rail node/card remains visible above the CTA.
 
 ## Domain Fidelity QA
 
@@ -182,8 +210,12 @@ Use this pattern as a starting point, then adapt dimensions to the exact compone
 - [ ] Tappable elements have visible pressed/disabled/loading states without shifting layout.
 - [ ] Structural icons use a consistent vector/icon style, not emoji.
 - [ ] All source icons are represented by real SVG/icon/CSS fallbacks; none are silently missing.
+- [ ] Browser/webview chrome is preserved when present, including domain pill and status controls.
+- [ ] Back chevron shape and container match the source; no invented boxed button.
 - [ ] Font sizes are normalized to a 375px/390px CSS canvas and are not inflated from screenshot pixels.
 - [ ] Repeated rows use stable alignment columns for left rail, content, tags, progress, and lock/play icons.
+- [ ] Gradient modules preserve their source gradient, border, shadow, and decorative icon.
+- [ ] Step/timeline rail nodes share one x-axis and align to their corresponding cards.
 - [ ] Primary and secondary text remain readable against their card or page backgrounds.
 - [ ] Color is not the only way important state or meaning is communicated.
 - [ ] Learning-plan screens do not drift into CRM/work schedule semantics or unrelated tab labels.

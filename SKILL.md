@@ -1,6 +1,6 @@
 ---
 name: 学习系统UI-skill
-description: Use this skill when creating or extending mobile mini-program UI pages for the AI自主学习系统, including login and phone verification, onboarding/profile setup modals, learning home pages, purchased/unpurchased states, pending/update/completed plan states, welcome cards, plan setup cards, AI learning tools, composition correction entry cards, composition score selection sheets, composition photo capture flows, photo order confirmation, OCR recognition and review, benefit-consumption confirmation, correction loading states, composition audio explanation pages, annotated essay walkthroughs, correction report generation, report preview/download, report intro/landing, composition correction history, monthly record filters, quota-exhausted composition entry states, feedback sheets, camera permission prompts, plan creation flows, learning information forms, plan knowledge-point selection, date picker sheets, validation/error states, generation loading states, generated plan overview pages, APP learning-plan pages, APP all-courses catalog pages, course outline/video-list pages, expanded or collapsed calendar states, scrolled calendar states, login-required learning-plan states, daily study plans, course recommendation grids, course commerce cards, plan history, sticky filters, empty states, and related education-product screens in the same visual style.
+description: Use this skill when creating or extending mobile mini-program UI pages for the AI自主学习系统, including login and phone verification, onboarding/profile setup modals, learning home pages, purchased/unpurchased states, pending/update/completed plan states, welcome cards, plan setup cards, AI learning tools, composition correction entry cards, composition score selection sheets, composition photo capture flows, photo order confirmation, OCR recognition and review, benefit-consumption confirmation, correction loading states, composition audio explanation pages, annotated essay walkthroughs, correction report generation, report preview/download, report intro/landing, composition correction history, monthly record filters, quota-exhausted composition entry states, feedback sheets, camera permission prompts, plan creation flows, learning information forms, plan knowledge-point selection, date picker sheets, validation/error states, generation loading states, generated plan overview pages, APP learning-plan pages, knowledge-point overview pages, short-answer challenge / 闯关专项 pages, APP all-courses catalog pages, course outline/video-list pages, expanded or collapsed calendar states, scrolled calendar states, login-required learning-plan states, daily study plans, course recommendation grids, course commerce cards, plan history, sticky filters, empty states, and related education-product screens in the same visual style.
 metadata:
   short-description: Generate AI自主学习系统 UI and作文批改 flows
 ---
@@ -53,6 +53,7 @@ Use this skill for:
 - Daily learning plan pages with month title, subject legend, collapsed week calendar, expanded full-month calendar, scrolled calendar state, and task cards.
 - APP learning-plan incomplete state, with `学习计划` active, assistant reminder, month/week calendar, subject legend, unfinished course cards, and active `学习` bottom tab.
 - Knowledge-point study overview pages with grade/subject segmented controls, progress summary metrics, `推荐你学` card, `全考点学习` / `主观题专项` tabs, expandable topic cards, progress rails, lock states, and discount badges.
+- Short-answer challenge / 闯关专项 pages with browser-style status chrome, refined back navigation, level tabs, gradient intro module, left step rail, locked nodes, learning cards, and fixed purchase CTA.
 - APP `全部课程` pages with subject chips, course-cover carousel, course summary, module tabs, topic sidebar, video list, learning-status tags, and knowledge graph entry.
 - APP learning-plan unauthenticated states that keep the product shell and either preserve or omit calendar context.
 - Incomplete, completed, and no-plan learning states.
@@ -118,6 +119,17 @@ For knowledge-point study overview pages:
 - Keep the top controls, summary metrics, recommendation card, tabs, topic cards, progress rail, expand/collapse icons, and lock icons aligned to the same grid.
 - Every structural icon must render: back arrow, status icons, segmented-control markers, sparkle/discount badge accents, expand/collapse circles, progress dots, and lock icons.
 - Use `全考点学习` and `主观题专项` as learning tabs; active tab gets the cyan underline. Do not replace them with generic section headings.
+
+For short-answer challenge pages:
+
+- Preserve the browser or webview chrome when the source shows it: time, centered domain pill such as `uinotes.com`, ellipsis, Wi-Fi, battery, and home indicator are part of the visible page.
+- The top-left back control must match the reference: use a clean SVG chevron with round caps/joins; do not wrap it in a square or circle unless the source has that container.
+- Keep the pale blue page atmosphere and white rounded content sheet. Do not flatten the top area into a plain card stack.
+- Level tabs such as `第一关`、`第二关`、`第三关` share a baseline; the active tab has a short blue underline, and badges such as `试用` sit above the correct tab without pushing labels out of alignment.
+- Gradient intro modules are functional content. Match the blue/lavender fill, border, rounded corners, shadow, and right-side decorative learning icon instead of replacing the module with a flat pale rectangle.
+- The left step rail uses one fixed x-axis. Active number nodes, locked nodes, and the vertical line must align with the card stack and with the corresponding card centers.
+- Learning cards reserve a fixed left gutter for the step rail and a content column for titles, helper blocks, `去学习`, and chevrons. Do not let cards overlap the rail or drift away from their nodes.
+- Bottom purchase CTA color must match the source. If the reference uses a blue gradient `立即购买` pill, do not replace it with the generic black action gradient.
 
 For APP all-courses pages:
 

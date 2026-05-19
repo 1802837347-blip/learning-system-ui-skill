@@ -237,6 +237,61 @@ History subject tag colors:
 - If an icon asset is unavailable, draw a simple inline SVG fallback matching the reference instead of leaving a blank square or text-only control.
 - Icons must align visually to the text baseline or control centerline.
 
+### Browser/Webview Chrome And Navigation
+
+- Use when a screenshot visibly includes browser chrome or a webview top bar instead of a native mini-program title bar.
+- Do not replace the browser chrome with a generic iOS status bar.
+- Status/browser row:
+  - Time sits on the left, about 15px to 17px Semibold.
+  - Center domain pill, when present, is about 112px to 132px wide and 28px high, white/translucent, radius 14px, with a small favicon/brand dot and domain text such as `uinotes.com`.
+  - Right side may include ellipsis dots, Wi-Fi arcs, and battery outline. Draw them as inline SVG/CSS shapes with consistent stroke; do not use emoji or text substitutes.
+  - Keep the row aligned on one baseline and inside the safe area.
+- Back navigation:
+  - Plain source chevrons stay plain. Do not add a square/circle button container unless the reference shows one.
+  - Use an SVG chevron about 28px to 34px tall with 2px to 3px stroke, round cap/join, and dark `#1F2A33`.
+  - The hit area can be 44px, but the visible icon should remain refined and centered.
+  - Avoid thick, angular, or browser-default arrows; avoid `‹` text glyphs for primary navigation.
+
+### Short-Answer Challenge Page
+
+- Use for pages like `简答题专项` / `8 关突破中学科目二简答题`, where the user moves through gated learning levels.
+- Canvas:
+  - Mobile canvas is commonly 390px wide after screenshot normalization.
+  - Background starts with a pale blue/cyan atmosphere, then transitions into a very light content area.
+  - The white content sheet begins below the header with large rounded top corners; it is not a stack of unrelated white cards.
+- Header:
+  - Preserve browser/webview chrome when shown: time, centered domain pill, ellipsis dots, Wi-Fi, battery.
+  - Below chrome, place a refined plain back chevron at the left, then `简答题专项` as a 20px to 22px Semibold title.
+  - Main title `8 关突破中学科目二简答题` uses about 28px to 32px bold, not oversized raw screenshot pixels.
+  - Tags such as `上新`、`教育知识与能力`、`简答题` use blue gradient or blue fill chips, 26px to 30px high, 12px to 15px text.
+- Level tabs:
+  - Tabs sit in one row inside or just above the content sheet: `第一关` active, then `第二关`、`第三关`、`第四关`、`第五关`、`第六关`.
+  - Active label is dark and Semibold with a short blue underline.
+  - Inactive labels are gray and share the same baseline.
+  - A `试用` badge sits above the target tab and should not shift the tab label baseline.
+- Gradient intro module:
+  - Width follows the inner sheet margin, about 342px to 350px on a 390px canvas.
+  - Radius about 10px to 12px; border is light blue with a subtle inner highlight.
+  - Background is a soft horizontal/diagonal blue-lavender gradient, not a flat pale fill.
+  - Copy such as `本关为<教育基础知识>的内容，学练结合，助力冲刺，快来闯关!` uses 15px to 17px Semibold `#385B7F`, line height about 24px.
+  - Right decorative learning/book icon should be visible as a translucent blue/purple shape. If the asset is unavailable, draw an abstract book/card SVG with gradient fill and opacity.
+- Section header:
+  - `知新` uses about 20px to 22px Semibold.
+  - The left marker is two overlapping blue/lavender dots or capsules. Do not replace it with a single unrelated square unless the source does.
+- Step rail and cards:
+  - Layout uses a two-column grid: left rail column about 54px to 64px, right card column about 300px to 310px.
+  - The rail line has one fixed x-axis. Active numbered node, locked nodes, and the vertical line all share this x coordinate.
+  - The active `1` node is a blue gradient circle about 34px to 38px with white text, centered vertically near the first card.
+  - Locked nodes are gray circles about 34px to 38px with a centered lock SVG; they align with the locked card centers.
+  - The line starts near the first card content area and continues through the locked nodes. It should not drift into the card or float too far left.
+  - Cards are white, radius about 14px to 16px, with soft shadow. They start at the same x position and align to the rail grid.
+  - Card top rows include source icons such as `▲`, `■`, or `★`, title text, right `去学习`, and a chevron. Render these as text symbols or SVGs at the correct size, not as missing boxes.
+  - Inner helper blocks use light gray fill, radius about 10px, padding 14px to 16px, and readable 15px to 17px text.
+- Bottom purchase CTA:
+  - Fixed to the bottom above the home indicator with enough safe-area padding.
+  - If source shows a blue gradient pill `立即购买`, use that blue gradient, not the generic black action gradient.
+  - Pill width is about 330px to 350px, height about 56px to 60px, radius 28px to 30px, text 22px to 24px Semibold white.
+
 ### Generic Practice Card
 
 - Use for stage practice, exercise tasks, or any card with `开始练习`.
