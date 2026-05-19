@@ -120,6 +120,14 @@ Use this file as the final review pass before delivering optimized UI. These gat
   - same task titles, knowledge-point text, star/progress treatment, and play action.
 - If any of those change without user instruction, the output fails even if it looks polished.
 
+## APP Learning Plan Foundation QA
+
+- Top tab selected state must use the product's gradient text plus thick cyan rounded underline. A plain text underline or pill tab fails this page.
+- Assistant area must use the 40px brand assistant avatar and compact one-line speech bubble. A text `AI` square, oversized card bubble, or invented two-line summary fails.
+- Collapsed calendar must keep 54px date cells, 8px radius, 6px gaps, and the selected black-gradient cell. A separate white calendar card or stretched date tiles fails.
+- Course cards must remain about 362px by 124px with metadata row, title row, star/progress row, and 32px pale circular play button. Time-slot rows or status badges fail.
+- Verify foundational tokens together: page margins, colors, corner radii, cell heights, card height, and icon size should match the Figma page before judging the UI polished.
+
 ## Touch And Interaction QA
 
 - Tappable controls should have at least a 44px by 44px hit area, even when the visible icon is smaller.

@@ -677,15 +677,24 @@ Previous-season review card:
   - Top atmosphere gradient from `#BFF9FF` to transparent, height about 256px.
   - Quiet content sheet starts around y 148px, fill `#F7F8F9`, full width.
   - The calendar and task list live directly on this quiet sheet; the collapsed calendar is not wrapped in a separate white rounded card.
+- Foundation UI tokens:
+  - Page horizontal content margin is mostly 14px to 20px: top labels at x 23/124, month and legend at x 20, task cards at x 14 with 362px width.
+  - Primary cool cyan is `#47EFF9`; active bottom tab orange is `#FF6200`; task-card border is `rgba(188,200,208,0.2)`.
+  - Main text is near black `#071D39` or `#000`; muted metadata uses `#77838B`; secondary tab text uses `#6F7D7F`.
+  - Top atmosphere and content sheet create the page depth; avoid extra heavy shadows or extra nested cards.
 - Top channel:
   - Status bar height about 46px.
   - `学习计划` active near x 23px, y about 56px, 19px display font, black-to-`#1251A9` gradient text, 1px letter spacing.
   - Active underline is cyan `#47EFF9`, about 53px by 8px, y about 74px, radius 4px.
   - `全部课程` secondary near x 124px, y about 61px, 17px Regular `#6F7D7F`.
+  - The active underline is a thick rounded cyan capsule under the selected label, not a thin border-bottom line.
+  - Inactive tab has no pill, underline, or container; keep it plain text.
   - Do not add search buttons, CRM tabs, greeting headlines, or non-learning nav items.
 - Assistant reminder:
   - Assistant icon about 40px square at x 12px, y 96px.
+  - Use bundled `assets/assistant-avatar.png` when available; it is an 80px transparent 2x asset intended to display at 40px.
   - Speech bubble starts around x 45px, y 102px, height about 30px.
+  - Speech bubble width is about 267.5px and uses the source vector/pill shape, with a small left notch pointing toward the assistant.
   - Copy pattern: `{学生名}同学，请完成今天的学习计划吧`.
   - Text 14px Medium `#071D39`, line height 28px.
   - The source bubble is a compact one-line pill-like vector. Do not make it a tall two-line card, and do not replace the assistant icon with a text `AI` square.
@@ -699,8 +708,12 @@ Previous-season review card:
   - Weekday row around y 234px, width about 350px, seven equal columns, 14px Medium `#737C82`.
   - Weekday order for this reference is `周一` to `周日`, not `日` to `六`.
   - Date blocks start around y 262px, each 54px high, 6px gaps, 8px radius.
+  - Date cell width is about 43px to 44px. Keep the row compact and even; do not stretch cells into large cards.
   - Normal dates use `#EBEEF1`; date numbers use Space Grotesk/Inter Bold 16px.
+  - Default date cell background is `#EBEEF1`, radius 8px, no card shadow.
+  - Planned but unselected days use the same gray cell plus 4px subject dot(s); today can also be gray unless selected.
   - Selected day, such as `09`, uses black-to-`#383838` gradient, white number, and the blue subject dot underneath.
+  - Selected cell has the same 54px height and 8px radius as other cells; only fill, text color, dot, and soft shadow change.
   - Planned days show 4px subject dots. Example: `06` has blue dot; `10` has blue and green dots.
 - Task list:
   - Starts around x 14px, y 336px, width 362px, vertical gap 10px.
@@ -709,9 +722,12 @@ Previous-season review card:
   - Task cards are 362px by about 124px, radius 12px, white fill, 1px very light blue-gray border, and subtle 1px shadow.
   - Card layout has a top metadata row and a lower title/progress/action row, not a time-schedule layout.
   - Top metadata row: subject tag `数学` is a compact blue pill, followed by `考点3.1.1 导数的基本概念` in 14px muted text.
+  - Subject tag is about 37px wide and 21px high, fill `#D1E5FF`, radius 4px, text `#2361B2`, 13px Medium.
   - Title row uses 16px Medium black and preserves the exact title.
   - Progress row uses a 66px star asset or five compact star glyphs followed by `12:30/37:01` or `00:00/37:01`; do not replace with difficulty text such as `难度 3 星`.
-  - Right action is a circular 32px play button using the source asset style. Do not add status badges such as `学习中` or `未开始`.
+  - Star row starts under the title with about 8px gap; star asset is about 66px by 15px.
+  - Right action is a circular 32px play button using the source asset style: pale gray-blue circular background with a dark small play triangle centered. Do not use the generic black play button and do not add status badges such as `学习中` or `未开始`.
+  - The action column is vertically centered in the lower row, aligned with the title/progress group; reserve about 32px to 40px on the right.
   - Example card titles:
     - `3.1.1.1 导数的概念与计算(一轮)`
     - `3.1.1.3 导函数原型构造速解技巧`
