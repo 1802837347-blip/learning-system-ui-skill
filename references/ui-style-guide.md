@@ -874,10 +874,17 @@ Previous-season review card:
   - Left side shows stacked作文 photo cards, x about 16px, width about 206px, top about 95px or 104px.
   - First photo height about 300px, second about 322px to 324px; radius 7px to 8px.
   - Photos keep the real作文 texture visible; do not blur or replace them with generic placeholders.
+  - In promotional intro pages such as `了解作文精批`, the essay image can be larger, about 52% to 60% of the card width, with commentary cards on the right. It should still read as a scanned handwritten作文 page.
   - Right side uses a narrow commentary card, x about 230px, width about 144px, padding 12px.
   - Commentary card radius: top-left 4px, other corners 16px, like a speech panel docked to the photo column.
   - Text in the card is dense but readable: 13px to 15px body, 20px to 24px line height.
   - Use bold/darker inline emphasis for key score, category, or diagnosis words.
+- Essay image fidelity:
+  - Best: use the provided real作文 image/photo and preserve its handwritten texture.
+  - Acceptable fallback: create a manuscript-like composition with grid paper, varied handwritten Chinese text strokes, red teacher score marks, red/blue/yellow annotation lines, numbered dots, and slight scan/photo imperfection.
+  - Unacceptable fallback: a skeleton made only of repeated gray horizontal bars, empty ruled paper, or abstract lines with no handwriting.
+  - The manuscript should include enough visual density to feel like an essay photo at a glance, even when the exact original photo is unavailable.
+  - Do not over-simplify the essay area just because the surrounding UI is being optimized; the作文 photo is primary content.
 - Stage color system:
   - Intro/system-sound and final overall summary: cool pale card `#F7F8FC`, gradient title from green/cyan/purple.
   - 起评分/审题立意: pale blue card gradient `#EDF5FF` to `#FAFCFF`, title `#2352D8`, blue annotation lines and numbered markers.
