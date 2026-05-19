@@ -548,6 +548,51 @@ Previous-season review card:
 - Task cards follow the normal course task card pattern.
 - Bottom tabbar active item is `学习`, color `#FF6200`.
 
+### APP Learning Plan - Incomplete
+
+- Use for `APP-学习计划-未完成`, where the student has unfinished learning tasks for the selected day.
+- This page must remain an education learning-plan screen. Do not convert it into a CRM, work-schedule, customer communication, office dashboard, or generic calendar task app.
+- Canvas and background:
+  - Width 390px.
+  - Base background `#ECEEF5`.
+  - Top atmosphere gradient from `#BFF9FF` to transparent, height about 256px.
+  - Quiet content sheet starts around y 148px, fill `#F7F8F9`, full width.
+- Top channel:
+  - Status bar height about 46px.
+  - `学习计划` active near x 23px, y about 56px, 19px display font, black-to-`#1251A9` gradient text, 1px letter spacing.
+  - Active underline is cyan `#47EFF9`, about 53px by 8px, y about 74px, radius 4px.
+  - `全部课程` secondary near x 124px, y about 61px, 17px Regular `#6F7D7F`.
+  - Do not add search buttons, CRM tabs, greeting headlines, or non-learning nav items.
+- Assistant reminder:
+  - Assistant icon about 40px square at x 12px, y 96px.
+  - Speech bubble starts around x 45px, y 102px, height about 30px.
+  - Copy pattern: `{学生名}同学，请完成今天的学习计划吧`.
+  - Text 14px Medium `#071D39`, line height 28px.
+- Month and legend:
+  - Month title around x 20px, y 169px: `2026年3月计划`, 18px Semibold black.
+  - `展开日历` action around x 302px, y 168px, 14px Medium black, with small down triangle.
+  - Subject legend sits around x 20px, y 202px, five items in order: 语文、数学、物理、化学、生物.
+  - Legend uses 4px square color dots and 12px text; use exact subject colors.
+- Collapsed week calendar:
+  - Weekday row around y 234px, width about 350px, seven equal columns, 14px Medium `#737C82`.
+  - Date blocks start around y 262px, each 54px high, 6px gaps, 8px radius.
+  - Normal dates use `#EBEEF1`; date numbers use Space Grotesk/Inter Bold 16px.
+  - Selected day, such as `09`, uses black-to-`#383838` gradient, white number, and the blue subject dot underneath.
+  - Planned days show 4px subject dots. Example: `06` has blue dot; `10` has blue and green dots.
+- Task list:
+  - Starts around x 14px, y 336px, width 362px, vertical gap 10px.
+  - In incomplete state, show course task cards immediately after the collapsed week calendar. Do not show a generic empty state, CRM schedule card, or office event card.
+  - Example card titles:
+    - `3.1.1.1 导数的概念与计算(一轮)`
+    - `3.1.1.3 导函数原型构造速解技巧`
+  - Example knowledge point: `考点3.1.1 导数的基本概念`.
+  - Example progress: `12:30/37:01` and `00:00/37:01`.
+- Bottom tabbar:
+  - Fixed bottom bar uses `rgba(255,255,255,0.88)` with 6px blur and top border `rgba(0,0,0,0.08)`.
+  - Three tabs only: `首页`、`学习`、`我的`.
+  - `学习` is active with orange `#FF6200`; do not use CRM/办公/消息 labels.
+  - Include a 34px iPhone home area.
+
 ### APP All-Courses Catalog Page
 
 - Use for the `全部课程` tab inside the APP learning section.
@@ -1189,6 +1234,13 @@ Previous-season review card:
 - Time format: `12:30/37:01`, `00:00/37:01`, or `37:01/37:01`.
 - Completed tag: `已学习`, blue border `#00639E`, text `#00639E`, height about 18px, radius 2px.
 - Right action: 32px circular play button.
+- In incomplete APP learning-plan cards:
+  - Top row sits around x 15px, y 20px inside the card and spans about 330px.
+  - Subject tag is `数学` in a `#D1E5FF` pill, 13px Medium `#2361B2`, 6px horizontal padding, 3px vertical padding.
+  - Knowledge point text is 14px Regular `#77838B`; keep it educational, not office-task metadata.
+  - Main content row starts around y 53px; left content column width about 268px; right play button is 32px.
+  - Star/difficulty/progress icon is about 66px by 15px, then time text 14px MiSans `#77838B`, line height 20px.
+  - Avoid vertical colored timeline bars, status pills like `未开始`, and time ranges like `11:00 - 12:00`; those belong to generic schedule apps, not this learning-plan card.
 
 ### Empty State
 

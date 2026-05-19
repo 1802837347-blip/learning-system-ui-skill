@@ -50,6 +50,7 @@ Use this skill for:
 - Purchased/unpurchased learning home states, including no-history empty states and sticky history filters.
 - Plan creation flows, especially `学习信息` -> `计划考点` -> `生成计划`, score inputs, study-frequency chips, daily course-hour steppers, period cards, date picker sheets, knowledge-point selection sheets, generation loading, generated plan overview, and validation states.
 - Daily learning plan pages with month title, subject legend, collapsed week calendar, expanded full-month calendar, scrolled calendar state, and task cards.
+- APP learning-plan incomplete state, with `学习计划` active, assistant reminder, month/week calendar, subject legend, unfinished course cards, and active `学习` bottom tab.
 - APP `全部课程` pages with subject chips, course-cover carousel, course summary, module tabs, topic sidebar, video list, learning-status tags, and knowledge graph entry.
 - APP learning-plan unauthenticated states that keep the product shell and either preserve or omit calendar context.
 - Incomplete, completed, and no-plan learning states.
@@ -99,12 +100,14 @@ For作文批改 capture flows:
 
 For daily learning-plan pages:
 
+- Do not reinterpret this page as a generic CRM, work schedule, customer communication, or office task dashboard. Keep all copy and information architecture in the education/learning-plan domain.
 - Top channel title: active `学习计划` with cyan underline, secondary `全部课程`.
 - Assistant bubble under the title with state-specific copy.
 - Month section: `{年份}年{月份}月计划`, `展开日历`, subject legend, weekday row, and date blocks.
 - Expanded calendar switches the action to `收起日历`, shows month-switch controls, and uses the full 7-column month grid.
 - Login-required APP plan states keep the top channel and active `学习` tab; use `请登录查看学习计划` and `立即登录`.
-- Show task cards when there are plans; show a light illustration and `今日无计划~` when empty.
+- In incomplete state, show unfinished course task cards with subject tag, knowledge point, title, star/progress indicator, time progress, and circular play action.
+- Show a light illustration and `今日无计划~` only for the no-plan/empty state, not for incomplete state.
 - Keep the bottom tabbar fixed with `首页`、`学习`、`我的`; active learning tab uses orange.
 
 For APP all-courses pages:

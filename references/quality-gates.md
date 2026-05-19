@@ -15,7 +15,8 @@ Use this file as the final review pass before delivering optimized UI. These gat
 | 7 | Product consistency | Colors, shadows, radii, icons, and spacing follow `ui-style-guide.md` | Random per-screen colors, mixed icon styles, excessive decoration |
 | 8 | Content asset fidelity | Core images such as作文 photos remain visually meaningful and inspectable | Replacing content images with abstract placeholders or repeated gray bars |
 | 9 | Interaction polish | Tappable elements have feedback, disabled semantics, and stable layout bounds | No tap feedback, layout-shifting press states, or fake disabled controls |
-| 10 | Accessibility basics | Meaningful controls have labels; contrast is readable; touch targets are not tiny | Icon-only controls without labels or low-contrast gray-on-gray text |
+| 10 | Domain fidelity | Learning-plan pages preserve education copy, task structure, and APP navigation | CRM/work dashboard copy, office task tabs, customer communication cards |
+| 11 | Accessibility basics | Meaningful controls have labels; contrast is readable; touch targets are not tiny | Icon-only controls without labels or low-contrast gray-on-gray text |
 
 ## Output Workflow
 
@@ -37,6 +38,14 @@ Use this file as the final review pass before delivering optimized UI. These gat
 - Use color, opacity, or shadow for press feedback; do not animate size or position in a way that shifts surrounding layout.
 - Each screen should have one clear primary action. Secondary actions must be visually quieter.
 - Use functional decoration only: atmosphere, gradients, and illustrations should support hierarchy or state, not compete with content.
+
+## Domain Fidelity QA
+
+- Keep page semantics in the AI自主学习系统 domain: learning plans, subjects, courses, knowledge points, progress,作文批改, reports, and history.
+- Do not replace education copy with CRM, sales, work status, customer communication, office schedule, or generic productivity wording.
+- For `学习计划-未完成`, the page must show `学习计划` / `全部课程`, assistant study reminder, month plan calendar, subject legend, course task cards, and bottom tabs `首页`、`学习`、`我的`.
+- Unfinished course cards should use subject tag, knowledge point, course title, star/progress indicator, time progress, and play action.
+- Reject implementations that show `Hi, Sorcerer`, `今日安排`, `数据看板`, `代办事项`, `工作状态`, `CRM`, `办公`, `消息`, client报价沟通, or vertical schedule bars for this learning-plan page.
 
 ## Touch And Interaction QA
 
@@ -144,6 +153,7 @@ Use this pattern as a starting point, then adapt dimensions to the exact compone
 - [ ] Structural icons use a consistent vector/icon style, not emoji.
 - [ ] Primary and secondary text remain readable against their card or page backgrounds.
 - [ ] Color is not the only way important state or meaning is communicated.
+- [ ] Learning-plan screens do not drift into CRM/work schedule semantics or unrelated tab labels.
 - [ ] Selected, disabled, loading, locked, completed, and error states are distinguishable.
 - [ ] The page has been checked at 375px or 390px width.
 - [ ] The result still matches the AI自主学习系统 visual language in `ui-style-guide.md`.
