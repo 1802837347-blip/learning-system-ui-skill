@@ -90,7 +90,8 @@ const config: Config = {
         "ls-correction-headline": "var(--ls-gradient-correction-headline)",
         "ls-stage-blue": "var(--ls-gradient-stage-blue)",
         "ls-stage-warm": "var(--ls-gradient-stage-warm)",
-        "ls-stage-red": "var(--ls-gradient-stage-red)"
+        "ls-stage-red": "var(--ls-gradient-stage-red)",
+        "ls-statusbar-light": "var(--ls-statusbar-asset-light)"
       },
       fontFamily: {
         ls: "var(--ls-font-primary)",
@@ -184,6 +185,17 @@ const config: Config = {
         "ls-tabbar": "var(--ls-tabbar-height)",
         "ls-titlebar": "var(--ls-title-bar-height)",
         "ls-statusbar": "var(--ls-status-bar-height)",
+        "ls-statusbar-w": "var(--ls-statusbar-width)",
+        "ls-statusbar-h": "var(--ls-statusbar-height)",
+        "ls-statusbar-time-x-app": "var(--ls-statusbar-time-x-app)",
+        "ls-statusbar-time-x-legacy": "var(--ls-statusbar-time-x-legacy)",
+        "ls-statusbar-time-top": "var(--ls-statusbar-time-top)",
+        "ls-statusbar-cellular-w": "var(--ls-statusbar-cellular-width)",
+        "ls-statusbar-cellular-h": "var(--ls-statusbar-cellular-height)",
+        "ls-statusbar-wifi-w": "var(--ls-statusbar-wifi-width)",
+        "ls-statusbar-wifi-h": "var(--ls-statusbar-wifi-height)",
+        "ls-statusbar-battery-w": "var(--ls-statusbar-battery-width)",
+        "ls-statusbar-battery-h": "var(--ls-statusbar-battery-height)",
         "ls-plan-card": "var(--ls-plan-card-width)",
         "ls-course-cover-w": "var(--ls-course-cover-width)",
         "ls-course-cover-h": "var(--ls-course-cover-height)",
