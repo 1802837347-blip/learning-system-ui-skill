@@ -69,8 +69,22 @@ const config: Config = {
             filter: "var(--ls-history-filter-bg)",
             divider: "var(--ls-history-row-divider)"
           },
+          composition: {
+            score: "var(--ls-composition-score-text)",
+            title: "var(--ls-composition-title-text)",
+            time: "var(--ls-composition-time-text)"
+          },
           feedback: {
             upload: "var(--ls-feedback-upload-bg)"
+          },
+          remap: {
+            primary: "var(--ls-remap-primary-action)",
+            score: "var(--ls-remap-score-fill)",
+            "score-soft": "var(--ls-remap-score-soft-fill)",
+            tag: "var(--ls-remap-tag-fill)",
+            "tag-text": "var(--ls-remap-tag-text)",
+            "detail-border": "var(--ls-remap-detail-border)",
+            "secondary-action": "var(--ls-remap-secondary-action-text)"
           }
         }
       },
@@ -91,7 +105,18 @@ const config: Config = {
         "ls-stage-blue": "var(--ls-gradient-stage-blue)",
         "ls-stage-warm": "var(--ls-gradient-stage-warm)",
         "ls-stage-red": "var(--ls-gradient-stage-red)",
-        "ls-statusbar-light": "var(--ls-statusbar-asset-light)"
+        "ls-statusbar-light": "var(--ls-statusbar-asset-light)",
+        "ls-statusbar-white": "var(--ls-statusbar-asset-white)",
+        "ls-composition-badge-valued": "var(--ls-asset-composition-badge-valued)",
+        "ls-composition-badge-empty": "var(--ls-asset-composition-badge-empty)",
+        "ls-composition-empty-no-content": "var(--ls-asset-composition-empty-no-content)",
+        "ls-composition-tag-locked": "var(--ls-asset-composition-tag-locked)",
+        "ls-composition-tag-rank-1": "var(--ls-asset-composition-tag-rank-1)",
+        "ls-composition-tag-rank-2": "var(--ls-asset-composition-tag-rank-2)",
+        "ls-composition-tag-rank-3": "var(--ls-asset-composition-tag-rank-3)",
+        "ls-composition-tag-rank-4": "var(--ls-asset-composition-tag-rank-4)",
+        "ls-composition-tag-rank-5": "var(--ls-asset-composition-tag-rank-5)",
+        "ls-remap-primary": "var(--ls-remap-primary-action-gradient)"
       },
       fontFamily: {
         ls: "var(--ls-font-primary)",
@@ -224,6 +249,19 @@ const config: Config = {
         "ls-camera-preview-h": "var(--ls-camera-preview-height)",
         "ls-composition-entry-w": "var(--ls-composition-entry-width)",
         "ls-composition-entry-h": "var(--ls-composition-entry-height)",
+        "ls-composition-rank-tag-w": "var(--ls-composition-rank-tag-width)",
+        "ls-composition-rank-tag-h": "var(--ls-composition-rank-tag-height)",
+        "ls-composition-locked-tag-w": "var(--ls-composition-locked-tag-width)",
+        "ls-composition-locked-tag-h": "var(--ls-composition-locked-tag-height)",
+        "ls-composition-medal-w": "var(--ls-composition-medal-width)",
+        "ls-composition-medal-h": "var(--ls-composition-medal-height)",
+        "ls-composition-single-card-px": "var(--ls-composition-single-card-padding-x)",
+        "ls-composition-single-card-py": "var(--ls-composition-single-card-padding-y)",
+        "ls-composition-single-card-gap": "var(--ls-composition-single-card-gap)",
+        "ls-composition-list-score-col": "var(--ls-composition-list-score-column)",
+        "ls-composition-list-item-px": "var(--ls-composition-list-item-padding-x)",
+        "ls-composition-list-item-py": "var(--ls-composition-list-item-padding-y)",
+        "ls-composition-list-item-gap": "var(--ls-composition-list-item-gap)",
         "ls-course-catalog-top": "var(--ls-course-catalog-sheet-top)",
         "ls-course-header-h": "var(--ls-course-header-height)",
         "ls-course-title-x": "var(--ls-course-title-x)",
@@ -331,6 +369,13 @@ const config: Config = {
         "ls-audio-primary-h": "var(--ls-audio-primary-height)",
         "ls-report-page": "var(--ls-report-page-width)",
         "ls-history-sheet-top": "var(--ls-history-sheet-top)",
+        "ls-history-header-h": "var(--ls-history-header-height)",
+        "ls-history-month-pill-w": "var(--ls-history-month-pill-width)",
+        "ls-history-month-pill-h": "var(--ls-history-month-pill-height)",
+        "ls-history-row-h": "var(--ls-history-list-row-height)",
+        "ls-history-list-x": "var(--ls-history-list-x)",
+        "ls-history-list": "var(--ls-history-list-width)",
+        "ls-history-empty-top": "var(--ls-history-empty-top)",
         "ls-history-month-sheet": "var(--ls-history-month-sheet-height)",
         "ls-feedback-sheet": "var(--ls-feedback-sheet-height)",
         "ls-feedback-chip": "var(--ls-feedback-chip-height)",
