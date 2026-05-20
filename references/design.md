@@ -12,6 +12,7 @@ This document covers:
 - `学习计划专项 / 2.制定计划流程`
 - `学习计划专项 / 3.学习计划日历与全部课程`
 - `作文批改 / 作文批改`
+- `作文批改 / 分数档次与列表` using Figma nodes `4424:491` and `5201:3715`
 
 ## AI Agent Compliance Protocol
 
@@ -27,15 +28,29 @@ Required agent behavior:
 6. If a required real image asset is unavailable, use a neutral placeholder with the same size and layout, and label it as an asset placeholder in code comments only. Do not replace it with a different brand, mascot, cartoon person, or unrelated illustration.
 7. Treat source illustrations, icons, tabbar icons, course covers, photos, and report previews as locked visual assets when optimizing an existing screenshot or Figma node. If no bundled asset or clearly better product asset exists, crop, extract, or faithfully trace the source asset and place it back into the optimized UI instead of drawing a simplified replacement from scratch.
 8. Use the AI自主学习系统 status bar component for normal light app pages by placing [assets/status-light.svg](../assets/status-light.svg) at the top of the canvas. Do not substitute generic iOS status bars, yellow battery pills, or mismatched signal/Wi-Fi/battery drawings.
-9. After implementation, run the QA checklist and explicitly fix all failed items before final output.
+9. Do not inherit colors from arbitrary reference screenshots. Source screenshots provide layout, information, and extractable assets only. UI colors must come from this document's tokens and stay cyan/blue-dominant unless this document explicitly assigns a warm token to that exact component.
+10. For source illustrations/icons, preserve geometry/detail but remap non-content warm fills/strokes to cyan/blue tokens when they conflict with the target system. Preserve natural colors only for real content media such as photos, course covers,作文 manuscript images, report previews, and other evidence-like assets.
+11. After implementation, run the QA checklist and explicitly fix all failed items before final output.
 
-For tests, a result should be considered failed if it uses an unlisted brand name, adds a subtitle not present in the source page, changes the required page order, replaces real course covers with generic cartoon cards, redraws source illustrations/icons into lower-fidelity substitutes, uses a non-system status bar on normal app pages, or hides any bottom content behind the tabbar.
+For tests, a result should be considered failed if it uses an unlisted brand name, adds a subtitle not present in the source page, changes the required page order, replaces real course covers with generic cartoon cards, redraws source illustrations/icons into lower-fidelity substitutes, uses a non-system status bar on normal app pages, inherits orange/brown/warm source colors into a cyan/blue target page, or hides any bottom content behind the tabbar.
 
 ## Product Character
 
 The interface is a mobile-first learning mini-program for high-school students. It should feel calm, precise, trustworthy, and study-focused. The first viewport should always show useful learning content or the current task state, not a marketing landing page.
 
 Use a pale cool system background, blue-cyan atmosphere, soft gradient cards, white content cards, compact status tags, and direct action copy. Visual polish comes from containment, spacing, state clarity, and subject-specific color, not from decorative density.
+
+## Color Source Policy
+
+- This design system is color-authoritative. When optimizing from an arbitrary screenshot, never use the screenshot's palette as input for UI colors.
+- Preserve screenshot content, layout hierarchy, component count, and extractable image/icon assets, but remap all UI colors to AI自主学习系统 tokens.
+- For decorative/source UI illustrations and icons, extract the original shapes/details first, then recolor any warm non-content fills/strokes into the cyan/blue token family. Do not keep orange/peach/brown illustration colors just because they appear in the source screenshot.
+- Default target palette is cyan/blue dominant: pale cyan top atmosphere, white cards, blue/cyan selected states, blue gradient primary tabs/CTAs, blue outlined secondary actions, and gray-blue muted text.
+- Forbidden source-color leakage: orange, brown, beige, peach, amber, warm cream, and warm gradients copied from a reference screenshot into cards, borders, score pills, category pills, or CTAs.
+- Warm tokens in this file are exceptions, not defaults. Use them only for the specific components that explicitly require them, such as existing commerce/update badges, course price/sale badges, or APP bottom-tab active orange where that page pattern says so.
+- For作文批改 statistics, history, report-list, and batch-correction management pages, score pills, category tags, segmented controls, report buttons, and card detail borders should use the cyan/blue token family unless the exact target Figma node says otherwise.
+- If a source UI uses orange to indicate a score or action, map it to a skill token such as `#00639E`, `#00A7D8`, `#0EC5FF`, `#CCE9FB`, or the stepper/action blue gradient instead of preserving the warm color.
+- Exception: bundled composition rank assets (`tag-rank-1.svg` through `tag-rank-5.svg`, `tag-locked.svg`, `badge-valued.svg`, `badge-empty.svg`) preserve their own target colors. Do not reuse those warm/gold rank colors for surrounding UI.
 
 ## Screen Model
 
@@ -112,12 +127,36 @@ Carry these colors through calendar dots, subject tags, legends, and knowledge/c
 - Preserve source visual assets before improving them. Original screenshots and Figma nodes can contain product-specific illustration systems, tabbar icons, course covers, decorative module icons, and expand/play/status icons that are part of the UI language.
 - Asset replacement priority: source-cropped/extracted bitmap asset, existing bundled product asset, faithful traced SVG/vector, then a neutral placeholder only when the source asset is absent or unusable.
 - Do not hand-draw a new simplified icon or illustration when the source already provides one and the replacement is not clearly better. Low-fidelity redraws, mismatched stroke styles, generic cartoons, emoji, or unrelated icon families fail the design contract.
-- When extracting from a screenshot, keep the source asset's proportions, opacity, color relationship, and visual weight. Clean cropping or light retouching is allowed; changing the asset's style family is not.
+- When extracting from a screenshot, keep the source asset's proportions, opacity, geometry, and visual weight. Clean cropping or light retouching is allowed; changing the asset's style family is not. For decorative UI icons/illustrations, recolor conflicting warm fills/strokes into cyan/blue tokens while preserving detail.
+
+### Composition Rank Assets
+
+Use the bundled assets for作文 score/rank pages:
+
+- `assets/composition/badge-valued.svg`: 104px by 108px valued medal.
+- `assets/composition/badge-empty.svg`: 104px by 108px no-value medal.
+- `assets/composition/empty-no-content.svg`: 132px by 74px no-content fallback.
+- `assets/composition/tag-locked.svg`: 40px by 44px `待解锁`.
+- `assets/composition/tag-rank-1.svg` to `tag-rank-5.svg`: 40px by 18px `一类` to `五类`.
+- `assets/composition/reference-history-records.png` and `assets/composition/reference-history-empty.png`: visual references for `历史批改记录` records and empty states.
+
+Do not redraw these assets or replace them with CSS pills. Their exact gradient, compact shape, and text treatment are part of the page style extracted from the target Figma nodes.
+
+### Composition Score And List Layout
+
+- Single data display pages use an immersive card: left side contains the title, metric, and supporting copy; right side contains the medal/rank asset.
+- The card uses a cool white or pale cyan-white surface, 16px to 20px radius, soft cool shadow, 16px to 20px horizontal padding, and 12px to 18px gap between text and medal.
+- Typography is compact: labels 12px to 14px, titles 15px to 17px Semibold, metric numbers 28px to 36px bold when they are the primary data.
+- `历史批改记录` uses a full cyan/teal header and white rounded-top sheet, not a normal card stack.
+- 作文列表 uses a two-column list item: left column is score plus rank tag; right column is title plus time.
+- List item title uses 14px to 16px Semibold, time uses 12px to 13px gray-blue, score uses 22px to 28px bold numeric style.
+- Preserve source title/time/score/category copy exactly. Do not swap left and right columns.
 
 ### System Status Bar
 
 - Use this status bar on normal AI自主学习系统 app pages, including home, learning-plan, all-courses, plan creation, knowledge-point, report, history, auth, and modal states.
 - Light status bar asset: [assets/status-light.svg](../assets/status-light.svg). This 390px by 44px SVG is the source of truth for the normal app status bar.
+- White status bar asset: [assets/status-white.svg](../assets/status-white.svg). Use this for full cyan/blue immersive header pages such as `历史批改记录`.
 - Place the SVG at the top of the canvas at full width on 390px pages. On 375px pages, scale proportionally to 375px width and preserve its 44px vertical area relationship.
 - It sits at the top safe area and overlays or precedes the page's pale cyan atmosphere. It should not be placed inside a card.
 - The SVG already includes `9:41`, black cellular bars, black Wi-Fi, and black battery. Do not redraw or restyle those sub-icons when the asset is available.
