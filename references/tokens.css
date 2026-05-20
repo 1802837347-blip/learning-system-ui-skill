@@ -162,6 +162,32 @@
   --ls-card-width-legacy: 347px;
   --ls-card-width-app: 362px;
 
+  /* System status bar */
+  --ls-statusbar-asset-light: url("../assets/status-light.svg");
+  --ls-statusbar-width: var(--ls-canvas-app-width);
+  --ls-statusbar-height: var(--ls-status-bar-height);
+  --ls-statusbar-bg: transparent;
+  --ls-statusbar-time-text: "9:41";
+  --ls-statusbar-time-x-app: 28px;
+  --ls-statusbar-time-x-legacy: 28px;
+  --ls-statusbar-time-top: 14px;
+  --ls-statusbar-time-size: var(--ls-text-xl);
+  --ls-statusbar-time-weight: var(--ls-font-bold);
+  --ls-statusbar-icon-color-light: var(--ls-color-black);
+  --ls-statusbar-icon-color-dark: var(--ls-color-white);
+  --ls-statusbar-right-padding-app: 28px;
+  --ls-statusbar-right-padding-legacy: 24px;
+  --ls-statusbar-group-gap: 10px;
+  --ls-statusbar-cellular-width: 21px;
+  --ls-statusbar-cellular-height: 14px;
+  --ls-statusbar-wifi-width: 17px;
+  --ls-statusbar-wifi-height: 12px;
+  --ls-statusbar-battery-width: 27px;
+  --ls-statusbar-battery-height: 13px;
+  --ls-statusbar-battery-radius: 4px;
+  --ls-statusbar-battery-stroke: 2.5px;
+  --ls-statusbar-battery-fill: transparent;
+
   /* Home entry page recipe */
   --ls-home-entry-width: 375px;
   --ls-home-entry-statusbar-height: 44px;
