@@ -18,6 +18,7 @@ Use this file to map arbitrary target pages into the AI自主学习系统 visual
 - Cards and controls should feel rounded and soft, but not childish: common radii are 8px, 10px, 12px, 16px, and 18px.
 - Icons should be product-like SVG/assets, not emoji.
 - Normal light app pages use `SystemStatusBar` from `component-specs.md`, backed by `assets/status-light.svg`; do not redraw or restyle the status bar.
+- Arbitrary reference screenshots are not palette sources. Preserve their content and structure, but recolor UI fills, borders, CTAs, tabs, and badges with AI自主学习系统 cyan/blue tokens unless a page pattern explicitly defines another token.
 - Do not invent new text, modules, or states when optimizing a Figma/screenshot target.
 
 ## Pattern: Home
@@ -185,6 +186,104 @@ Core rules:
 - Audio/control bars must not hide content.
 - Preserve annotation colors and report stages.
 
+## Pattern: Composition Batch Statistics
+
+Use for `批改统计`, 作文批改历史, report-list, and batch-correction management pages.
+
+Required structure:
+
+1. `SystemStatusBar` using `assets/status-light.svg`
+2. Native title bar with back chevron, centered `批改统计`, and mini-program capsule when present
+3. Segmented tabs for states such as `已领取15/分享30`, `待批改5`, `完成批改10`
+4. Scrollable report list using `CompositionReportListCard`
+5. Bottom tabbar when the source shell includes it
+
+Card required structure:
+
+1. Primary row: avatar, user name, phone number, and `查看报告` action when the report is available
+2. Detail panel: `作文标题` and `提交时间`
+3. Result row: score such as `42分` and category such as `3档`
+
+Core rules:
+
+- Preserve the source's visible names, phone numbers, counts, tab labels, titles, times, scores, and categories.
+- Do not simplify cards to only avatar/name/phone. Missing `查看报告`, `作文标题`, `提交时间`, score, or category fails this pattern.
+- Use default avatar assets when a real avatar is unavailable; do not invent decorative profile art.
+- Use cyan/blue palette mapping only: blue score pills, pale-blue category tags, blue outlined `查看报告`, and pale-blue detail borders.
+- Do not inherit source orange, peach, beige, or brown colors into the list UI.
+- Decorative icons, avatars, and empty-state illustrations should preserve source geometry or bundled assets, but any warm non-content fills/strokes must be recolored to cyan/blue tokens.
+- Keep list card typography compact: names around 16px to 18px, phone/details around 13px to 15px, not oversized.
+
+## Pattern: Composition Score Snapshot
+
+Use when the page is close to the Figma score/rank pages `4424:491` or `5201:3715`, or when the source/product requirement is a single作文 metric, category result, rank summary, score snapshot, no-value score state, or locked score/category state.
+
+Required structure:
+
+1. `SystemStatusBar` using `assets/status-light.svg`
+2. Native title bar if the source page has one
+3. Cool cyan/blue page atmosphere
+4. `CompositionSingleDataImmersiveCard`
+5. Supporting detail rows/cards only when present in the source
+6. No-content fallback using `assets/composition/empty-no-content.svg` when the source has no data
+
+Core rules:
+
+- Match the target page's calm cyan/blue system, compact type, white/pale card surfaces, soft shadows, and generous mobile spacing.
+- Single data card layout is left title/data and right medal/badge. Do not convert it into a centered dashboard card.
+- Use `badge-valued.svg` when the data has a value and `badge-empty.svg` when it has no value.
+- Use rank assets `tag-rank-1.svg` through `tag-rank-5.svg` for `一类` to `五类`; use `tag-locked.svg` for `待解锁`.
+- Preserve exact visible labels, numbers, scores, dates, and explanatory copy from the source.
+- Warm colors inside these SVG assets are allowed as target assets; surrounding UI remains cyan/blue.
+
+## Pattern: Composition Correction History Records
+
+Use when the target is `历史批改记录`, monthly作文批改 records, month-filtered correction history, or when the UI closely matches [reference-history-records.png](../assets/composition/reference-history-records.png) / [reference-history-empty.png](../assets/composition/reference-history-empty.png).
+
+Required structure:
+
+1. Full cyan/teal gradient header, 390px wide, down to y 212px
+2. White `SystemStatusBar` using `assets/status-white.svg`
+3. Transparent title bar with white back chevron and centered `历史批改记录`
+4. Monthly summary: left white copy, right monthly badge (`badge-valued.svg` or `badge-empty.svg`)
+5. White rounded-top sheet starting at y 212px
+6. Sheet header: `批改记录` left, month pill `2026年4月` right
+7. Records state: list rows using `CompositionEssayRecordListItem`
+8. Empty state: centered `empty-no-content.svg` and `暂无批改记录`
+
+Record row rules:
+
+- Use the image's exact hierarchy: left score plus rank/locked asset, right title plus time/state, far-right chevron.
+- Rows are separated by 1px dividers and sit directly on the white sheet, not inside independent rounded cards.
+- Score text is black and compact; category labels must use the bundled SVG assets.
+- Locked row replaces score/category with `tag-locked.svg` and uses subtitle `完成讲解即可解锁完整批改报告` when present.
+- Do not add avatars, phone numbers, or `查看报告` buttons to this page.
+- Keep the month filter visible even when there are no records.
+
+## Pattern: Composition Essay Record List
+
+Use when the source/product requirement is a作文列表, 作文批改列表, 历史作文记录, report/essay record list, or repeated items where each row contains a score/category plus title/time.
+
+Required structure:
+
+1. `SystemStatusBar` using `assets/status-light.svg`
+2. Native title/filter/tab area when present
+3. Scrollable list using `CompositionEssayRecordListItem`
+4. Empty state using `assets/composition/empty-no-content.svg` when the list has no records
+
+Card/list item structure:
+
+1. Left column: score such as `42分` plus rank tag `一类` to `五类` or `待解锁`
+2. Right column:作文标题/title on top and提交时间/time below
+
+Core rules:
+
+- Match the exact left-score/right-title-time hierarchy. Do not use avatar/name/phone or report-button hierarchy unless the source actually contains it.
+- Keep score/rank on the left and title/time on the right.
+- Use bundled rank SVGs for category tags; do not draw CSS text pills.
+- Preserve exact titles, scores, categories, and times.
+- Use cool white cards, gray-blue detail text, and blue/cyan score emphasis.
+
 ## Pattern: Modal And Sheet
 
 Use for setup, score selection, date picker, knowledge-point selection, confirmations, and feedback.
@@ -207,6 +306,12 @@ If the source page is not one of the known screens:
 - Gated practice/challenge -> Short-Answer Challenge.
 - Multi-step setup/form -> Plan Creation Flow.
 - Photo/report/writing feedback -> Composition Correction.
+- `历史批改记录` or monthly correction records -> Composition Correction History Records.
+- Single作文 score/category summary -> Composition Score Snapshot.
+- 作文列表 or repeated title/time rows with score/category -> Composition Essay Record List.
 - Dialog/picker -> Modal And Sheet.
+
+For `批改统计`, 作文批改历史, report-list, or batch-correction management screens, map to Composition Batch Statistics.
+If a作文 page has no avatar/phone/report action and instead shows score/category with title/time, map to Composition Essay Record List instead of Composition Batch Statistics.
 
 When uncertain, use shared tokens and components, but keep the source hierarchy. The goal is style transfer, not content redesign.
