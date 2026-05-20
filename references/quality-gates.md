@@ -23,6 +23,8 @@ Use this file as the final review pass before delivering optimized UI. These gat
 | 15 | Step rail alignment | Timeline/step nodes, lock nodes, vertical line, and cards share a stable grid | Nodes drifting away from cards or locks not centered on the rail |
 | 16 | Accessibility basics | Meaningful controls have labels; contrast is readable; touch targets are not tiny | Icon-only controls without labels or low-contrast gray-on-gray text |
 | 17 | System status bar | Normal light app pages use bundled `assets/status-light.svg` at 390px by 44px or proportional width | Yellow battery pills, generic iOS bars, self-redrawn status icons, mismatched icon weights, or wrong status-bar chrome |
+| 18 | Palette lock | Arbitrary screenshot colors are remapped to AI自主学习系统 cyan/blue tokens | Orange/brown/beige/peach source-color leakage into badges, borders, CTAs, cards, or tabs |
+| 19 | Composition batch card completeness | Completed report cards include avatar, name, phone, report action, title, submit time, score, and category | Simplified avatar/name/phone-only cards or missing second-level report details |
 
 ## Output Workflow
 
@@ -32,10 +34,11 @@ Use this file as the final review pass before delivering optimized UI. These gat
 4. Reserve space for fixed headers, bottom tabbars, sticky CTA bars, and the iPhone home indicator before placing scroll content.
 5. Review each card from outside to inside: parent size, padding, row gaps, text wrapping, metrics, badges, action buttons.
 6. Review source visual assets before replacing them: keep screenshot/Figma illustrations, tabbar icons, decorative icons, course covers, photos, and report previews by cropping/extracting or faithfully tracing them when no better product asset is available.
-7. Test the narrow target width first: 375px for compact pages, 390px for newer APP learning-plan pages.
-8. If any required text or control is clipped, increase container space or adjust layout. Do not hide the issue with `overflow: hidden`.
-9. Check interaction states: pressed, selected, disabled, loading, locked, expanded, and empty.
-10. For HTML output, visually inspect the rendered page before final delivery whenever a browser is available.
+7. Review color mapping: source screenshot colors must not survive unless they are explicit skill target tokens. Replace warm source colors with cyan/blue semantic tokens.
+8. Test the narrow target width first: 375px for compact pages, 390px for newer APP learning-plan pages.
+9. If any required text or control is clipped, increase container space or adjust layout. Do not hide the issue with `overflow: hidden`.
+10. Check interaction states: pressed, selected, disabled, loading, locked, expanded, and empty.
+11. For HTML output, visually inspect the rendered page before final delivery whenever a browser is available.
 
 ## Hard Failures
 
@@ -45,6 +48,8 @@ If any item below occurs, revise before delivery:
 - A source icon is missing, replaced by emoji, or replaced by a visibly unrelated shape.
 - A source illustration, tabbar icon, decorative module icon, course cover, photo, or report preview is replaced by a lower-fidelity self-drawn substitute when the original asset could have been cropped, extracted, or faithfully traced.
 - A normal light app page uses a generic, mismatched, or self-redrawn status bar instead of bundled `assets/status-light.svg`.
+- Orange, brown, beige, peach, amber, or warm gradients from an arbitrary source screenshot appear in a cyan/blue target page's score pills, category pills, report buttons, card detail borders, tabs, or primary CTAs.
+- A `批改统计` completed-report card omits `查看报告`, `作文标题`, `提交时间`, score, or category/dang when that information exists in the source.
 - A gradient panel, CTA, or selected state is flattened into a plain block when the source uses gradient/depth.
 - A component listed in `component-specs.md` has obviously wrong size, radius, spacing, or state treatment.
 - Course cards become schedule cards, CRM cards, or generic task cards.
@@ -55,7 +60,7 @@ If any item below occurs, revise before delivery:
 ## Professional UI Baseline
 
 - Use one visual language per screen. Do not mix unrelated icon styles, shadows, gradients, or border treatments.
-- Use semantic tokens from `ui-style-guide.md` before inventing new colors.
+- Use semantic tokens from `ui-style-guide.md` before inventing new colors, and do not sample colors from arbitrary source screenshots.
 - Keep elevation consistent: cards, sheets, modals, sticky bars, and floating controls should not each use unrelated shadow styles.
 - Use vector icons or existing product icons for structural controls. Do not use emoji as navigation, tabbar, toolbar, or action icons.
 - Keep icon stroke width consistent within the same hierarchy, usually 1.5px to 2px.
@@ -106,11 +111,11 @@ If any item below occurs, revise before delivery:
 
 ## Gradient Module QA
 
-- Any source gradient card, intro module, recommendation banner, or CTA must preserve its hue direction, border, radius, and shadow relationship.
+- Any target-system gradient card, intro module, recommendation banner, or CTA must preserve the skill's hue direction, border, radius, and shadow relationship. Do not preserve arbitrary source screenshot hue when it conflicts with cyan/blue target tokens.
 - Do not flatten a blue/lavender intro panel into a plain light-blue rectangle.
 - If a gradient module has a decorative book/card/assistant icon, include a meaningful inline SVG or asset fallback in the same corner.
 - Text inside gradient modules must stay vertically centered with enough line-height and padding; it cannot touch borders or overlap decorative icons.
-- Fixed CTA pills must match the source color family. A blue-gradient `立即购买` should not become the generic black action button.
+- Fixed CTA pills must match the skill target color family. A blue-gradient `立即购买` should not become the generic black action button, and an arbitrary source orange CTA should not override the cyan/blue palette lock.
 
 ## Step Rail QA
 
@@ -184,6 +189,59 @@ If any item below occurs, revise before delivery:
 - Use stable line-height. Dense card text should still have enough line box to avoid clipping Chinese characters.
 - If a special font is missing, use fallback fonts without collapsing layout or hiding text.
 
+## Palette Lock QA
+
+- Arbitrary source screenshots are not color references. Use their content, layout, and assets, then recolor UI surfaces to the AI自主学习系统 token palette.
+- The default page mood is cool: pale cyan atmosphere, white cards, blue/cyan selected states, blue gradient CTAs, blue outlined secondary actions, and gray-blue muted text.
+- Warm source colors fail unless explicitly required by the target page spec: orange score pills, peach card borders, beige category tags, brown labels, orange report buttons, and warm card glows should be remapped.
+- Recommended remaps:
+  - Primary warm action -> blue gradient `#00B3E8` to `#0288FF` or subject blue `#00639E`.
+  - Warm score pill -> solid cyan/blue `#00A7D8` or pale blue `#CCE9FB` with blue text.
+  - Peach detail border -> `rgba(0,167,216,0.18)` or `#CCE9FB`.
+  - Beige category tag -> pale blue/gray fill with `#00639E` or `#071D39` text.
+- Decorative warm icon/illustration fills -> cyan/blue tokens such as `#00639E`, `#00A7D8`, `#0EC5FF`, `#BFF9FF`, `#CCE9FB`, or gray-blue neutrals.
+- Scan CSS/HTML for warm literals such as `#F97316`, `#FF8`, `#FF9`, `#F59`, `orange`, `amber`, `peach`, `brown`, `beige`, `tan`, and replace them unless they correspond to an explicit allowed token.
+
+## Composition Batch Statistics QA
+
+- Use this for `批改统计`, 作文批改历史, report-list, and batch-correction management pages.
+- Each completed report card must include, when present in the source: avatar, user name, phone number, `查看报告`, `作文标题`, `提交时间`, score, and category/dang.
+- Card hierarchy must be preserved:
+  - First level: avatar, user information, and report action.
+  - Second level: title/time detail panel plus score/category result row.
+- Names should be list-card scale, usually 16px to 18px, and phone/detail text should be 13px to 15px. Oversized profile-card typography fails.
+- The active tab should not be taller than needed; segmented controls should be compact and not consume excessive vertical space.
+- Page background gradients should continue naturally to the page bottom or into the content sheet; they must not visibly stop at the tab bar boundary.
+- Default avatars must come from provided/bundled assets when available; do not create decorative profile art that changes the product style.
+
+## Composition Score Snapshot QA
+
+- Use this for single作文数据展示页, score/rank summary pages, category result pages, no-value score states, and locked score/category states.
+- The primary card must be immersive: left side title/data/copy, right side medal/rank asset.
+- Use `assets/composition/badge-valued.svg` for valued medal states and `assets/composition/badge-empty.svg` for no-value medal states.
+- Use `assets/composition/tag-rank-1.svg` through `tag-rank-5.svg` for `一类` through `五类`; use `assets/composition/tag-locked.svg` for `待解锁`.
+- Use `assets/composition/empty-no-content.svg` for no-content fallbacks.
+- Surrounding UI must remain cyan/blue; warm rank asset colors are allowed only inside the bundled SVG assets.
+- Fail if the page replaces the medal/rank assets with emoji, generic trophies, CSS pills, or newly drawn badges.
+
+## Composition Essay Record List QA
+
+- Use this for作文列表, 作文批改列表, 历史作文记录, and repeated essay records where rows contain score/category plus title/time.
+- Each list item must use the hierarchy: left score plus rank/locked asset, right title plus time.
+- Score/rank must not move to the right side, and title/time must not move below avatar/name structures unless the source includes avatars.
+- Use the rank SVG assets for `一类` to `五类` and `待解锁`; do not recreate them as text pills.
+- Preserve every visible score, title, category, and time from the source.
+- Empty list uses `empty-no-content.svg`.
+
+## Composition Correction History Records QA
+
+- Use this for `历史批改记录` and monthly correction history pages matching the exported target references.
+- Header must be a full cyan/teal gradient with white status bar `assets/status-white.svg`, white back chevron, and centered `历史批改记录`.
+- White sheet must start around y 212px with 20px top corner radius. It must not be a floating card.
+- With-records state must show monthly copy, `badge-valued.svg`, `批改记录`, month filter, row dividers, score/rank left column, title/time right column, and chevrons.
+- Empty state must keep the same header and sheet header/month filter, then show `empty-no-content.svg` and `暂无批改记录` centered in the sheet.
+- Fail if avatars/phone/report buttons from other report-list patterns appear on this page.
+
 ## Responsive And Safe-Area QA
 
 - Verify phone-width output at 375px and 390px. For HTML previews, no horizontal scroll should appear.
@@ -218,7 +276,8 @@ If any item below occurs, revise before delivery:
 - Treat作文 photos, course covers, report previews, teacher/product images, source illustrations, tabbar icons, decorative module icons, and status/action icons as primary content assets.
 - If a real image or source icon/illustration is available, preserve it; do not redraw it as a placeholder or a simplified substitute.
 - Asset replacement priority is: source-cropped/extracted bitmap, existing bundled product asset, faithful traced SVG/vector, then neutral placeholder only when the source asset is absent or unusable.
-- When extracting from a screenshot, preserve the asset's proportions, opacity, color relationship, softness, and visual weight. Cropping and light cleanup are allowed; changing the icon or illustration style family is not.
+- When extracting from a screenshot, preserve the asset's proportions, opacity, geometry, softness, and visual weight. Cropping and light cleanup are allowed; changing the icon or illustration style family is not.
+- For decorative UI icons/illustrations, source geometry is locked but source warm palette is not. Recolor orange/peach/brown/beige fills and strokes into cyan/blue tokens unless the asset is real content media such as a course cover, photo, manuscript, or report preview.
 - If no real作文 image is available, create a believable manuscript fallback: grid paper, varied handwritten Chinese strokes, red score marks, colored underlines, correction circles, and numbered annotation dots.
 - A fallback essay manuscript must contain visual texture and sentence-like writing density. Repeated gray bars alone are a failed output.
 - Keep annotated lines aligned to plausible manuscript rows; annotations should look attached to the essay, not floating over an empty skeleton.
@@ -275,13 +334,21 @@ Use this pattern as a starting point, then adapt dimensions to the exact compone
 - [ ] All source icons are represented by real SVG/icon/CSS fallbacks; none are silently missing.
 - [ ] Browser/webview chrome is preserved when present, including domain pill and status controls.
 - [ ] Normal light app pages use bundled `assets/status-light.svg` for the AI自主学习系统 status bar.
+- [ ] Composition score/rank pages use bundled medal, rank, locked, and empty-state SVG assets from `assets/composition/`.
+- [ ] Single作文数据展示页 uses left title/data and right medal/rank asset inside an immersive card.
+- [ ] 作文列表 rows use left score plus rank/locked asset and right title plus time.
 - [ ] Back chevron shape and container match the source; no invented boxed button.
 - [ ] Font sizes are normalized to a 375px/390px CSS canvas and are not inflated from screenshot pixels.
 - [ ] Repeated rows use stable alignment columns for left rail, content, tags, progress, and lock/play icons.
-- [ ] Gradient modules preserve their source gradient, border, shadow, and decorative icon.
+- [ ] Gradient modules preserve the target system gradient, border, shadow, and decorative icon without inheriting arbitrary source hues.
 - [ ] Step/timeline rail nodes share one x-axis and align to their corresponding cards.
 - [ ] Primary and secondary text remain readable against their card or page backgrounds.
 - [ ] Color is not the only way important state or meaning is communicated.
+- [ ] Arbitrary source screenshot colors were not inherited; all UI colors come from AI自主学习系统 tokens and the page remains cyan/blue dominant.
+- [ ] No warm source-color leakage remains in score pills, category tags, card borders, report buttons, tabs, or primary CTAs.
+- [ ] `批改统计` cards keep the required two-level hierarchy and include report action, title/time, score, and category when those fields exist.
+- [ ] Management-list typography stays compact and does not turn names/phone numbers into oversized profile-card text.
+- [ ] Page/background gradient continues naturally behind content and is not visibly cut off at the tabbar.
 - [ ] Learning-plan screens do not drift into CRM/work schedule semantics or unrelated tab labels.
 - [ ] Selected, disabled, loading, locked, completed, and error states are distinguishable.
 - [ ] The page has been checked at 375px or 390px width.
