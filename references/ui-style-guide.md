@@ -232,7 +232,9 @@ History subject tag colors:
 ### Icon Rendering Rules
 
 - Basic structural icons must be rendered, not silently omitted.
-- Prefer inline SVG or the project icon library for: back chevron, dropdown caret, sparkle/diamond, expand/collapse chevron-in-circle, lock, play, close, calendar arrows, tabbar icons, status/help/share icons.
+- Prefer source-cropped/extracted assets first, then bundled assets, then faithful traced SVG/vector, then a simple fallback only when the source asset is absent or unusable.
+- For normal light app status bars, use bundled `assets/status-light.svg` directly. Do not redraw its `9:41`, cellular, Wi-Fi, or battery elements.
+- Prefer inline SVG or the project icon library for: back chevron, dropdown caret, sparkle/diamond, expand/collapse chevron-in-circle, lock, play, close, calendar arrows, tabbar icons, status/help/share icons when no source or bundled asset exists.
 - Keep one stroke style per screen: usually round caps/joins and 1.5px to 2px stroke.
 - If an icon asset is unavailable, draw a simple inline SVG fallback matching the reference instead of leaving a blank square or text-only control.
 - Icons must align visually to the text baseline or control centerline.
@@ -683,7 +685,7 @@ Previous-season review card:
   - Main text is near black `#071D39` or `#000`; muted metadata uses `#77838B`; secondary tab text uses `#6F7D7F`.
   - Top atmosphere and content sheet create the page depth; avoid extra heavy shadows or extra nested cards.
 - Top channel:
-  - Status bar height about 46px.
+  - Status bar uses bundled `assets/status-light.svg` on normal light pages, occupying the top 44px safe-area row.
   - `学习计划` active near x 23px, y about 56px, 19px display font, black-to-`#1251A9` gradient text, 1px letter spacing.
   - Active underline is cyan `#47EFF9`, about 53px by 8px, y about 74px, radius 4px.
   - `全部课程` secondary near x 124px, y about 61px, 17px Regular `#6F7D7F`.
