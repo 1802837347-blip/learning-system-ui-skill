@@ -41,10 +41,11 @@ Skip it for pure backend logic, database/API work, or non-visual automation.
 8. Preserve the user's original text and information architecture unless they explicitly ask for content changes.
 9. When outputting HTML or code, prefer resilient layout primitives: flex/grid, `box-sizing: border-box`, `min-height`, safe-area padding, and content-driven spacing.
 10. Treat real images, course covers,作文 photos, icons, and report previews as primary content assets. Preserve them when provided; create meaningful fallbacks only when assets are unavailable.
-11. If the source is a high-resolution screenshot, normalize it to a 375px or 390px CSS canvas before choosing font sizes, spacing, and icon sizes. Do not copy raw screenshot pixels as CSS pixels.
-12. If a Figma node or screenshot is provided, treat every visible text string, tab, date, subject legend item, card count, and icon family as locked unless the user asks to redesign content.
-13. For APP learning-plan screens, preserve the foundational UI tokens from the Figma reference: top tab selected style, assistant avatar/bubble, collapsed calendar heights and date states, course-card anatomy, and right play button style.
-14. Before final delivery, verify the screen at the target phone width and fix any oversized type, missing icons, overflow, clipping, hidden fixed-bar content, low-contrast text, tiny tap targets, or misaligned borders.
+11. When optimizing from a screenshot or existing UI, preserve the source illustration and icon style. If no bundled asset or clearly better product asset exists, extract/crop/trace the original illustration or icon from the source and place it back into the optimized UI; do not redraw a simplified replacement from scratch.
+12. If the source is a high-resolution screenshot, normalize it to a 375px or 390px CSS canvas before choosing font sizes, spacing, and icon sizes. Do not copy raw screenshot pixels as CSS pixels.
+13. If a Figma node or screenshot is provided, treat every visible text string, tab, date, subject legend item, card count, and icon family as locked unless the user asks to redesign content.
+14. For APP learning-plan screens, preserve the foundational UI tokens from the Figma reference: top tab selected style, assistant avatar/bubble, collapsed calendar heights and date states, course-card anatomy, and right play button style.
+15. Before final delivery, verify the screen at the target phone width and fix any oversized type, missing icons, overflow, clipping, hidden fixed-bar content, low-contrast text, tiny tap targets, or misaligned borders.
 
 ## Page Types
 
@@ -75,6 +76,7 @@ For every generated screen:
 - Before final output, check that no text, tag, button, icon, or border crosses its parent card edge or is clipped by insufficient height.
 - Tags and stage badges use a single clear fill plus one border; avoid doubled outlines, misaligned pseudo-element borders, or clipped gradient strokes.
 - Treat作文 photos as content assets, not decorative placeholders. If no real image asset is provided, create a believable handwritten essay sheet with Chinese text strokes, grid paper, score marks, and colored annotations; never replace the essay image with only generic horizontal bars.
+- Treat source illustrations and icons as locked visual assets during UI optimization. Prefer source-cropped PNG/WebP assets, traced SVGs that faithfully match the source, or existing bundled assets. Only create a new self-drawn fallback when the source asset is absent/unusable and no better replacement exists; the fallback must stay visually subordinate and must not degrade the original icon/illustration style.
 - Reuse bundled assets when available. For the APP learning-plan assistant avatar, use [assets/assistant-avatar.png](assets/assistant-avatar.png) at 40px visual size instead of redrawing a generic `AI` icon.
 
 For home-like pages:
