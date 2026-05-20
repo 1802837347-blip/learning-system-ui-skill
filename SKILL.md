@@ -42,10 +42,11 @@ Skip it for pure backend logic, database/API work, or non-visual automation.
 9. When outputting HTML or code, prefer resilient layout primitives: flex/grid, `box-sizing: border-box`, `min-height`, safe-area padding, and content-driven spacing.
 10. Treat real images, course covers,作文 photos, icons, and report previews as primary content assets. Preserve them when provided; create meaningful fallbacks only when assets are unavailable.
 11. When optimizing from a screenshot or existing UI, preserve the source illustration and icon style. If no bundled asset or clearly better product asset exists, extract/crop/trace the original illustration or icon from the source and place it back into the optimized UI; do not redraw a simplified replacement from scratch.
-12. If the source is a high-resolution screenshot, normalize it to a 375px or 390px CSS canvas before choosing font sizes, spacing, and icon sizes. Do not copy raw screenshot pixels as CSS pixels.
-13. If a Figma node or screenshot is provided, treat every visible text string, tab, date, subject legend item, card count, and icon family as locked unless the user asks to redesign content.
-14. For APP learning-plan screens, preserve the foundational UI tokens from the Figma reference: top tab selected style, assistant avatar/bubble, collapsed calendar heights and date states, course-card anatomy, and right play button style.
-15. Before final delivery, verify the screen at the target phone width and fix any oversized type, missing icons, overflow, clipping, hidden fixed-bar content, low-contrast text, tiny tap targets, or misaligned borders.
+12. Use the AI自主学习系统 status bar consistently. For light app pages, use the bundled [assets/status-light.svg](assets/status-light.svg) as the source of truth at 390px by 44px, scaling proportionally for 375px pages. Do not redraw the signal, Wi-Fi, battery, or `9:41` time when this asset is available. Do not invent yellow battery pills, mismatched icon weights, or alternate status chrome unless the source page explicitly requires a different shell; dark camera/correction screens may use the same geometry in white.
+13. If the source is a high-resolution screenshot, normalize it to a 375px or 390px CSS canvas before choosing font sizes, spacing, and icon sizes. Do not copy raw screenshot pixels as CSS pixels.
+14. If a Figma node or screenshot is provided, treat every visible text string, tab, date, subject legend item, card count, and icon family as locked unless the user asks to redesign content.
+15. For APP learning-plan screens, preserve the foundational UI tokens from the Figma reference: top tab selected style, assistant avatar/bubble, collapsed calendar heights and date states, course-card anatomy, and right play button style.
+16. Before final delivery, verify the screen at the target phone width and fix any oversized type, missing icons, overflow, clipping, hidden fixed-bar content, low-contrast text, tiny tap targets, or misaligned borders.
 
 ## Page Types
 
