@@ -25,13 +25,38 @@ Use this file before generating or optimizing a page. It defines reusable compon
 - Default card shadow: subtle, around `0 1px 1px rgba(0,0,0,0.05)`.
 - Blue card shadow: `0 9px 18px rgba(50,131,198,0.22)`.
 
+## Color Remapping
+
+Use for any optimization from an arbitrary screenshot.
+
+- Source screenshots do not provide the palette. They provide structure, copy, and extractable assets only.
+- Extracted UI icons and illustrations preserve shape/detail, not arbitrary warm palette. Recolor non-content warm fills/strokes to cyan/blue tokens unless the asset is real content media.
+- Remap warm source UI colors to AI自主学习系统 tokens:
+  - Orange primary tabs/buttons -> blue/cyan gradient or `#00639E`.
+  - Orange score pills/category pills -> blue fill `#00A7D8` or pale blue fill `#CCE9FB` with blue text.
+  - Peach/beige detail borders -> pale blue border `#CCE9FB` or `rgba(0,167,216,0.18)`.
+  - Brown text -> primary text `#071D39` or secondary `#78818D`.
+- Keep allowed warm tokens only where this spec explicitly names them, such as commerce sale badges, update badges, or APP bottom tab active orange.
+- If the target page is a作文批改 statistics/history/report list page, score, category, and report actions default to the cyan/blue family, not orange.
+
+## AssetColorPolicy
+
+Use this policy whenever a source screenshot includes illustrations or icons.
+
+- Content media keeps natural/source color: course covers, teacher/product photos,作文 photos, manuscript/report screenshots, and evidence images.
+- Decorative UI assets keep source shape/detail but follow the skill palette: tabbar icons, report/list icons, empty-state illustrations, helper illustrations, decorative people/objects, and generated inline SVGs.
+- If a decorative asset contains warm orange/peach/brown/beige colors, remap them to `#00639E`, `#00A7D8`, `#0EC5FF`, `#BFF9FF`, `#CCE9FB`, or gray-blue neutrals.
+- Do not create a new simplified drawing to avoid recoloring. First extract/trace the source asset, then recolor it.
+
 ## SystemStatusBar
 
 Use for normal AI自主学习系统 app pages. This component replaces ad hoc iOS-style status bars.
 
 - Source asset: [assets/status-light.svg](../assets/status-light.svg).
+- White source asset: [assets/status-white.svg](../assets/status-white.svg).
 - Asset size: 390px by 44px.
 - Use the SVG directly for light app pages instead of recreating its time, cellular, Wi-Fi, or battery parts.
+- Use `status-white.svg` for full cyan/blue immersive header pages such as `历史批改记录`, where the status bar is white over a teal gradient.
 - Height: 44px.
 - Background: transparent over the page atmosphere or white/pale page surface; do not put it in a separate card.
 - Time:
@@ -47,6 +72,33 @@ Use for normal AI自主学习系统 app pages. This component replaces ad hoc iO
 - On 390px pages, place the SVG at native width. On 375px pages, scale it proportionally to page width rather than altering internal icon positions.
 - Do not use emoji, text glyphs, copied platform screenshots, yellow battery capsules, or mixed icon families.
 - Browser/webview pages may preserve their source browser chrome when visible; otherwise use this component.
+
+## CompositionCorrectionHistoryHeader
+
+Use for the `历史批改记录` pages shown in reference assets [reference-history-records.png](../assets/composition/reference-history-records.png) and [reference-history-empty.png](../assets/composition/reference-history-empty.png).
+
+- Canvas: 390px by 844px CSS frame.
+- Header background: full-width cyan/teal gradient from about `#2EC0DC` at the top to `#10A5C8` lower left, with a pale mint/cyan glow on the upper-right. The gradient area extends to the white sheet at y 212px.
+- Status bar: use `assets/status-white.svg` at 390px by 44px. Time and icons are white.
+- Navigation title row: transparent over the gradient; white back chevron at x about 22px, centered title `历史批改记录`, 18px to 20px Semibold white.
+- Monthly summary copy:
+  - Left block begins around x 18px, y 122px.
+  - With records: `本月已完成 5 篇作文练习` then `持续保持这个节奏~`.
+  - Empty: `本月还没有进行作文练习` then `快练习批改下吧~`.
+  - Text is white, 18px to 20px Semibold, line-height about 30px to 34px.
+- Right monthly badge: use `badge-valued.svg` for count > 0 and `badge-empty.svg` for count 0; place it around x 260px, y 94px, about 104px by 108px. Do not redraw the hexagon or laurels.
+
+## CompositionCorrectionHistorySheet
+
+Use below `CompositionCorrectionHistoryHeader`.
+
+- White sheet starts at y 212px on a 390px canvas and fills to the bottom.
+- Top corners: 20px radius. Bottom corners are square/off-canvas.
+- Header row inside sheet:
+  - `批改记录` at x 16px, y about 236px, 20px Semibold/Bold `#1F242E`.
+  - Month filter pill on the right at x about 274px, y about 232px, width about 100px, height 26px, radius 13px, fill `#F5F7FC`, text `2026年4月` 15px Medium `#4D535C`, small down chevron.
+- Records list starts around y 286px. Use `CompositionEssayRecordListItem` rows with dividers.
+- Empty state keeps the same sheet header and month filter. Center `empty-no-content.svg` around y 444px to 500px, then `暂无批改记录` below in 16px `#8E9194`.
 
 ## HomeHeader
 
@@ -311,6 +363,94 @@ Use for daily learning-plan unfinished course cards.
 - Inactive text color `#7C88B4`.
 - Icons are product assets or close SVG/CSS reproductions, not emoji.
 
+## CompositionReportListCard
+
+Use for `批改统计`, 作文批改历史, report-list, and batch-correction management cards.
+
+- Source screenshots may define card order and copy, but not palette. Recolor to cyan/blue tokens.
+- Card fill: white, radius 16px to 18px, subtle cool shadow, width about 362px on a 390px canvas.
+- Primary row:
+  - Avatar is 40px to 44px, left aligned.
+  - User name uses 16px to 18px Semibold, `#071D39`.
+  - Phone number uses 13px to 15px, `#78818D`.
+  - `查看报告` action sits in this first-level row on available report cards; it must not be buried below the detail panel.
+- Detail panel:
+  - Contains `作文标题` and `提交时间` rows.
+  - Sits below the primary row.
+  - Uses pale blue border `#CCE9FB` or `rgba(0,167,216,0.18)`, not peach/orange.
+- Result row:
+  - Score pill such as `42分` uses cyan/blue fill `#00A7D8` or the blue action gradient, with white text.
+  - Category/dang tag such as `3档` uses pale blue fill `#F0F6FD` or `#CCE9FB`, blue/primary text.
+  - The row sits below the detail panel with compact spacing.
+- Required content per completed report card: avatar, user name, phone, `查看报告`, `作文标题`, `提交时间`, score, category/dang.
+- Do not use orange score pills, beige category pills, peach borders, brown labels, or orange report actions unless the exact target Figma node explicitly contains those tokens.
+- If card icons or empty-state illustrations are extracted from a warm source, recolor decorative warm fills/strokes to cyan/blue tokens while preserving their geometry.
+- Do not enlarge names or phone numbers into display-scale text; this is a dense management list, not a profile card.
+
+## CompositionRankAssets
+
+Use these bundled assets when a page shows作文档次, score category, unlock state, medal state, or a no-content fallback. These assets are the visual source of truth for the Figma nodes around `4424:491` and `5201:3715`.
+
+| Asset | File | Size | Use |
+|---|---|---:|---|
+| Valued medal | [badge-valued.svg](../assets/composition/badge-valued.svg) | 104x108 | Single-data card when score/rank has a value |
+| Empty medal | [badge-empty.svg](../assets/composition/badge-empty.svg) | 104x108 | Single-data card when score/rank has no value |
+| No-content fallback | [empty-no-content.svg](../assets/composition/empty-no-content.svg) | 132x74 | Empty list/data area |
+| Locked tag | [tag-locked.svg](../assets/composition/tag-locked.svg) | 40x44 | Locked score/category state |
+| 一类 tag | [tag-rank-1.svg](../assets/composition/tag-rank-1.svg) | 40x18 | Rank/category label |
+| 二类 tag | [tag-rank-2.svg](../assets/composition/tag-rank-2.svg) | 40x18 | Rank/category label |
+| 三类 tag | [tag-rank-3.svg](../assets/composition/tag-rank-3.svg) | 40x18 | Rank/category label |
+| 四类 tag | [tag-rank-4.svg](../assets/composition/tag-rank-4.svg) | 40x18 | Rank/category label |
+| 五类 tag | [tag-rank-5.svg](../assets/composition/tag-rank-5.svg) | 40x18 | Rank/category label |
+
+Rank tag rules:
+
+- Use the SVG asset directly at native size or proportional size. Default rank tag size is 40px by 18px with 9px radius.
+- Do not recreate `一类` to `五类` as plain text pills. Their gradients, text treatment, and compact capsule shape are part of the target style.
+- `待解锁` uses the 40px by 44px locked asset, not a generic lock icon plus text.
+- Warm gold/cream inside rank assets is allowed because these assets are explicit target components. Do not reuse those warm colors elsewhere.
+- If the page has no rank value, use the empty medal/no-value asset and preserve the no-content illustration where appropriate.
+
+## CompositionSingleDataImmersiveCard
+
+Use when the source or product requirement is a single作文数据展示页, score/rank snapshot, category summary, monthly rank result, or any page dominated by one primary metric plus a medal/badge.
+
+Layout:
+
+- Canvas: 390px mobile page with `SystemStatusBar` and a cool cyan/blue background atmosphere.
+- Main card: immersive rounded card, usually 16px to 20px radius, white or pale cyan-white gradient, cool soft shadow, horizontal content.
+- Card interior: left side is title/data copy; right side is a medal/badge asset.
+- Left column: title uses 15px to 17px Semibold, primary text `#071D39`; secondary explanatory text uses 12px to 14px gray-blue. The primary number/score can use 28px to 36px bold numeric type when it is the main data point.
+- Right column: use `badge-valued.svg` for valued state, `badge-empty.svg` for no-value state, or a rank/locked asset when the page's primary state is category/locked.
+- Spacing: card horizontal padding about 16px to 20px; vertical padding about 18px to 22px; left/right gap about 12px to 18px. The badge should align visually to the vertical center of the card and must not overlap text.
+- Typography: compact mobile hierarchy; avoid oversized hero text. Chinese labels stay 12px to 17px, metric numbers can be larger but must remain inside the card.
+- Empty state: use `empty-no-content.svg` centered in the content area with muted gray-blue copy below if the source includes empty copy.
+
+Do not:
+
+- Put the medal below the text when the source is a single data card with left-title/right-medal structure.
+- Replace the medal/rank assets with emoji, CSS gradients, generic trophies, or hand-drawn badges.
+- Sample source screenshot orange/brown colors for the card background. The page background and card surfaces stay in the cyan/blue system.
+
+## CompositionEssayRecordListItem
+
+Use when the source or requirement is a作文列表, history list, report record list, or any repeated essay item with score/category plus title/time.
+
+Layout:
+
+- In `历史批改记录`, list rows are not separate cards. They sit on the white sheet with bottom dividers `#F1F1F1`, width about 358px, x 16px, and about 86px row height.
+- Internal grid: two columns. Left column is fixed around 52px to 58px for score and rank; right column fills remaining width with title and time; a chevron sits at the far right.
+- Left column: score such as `52分` is the primary visual. Use about 20px MiSans/PingFang Semibold black `#191C1E`; the `分` glyph is smaller, about 12px to 13px. Place the rank SVG below with about 4px to 6px gap.
+- Right column:作文标题 uses about 17px Semibold black `#030409`; subtitle/time uses about 13px to 14px `#77838B`. Keep exact source strings such as `批改时间：4月11日 14:55` and `你的作文分析报告待领取`.
+- Locked state: left column uses `tag-locked.svg` or an explicit locked asset state; do not show fake scores.
+- Empty list: use `empty-no-content.svg`, not a generic blank illustration.
+
+Do not:
+
+- Use the user/avatar/phone/report-action hierarchy from `CompositionReportListCard` for this structure.
+- Move score/rank to the right side. For作文列表, score and rank stay on the left; title and time stay on the right.
+- Rebuild rank tags as CSS text pills.
+
 ## PrimaryActionButton
 
 - Main black action:
@@ -318,7 +458,7 @@ Use for daily learning-plan unfinished course cards.
   - Radius 8px to 12px for rectangular buttons; 28px to 30px for large pills.
   - Text white, 15px to 17px Medium/Semibold.
 - Some commerce/challenge pages use blue gradient CTA instead of black.
-- Match source CTA color family before applying the generic black button.
+  - Match the skill's target page color family before applying the generic black button. Do not inherit warm CTA colors from arbitrary source screenshots.
 
 ## TagsAndBadges
 
