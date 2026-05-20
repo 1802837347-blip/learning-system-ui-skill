@@ -13,7 +13,7 @@ Use this file as the final review pass before delivering optimized UI. These gat
 | 5 | Typography fit | Text wraps or truncates intentionally and stays readable at the target width | Accidental clipping, squeezed font sizes, broken line-height, or overlapping rows |
 | 6 | State clarity | Loading, disabled, selected, completed, locked, and error states are visually distinct | Controls that look tappable when disabled, or state shown only by color |
 | 7 | Product consistency | Colors, shadows, radii, icons, and spacing follow `ui-style-guide.md` | Random per-screen colors, mixed icon styles, excessive decoration |
-| 8 | Content asset fidelity | Core images such as作文 photos remain visually meaningful and inspectable | Replacing content images with abstract placeholders or repeated gray bars |
+| 8 | Content asset fidelity | Core images, source illustrations, and original icons remain visually meaningful, inspectable, and style-faithful | Replacing source assets with abstract placeholders, repeated gray bars, generic cartoons, or lower-fidelity redraws |
 | 9 | Interaction polish | Tappable elements have feedback, disabled semantics, and stable layout bounds | No tap feedback, layout-shifting press states, or fake disabled controls |
 | 10 | Icon completeness | Structural icons render with the right size, stroke, and alignment | Missing back, lock, expand, play, tabbar, or status icons |
 | 11 | Pixel-scale normalization | Screenshot-derived UI is scaled to 375px/390px CSS width | Copying raw 2x/3x screenshot pixels into CSS sizes |
@@ -22,6 +22,7 @@ Use this file as the final review pass before delivering optimized UI. These gat
 | 14 | Gradient/module fidelity | Gradient panels and decorative learning modules keep their color, border, icon, and depth | Flattening gradient modules into plain pale rectangles |
 | 15 | Step rail alignment | Timeline/step nodes, lock nodes, vertical line, and cards share a stable grid | Nodes drifting away from cards or locks not centered on the rail |
 | 16 | Accessibility basics | Meaningful controls have labels; contrast is readable; touch targets are not tiny | Icon-only controls without labels or low-contrast gray-on-gray text |
+| 17 | System status bar | Normal light app pages use bundled `assets/status-light.svg` at 390px by 44px or proportional width | Yellow battery pills, generic iOS bars, self-redrawn status icons, mismatched icon weights, or wrong status-bar chrome |
 
 ## Output Workflow
 
@@ -30,10 +31,11 @@ Use this file as the final review pass before delivering optimized UI. These gat
 3. Build or revise the UI with normal flow layout first: flex/grid, clear gaps, `box-sizing: border-box`, and semantic sections.
 4. Reserve space for fixed headers, bottom tabbars, sticky CTA bars, and the iPhone home indicator before placing scroll content.
 5. Review each card from outside to inside: parent size, padding, row gaps, text wrapping, metrics, badges, action buttons.
-6. Test the narrow target width first: 375px for compact pages, 390px for newer APP learning-plan pages.
-7. If any required text or control is clipped, increase container space or adjust layout. Do not hide the issue with `overflow: hidden`.
-8. Check interaction states: pressed, selected, disabled, loading, locked, expanded, and empty.
-9. For HTML output, visually inspect the rendered page before final delivery whenever a browser is available.
+6. Review source visual assets before replacing them: keep screenshot/Figma illustrations, tabbar icons, decorative icons, course covers, photos, and report previews by cropping/extracting or faithfully tracing them when no better product asset is available.
+7. Test the narrow target width first: 375px for compact pages, 390px for newer APP learning-plan pages.
+8. If any required text or control is clipped, increase container space or adjust layout. Do not hide the issue with `overflow: hidden`.
+9. Check interaction states: pressed, selected, disabled, loading, locked, expanded, and empty.
+10. For HTML output, visually inspect the rendered page before final delivery whenever a browser is available.
 
 ## Hard Failures
 
@@ -41,6 +43,8 @@ If any item below occurs, revise before delivery:
 
 - Text escapes a card, button, tag, date cell, tab, modal, or fixed bar.
 - A source icon is missing, replaced by emoji, or replaced by a visibly unrelated shape.
+- A source illustration, tabbar icon, decorative module icon, course cover, photo, or report preview is replaced by a lower-fidelity self-drawn substitute when the original asset could have been cropped, extracted, or faithfully traced.
+- A normal light app page uses a generic, mismatched, or self-redrawn status bar instead of bundled `assets/status-light.svg`.
 - A gradient panel, CTA, or selected state is flattened into a plain block when the source uses gradient/depth.
 - A component listed in `component-specs.md` has obviously wrong size, radius, spacing, or state treatment.
 - Course cards become schedule cards, CRM cards, or generic task cards.
@@ -83,12 +87,17 @@ If any item below occurs, revise before delivery:
 
 - Structural icons are required content, not optional decoration.
 - If the original has an icon, the output must render an equivalent: back chevron, dropdown caret, sparkle/diamond, expand/collapse circle, vertical progress dots, lock, play, status battery/wifi/cell, tabbar icons, help/share/close icons.
-- Use inline SVG, existing project icons, or a simple CSS/SVG fallback. Never leave a blank space because the asset was unavailable.
+- Prefer the original source icon when optimizing from screenshot/Figma. Use a cropped/extracted bitmap, existing project icon, or faithful traced SVG before using a simple CSS/SVG fallback. Never leave a blank space because the asset was unavailable.
+- Do not redraw source tabbar icons, expand/play buttons, or decorative module icons into a different style family unless the replacement is a clearly better product asset.
 - Icon size should follow the reference scale: small inline icons around 12px to 16px, control icons around 20px to 28px, large assistant/tool icons around 40px.
 - Icons must be centered within their hit areas and aligned to nearby text.
 
 ## Browser Chrome And Navigation QA
 
+- Normal light AI自主学习系统 app pages must use the system status bar asset from `component-specs.md`: `assets/status-light.svg`, 390px by 44px.
+- Do not redraw the asset's `9:41`, cellular bars, Wi-Fi, or battery when the SVG is available.
+- Do not use yellow battery pills, platform-default pasted status icons, emoji/text status glyphs, or mismatched signal/Wi-Fi/battery stroke weights.
+- Dark camera/correction pages may use the same status-bar geometry in white.
 - If the reference shows a browser/webview chrome row, reproduce that shell: time, domain pill, ellipsis, Wi-Fi, battery, and home indicator.
 - Do not replace a browser domain pill such as `uinotes.com` with a native mini-program capsule or a generic iOS status bar.
 - Back controls must match the source container. A plain chevron should remain a plain chevron; do not invent a square/circle button background.
@@ -206,8 +215,10 @@ If any item below occurs, revise before delivery:
 
 ## Image And Manuscript QA
 
-- Treat作文 photos, course covers, report previews, and teacher/product images as primary content assets.
-- If a real image is available, preserve it; do not redraw it as a placeholder.
+- Treat作文 photos, course covers, report previews, teacher/product images, source illustrations, tabbar icons, decorative module icons, and status/action icons as primary content assets.
+- If a real image or source icon/illustration is available, preserve it; do not redraw it as a placeholder or a simplified substitute.
+- Asset replacement priority is: source-cropped/extracted bitmap, existing bundled product asset, faithful traced SVG/vector, then neutral placeholder only when the source asset is absent or unusable.
+- When extracting from a screenshot, preserve the asset's proportions, opacity, color relationship, softness, and visual weight. Cropping and light cleanup are allowed; changing the icon or illustration style family is not.
 - If no real作文 image is available, create a believable manuscript fallback: grid paper, varied handwritten Chinese strokes, red score marks, colored underlines, correction circles, and numbered annotation dots.
 - A fallback essay manuscript must contain visual texture and sentence-like writing density. Repeated gray bars alone are a failed output.
 - Keep annotated lines aligned to plausible manuscript rows; annotations should look attached to the essay, not floating over an empty skeleton.
@@ -263,6 +274,7 @@ Use this pattern as a starting point, then adapt dimensions to the exact compone
 - [ ] Structural icons use a consistent vector/icon style, not emoji.
 - [ ] All source icons are represented by real SVG/icon/CSS fallbacks; none are silently missing.
 - [ ] Browser/webview chrome is preserved when present, including domain pill and status controls.
+- [ ] Normal light app pages use bundled `assets/status-light.svg` for the AI自主学习系统 status bar.
 - [ ] Back chevron shape and container match the source; no invented boxed button.
 - [ ] Font sizes are normalized to a 375px/390px CSS canvas and are not inflated from screenshot pixels.
 - [ ] Repeated rows use stable alignment columns for left rail, content, tags, progress, and lock/play icons.
