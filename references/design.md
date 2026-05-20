@@ -140,6 +140,15 @@ Use the bundled assets for作文 score/rank pages:
 - `assets/composition/tag-rank-1.svg` to `tag-rank-5.svg`: 40px by 18px `一类` to `五类`.
 - `assets/composition/reference-history-records.png` and `assets/composition/reference-history-empty.png`: visual references for `历史批改记录` records and empty states.
 
+Rank tag visual contract:
+
+- `一类`: 40px x 18px, 9px radius, dark charcoal gradient `#44454F -> #2A2B32`, gold gradient text `#FFD9AB -> #FFCBA5`.
+- `二类`: 40px x 18px, 9px radius, gold gradient `#FFD887 -> #ECC26C`, dark brown text `#4C2900`.
+- `三类`: 40px x 18px, 9px radius, warm beige gradient `#F0E3D3 -> #DCCAB6`, dark brown text `#4C2900`.
+- `四类`: 40px x 18px, 9px radius, pale cyan gradient `#D4F1F5 -> #A3CED4`, teal text `#1D444A`.
+- `五类`: 40px x 18px, 9px radius, blue-gray gradient `#DAE2F0 -> #A3B6D8`, navy text `#1F3865`.
+- `待解锁`: 40px x 44px full asset, with 20px lock icon at top and 40px x 18px label capsule at y 26px. Do not split the lock and label into separate ad hoc components.
+
 Do not redraw these assets or replace them with CSS pills. Their exact gradient, compact shape, and text treatment are part of the page style extracted from the target Figma nodes.
 
 ### Composition Score And List Layout
@@ -151,6 +160,28 @@ Do not redraw these assets or replace them with CSS pills. Their exact gradient,
 - 作文列表 uses a two-column list item: left column is score plus rank tag; right column is title plus time.
 - List item title uses 14px to 16px Semibold, time uses 12px to 13px gray-blue, score uses 22px to 28px bold numeric style.
 - Preserve source title/time/score/category copy exactly. Do not swap left and right columns.
+
+### Composition History Records Page
+
+Use this exact page family when the source or product requirement resembles Figma `4424:491` or `5201:3715`: `历史批改记录`, monthly作文 history, scored essay records, empty monthly history, or locked report rows.
+
+- Canvas: 390px x 844px.
+- Page background: vertical gradient `#28BEE3` at top to `#129CC6` around 32%, then white sheet covers the lower page.
+- Top status/navigation: use `assets/status-white.svg` at x 0, y 0, 390px x 44px. Title bar occupies y 46px to y 94px. Back chevron is white, about 25px, x 14.5px. Center title is `历史批改记录`, 17px Medium white.
+- Header summary block: starts around x 18px, y 121px, width about 213px. First line is 19px MiSans Demibold white with 22px line height. Second line is 17px MiSans Demibold white with 22px line height and 6px vertical gap.
+- Header copy:
+  - Records state: `本月已完成 5 篇作文练习` and `持续保持这个节奏～`.
+  - Empty state: `本月还没有进行作文练习` and `快练习批改下吧～`.
+- Monthly medal: use `badge-valued.svg` when the count is greater than 0 and `badge-empty.svg` when the count is 0. Medal visual area sits in the upper-right, with the count number around 44px Space Grotesk Bold and `本月批改` label 11px.
+- Content sheet: white, x 0, y 212px, width 390px, min-height to bottom, top-left/top-right radius 20px.
+- Sheet header: `批改记录` at x 16px, y about 232px, 18px Semibold `#1F242E`, line-height 26px. Month pill at x about 275px, y about 232px, fill `#F5F7FC`, radius 32px, padding 8px x 4px, text 13px Medium `#4D535C`, 16px down chevron.
+- Records list: x 16px, y 266px, width 358px. Rows are not independent cards; they are plain list rows on the sheet with 20px vertical padding and a 1px bottom divider `#F1F1F1`.
+- Record row layout: content width 330px plus 20px right chevron. Left score/rank block width about 40px to 52px, then 14px gap, then flexible title/time block.
+- Score row: score number 18px MiSans Demibold `#191919`, suffix `分` 12px PingFang Medium black, score and suffix baseline-aligned. Rank asset sits 2px below score.
+- Title/time block: title 16px PingFang Medium black; subtitle 13px PingFang Regular `#77838B`; vertical gap 6px.
+- Example record content to preserve when present: `52分` `一类` `突破锁链，找寻自我` `批改时间：4月11日 14:55`; `44分` `二类` `在变化中守住不变`; `32分` `三类` `快与慢之间，见人生分寸` `你的作文分析报告待领取`.
+- Locked row: replace score/rank with `tag-locked.svg`, then keep title 16px black and subtitle `完成讲解即可解锁完整批改报告`; keep the far-right chevron.
+- Empty state: keep the same header, white sheet, `批改记录` title, and month pill. Place `empty-no-content.svg` centered around x 129px, y 441px, 132px x 74px, opacity 80%; text `暂无批改记录` centered around y 535px, 16px `#8E9194`.
 
 ### System Status Bar
 

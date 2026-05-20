@@ -81,7 +81,21 @@ references/quality-gates.md
 ├── SKILL.md
 ├── README.md
 ├── assets
-│   └── assistant-avatar.png
+│   ├── assistant-avatar.png
+│   ├── status-light.svg
+│   ├── status-white.svg
+│   └── composition
+│       ├── badge-empty.svg
+│       ├── badge-valued.svg
+│       ├── empty-no-content.svg
+│       ├── reference-history-empty.png
+│       ├── reference-history-records.png
+│       ├── tag-locked.svg
+│       ├── tag-rank-1.svg
+│       ├── tag-rank-2.svg
+│       ├── tag-rank-3.svg
+│       ├── tag-rank-4.svg
+│       └── tag-rank-5.svg
 └── references
     ├── component-specs.md
     ├── design.md

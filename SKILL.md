@@ -26,6 +26,7 @@ These constraints override source screenshots and generic UI instincts:
 4. Normal light app pages must use [assets/status-light.svg](assets/status-light.svg) directly for the status bar. Full cyan/blue immersive header pages such as `历史批改记录` must use [assets/status-white.svg](assets/status-white.svg). Do not redraw `9:41`, cellular signal, Wi-Fi, or battery.
 5. If the source contains required data, the optimized UI must keep it. For batch/composition report list pages, cards must not collapse to avatar/name/phone only; they must preserve report action, title, submit time, score, and category/dang when present.
 6. When content matches作文 score/rank summaries, use the bundled composition rank/tag assets instead of drawing new badges. Single data display pages use an immersive card with the title/content on the left and the badge/medal on the right. Essay record lists use left score+rank and right title+time.
+7. When content matches `历史批改记录`, monthly作文 records, or the Figma nodes `4424:491` / `5201:3715`, use the exact history-record structure: cyan/blue immersive header, white status bar, white rounded-top sheet, month filter, and record rows with left score/rank asset plus right title/time. Do not fall back to generic cards, avatars, phone numbers, or report-button rows.
 
 ## When to Apply
 
@@ -128,6 +129,7 @@ For作文批改 capture flows:
 - History flow can include `历史批改记录`, a monthly badge summary, score/category rows, `待解锁` rows, empty records, and a bottom month selector sheet.
 - For `批改统计`, 作文批改历史, report-list, or batch-correction management pages, do not inherit source orange. Use cyan/blue score pills, pale-blue category tags, blue outlined `查看报告` actions, and pale-blue detail borders unless the exact target Figma node says otherwise.
 - For score/rank summary pages that match the Figma nodes `4424:491` or `5201:3715`, preserve the source style one-to-one: use bundled [assets/composition/badge-valued.svg](assets/composition/badge-valued.svg), [assets/composition/badge-empty.svg](assets/composition/badge-empty.svg), [assets/composition/empty-no-content.svg](assets/composition/empty-no-content.svg), [assets/composition/tag-locked.svg](assets/composition/tag-locked.svg), and rank tag assets [tag-rank-1.svg](assets/composition/tag-rank-1.svg) through [tag-rank-5.svg](assets/composition/tag-rank-5.svg). Do not replace these with CSS pills, emoji medals, or generic icons.
+- For `历史批改记录`, use [assets/status-white.svg](assets/status-white.svg) and the reference screenshots [assets/composition/reference-history-records.png](assets/composition/reference-history-records.png) and [assets/composition/reference-history-empty.png](assets/composition/reference-history-empty.png) as visual anchors.
 
 For daily learning-plan pages:
 

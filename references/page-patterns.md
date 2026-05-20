@@ -260,6 +260,15 @@ Record row rules:
 - Do not add avatars, phone numbers, or `查看报告` buttons to this page.
 - Keep the month filter visible even when there are no records.
 
+Exact layout anchors from Figma `4424:491` / `5201:3715`:
+
+- Canvas is 390px wide. Header gradient runs behind the status/title/summary area; the white sheet begins at y 212px with 20px top radius.
+- Header summary text starts near x 18px, y 121px. Use two white MiSans Demibold lines, 19px then 17px, both 22px line-height.
+- Records-state header uses `本月已完成 5 篇作文练习` / `持续保持这个节奏～`; empty-state header uses `本月还没有进行作文练习` / `快练习批改下吧～`.
+- Sheet header begins at y about 232px. The month pill stays on the right in both records and empty states.
+- List rows start at y about 266px, width 358px, x 16px. Row padding is 20px vertical; left score/rank block and right title/time block are horizontally aligned.
+- Empty illustration is centered in the sheet, not in the gradient header.
+
 ## Pattern: Composition Essay Record List
 
 Use when the source/product requirement is a作文列表, 作文批改列表, 历史作文记录, report/essay record list, or repeated items where each row contains a score/category plus title/time.

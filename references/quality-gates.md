@@ -241,6 +241,11 @@ If any item below occurs, revise before delivery:
 - With-records state must show monthly copy, `badge-valued.svg`, `批改记录`, month filter, row dividers, score/rank left column, title/time right column, and chevrons.
 - Empty state must keep the same header and sheet header/month filter, then show `empty-no-content.svg` and `暂无批改记录` centered in the sheet.
 - Fail if avatars/phone/report buttons from other report-list patterns appear on this page.
+- Fail if list rows become separated rounded cards; these records are divider rows directly on the white sheet.
+- Fail if `一类` to `五类` or `待解锁` are recreated with CSS text pills instead of the bundled SVG assets.
+- Fail if the records state removes the far-right chevrons or the month pill.
+- Fail if empty state removes the sheet header/month pill or places the empty illustration in the header gradient.
+- Fail if the top status bar uses black icons on the cyan gradient; this page requires `assets/status-white.svg`.
 
 ## Responsive And Safe-Area QA
 
