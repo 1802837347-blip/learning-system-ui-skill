@@ -67,7 +67,6 @@ references/quality-gates.md
 
 `references/quality-gates.md` 用于优化和验收，重点检查卡片内容是否出界、按钮是否在容器内、文字/指标是否被裁切、标签描边是否异常、真实图片是否被占位替代、固定底栏是否遮挡内容，以及触控、可读性、状态和安全区等通用 UI 质量问题。
 
-`assets/assistant-avatar.png` 是学习计划页 AI 助手头像切图，80px 透明 PNG，按 40px 展示。
 
 ## 字体说明
 
