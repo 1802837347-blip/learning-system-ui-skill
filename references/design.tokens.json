@@ -10,6 +10,8 @@
       "figmaNodes": {
         "learningPlan": "581:3019",
         "compositionCorrection": "4394:8992",
+        "compositionScoreSnapshot": "4424:491",
+        "compositionEssayRecordList": "5201:3715",
         "allCourses": "1598:2617",
         "planSetupLearningInfoDefault": "1825:2896"
       },
@@ -293,6 +295,77 @@
         "price": {
           "$type": "color",
           "$value": "{color.primitive.red.600}"
+        }
+      },
+      "paletteLock": {
+        "policy": {
+          "$type": "string",
+          "$value": "Do not inherit arbitrary source screenshot colors. Remap UI colors to AI自主学习系统 cyan/blue tokens unless an exact target component explicitly allows a warm token."
+        },
+        "assetColorPolicy": {
+          "$type": "string",
+          "$value": "Decorative source icons and illustrations preserve geometry/detail but remap conflicting warm fills and strokes to cyan/blue tokens. Preserve natural/source color only for real content media such as photos, course covers,作文 manuscripts, and report previews."
+        },
+        "dominantHue": {
+          "$type": "string",
+          "$value": "cyan-blue"
+        },
+        "primaryAction": {
+          "$type": "color",
+          "$value": "{color.primitive.blue.500}"
+        },
+        "primaryActionGradient": {
+          "$type": "gradient",
+          "$value": "{gradient.stepper.active}"
+        },
+        "illustrationDark": {
+          "$type": "color",
+          "$value": "{color.primitive.blue.500}"
+        },
+        "illustrationMid": {
+          "$type": "color",
+          "$value": "{color.primitive.blue.400}"
+        },
+        "illustrationLight": {
+          "$type": "color",
+          "$value": "{color.primitive.cyan.100}"
+        },
+        "scoreFill": {
+          "$type": "color",
+          "$value": "{color.primitive.blue.400}"
+        },
+        "scoreSoftFill": {
+          "$type": "color",
+          "$value": "{color.primitive.blue.100}"
+        },
+        "tagFill": {
+          "$type": "color",
+          "$value": "{color.primitive.blue.50}"
+        },
+        "tagText": {
+          "$type": "color",
+          "$value": "{color.primitive.blue.500}"
+        },
+        "detailBorder": {
+          "$type": "color",
+          "$value": "rgba(0,167,216,0.18)"
+        },
+        "secondaryActionBorder": {
+          "$type": "color",
+          "$value": "{color.primitive.blue.100}"
+        },
+        "secondaryActionText": {
+          "$type": "color",
+          "$value": "{color.primitive.blue.500}"
+        },
+        "mutedWarmReplacement": {
+          "$type": "color",
+          "$value": "{color.primitive.gray.700}"
+        },
+        "forbiddenWarmFamilies": {
+          "$type": "string",
+          "$value": "orange,brown,beige,peach,amber,tan,warm-cream",
+          "$description": "Forbidden for arbitrary screenshot-derived UI unless an exact target component explicitly allows the warm token."
         }
       }
     },
@@ -633,6 +706,14 @@
       "statusBarHeight": {
         "$type": "dimension",
         "$value": "44px"
+      },
+      "statusBarLightAsset": {
+        "$type": "asset",
+        "$value": "assets/status-light.svg"
+      },
+      "statusBarWhiteAsset": {
+        "$type": "asset",
+        "$value": "assets/status-white.svg"
       },
       "titleBarHeight": {
         "$type": "dimension",
@@ -1657,10 +1738,169 @@
           "$value": "{radius.xl}"
         }
       },
+      "rankAssets": {
+        "badgeValued": {
+          "$type": "asset",
+          "$value": "assets/composition/badge-valued.svg",
+          "$description": "104x108 valued medal asset"
+        },
+        "badgeEmpty": {
+          "$type": "asset",
+          "$value": "assets/composition/badge-empty.svg",
+          "$description": "104x108 no-value medal asset"
+        },
+        "emptyNoContent": {
+          "$type": "asset",
+          "$value": "assets/composition/empty-no-content.svg",
+          "$description": "132x74 no-content fallback"
+        },
+        "tagLocked": {
+          "$type": "asset",
+          "$value": "assets/composition/tag-locked.svg",
+          "$description": "40x44 待解锁"
+        },
+        "tagRank1": {
+          "$type": "asset",
+          "$value": "assets/composition/tag-rank-1.svg",
+          "$description": "40x18 一类"
+        },
+        "tagRank2": {
+          "$type": "asset",
+          "$value": "assets/composition/tag-rank-2.svg",
+          "$description": "40x18 二类"
+        },
+        "tagRank3": {
+          "$type": "asset",
+          "$value": "assets/composition/tag-rank-3.svg",
+          "$description": "40x18 三类"
+        },
+        "tagRank4": {
+          "$type": "asset",
+          "$value": "assets/composition/tag-rank-4.svg",
+          "$description": "40x18 四类"
+        },
+        "tagRank5": {
+          "$type": "asset",
+          "$value": "assets/composition/tag-rank-5.svg",
+          "$description": "40x18 五类"
+        },
+        "rankTagWidth": {
+          "$type": "dimension",
+          "$value": "40px"
+        },
+        "rankTagHeight": {
+          "$type": "dimension",
+          "$value": "18px"
+        },
+        "lockedTagHeight": {
+          "$type": "dimension",
+          "$value": "44px"
+        },
+        "medalWidth": {
+          "$type": "dimension",
+          "$value": "104px"
+        },
+        "medalHeight": {
+          "$type": "dimension",
+          "$value": "108px"
+        },
+        "emptyWidth": {
+          "$type": "dimension",
+          "$value": "132px"
+        },
+        "emptyHeight": {
+          "$type": "dimension",
+          "$value": "74px"
+        }
+      },
+      "scoreSnapshot": {
+        "cardRadius": {
+          "$type": "dimension",
+          "$value": "18px"
+        },
+        "cardPaddingX": {
+          "$type": "dimension",
+          "$value": "18px"
+        },
+        "cardPaddingY": {
+          "$type": "dimension",
+          "$value": "20px"
+        },
+        "contentGap": {
+          "$type": "dimension",
+          "$value": "16px"
+        },
+        "layout": {
+          "$type": "string",
+          "$value": "left title/data/copy, right medal/rank asset"
+        },
+        "titleSize": {
+          "$type": "dimension",
+          "$value": "16px"
+        },
+        "metricSize": {
+          "$type": "dimension",
+          "$value": "32px"
+        }
+      },
+      "essayRecordList": {
+        "itemRadius": {
+          "$type": "dimension",
+          "$value": "14px"
+        },
+        "itemPaddingX": {
+          "$type": "dimension",
+          "$value": "14px"
+        },
+        "itemPaddingY": {
+          "$type": "dimension",
+          "$value": "14px"
+        },
+        "columnGap": {
+          "$type": "dimension",
+          "$value": "12px"
+        },
+        "scoreColumnWidth": {
+          "$type": "dimension",
+          "$value": "66px"
+        },
+        "scoreText": {
+          "$type": "color",
+          "$value": "{color.primitive.blue.500}"
+        },
+        "titleText": {
+          "$type": "color",
+          "$value": "{color.primitive.blue.600}"
+        },
+        "timeText": {
+          "$type": "color",
+          "$value": "{color.primitive.gray.700}"
+        },
+        "layout": {
+          "$type": "string",
+          "$value": "left score plus rank/locked asset, right title plus time"
+        }
+      },
       "history": {
         "headerGradient": {
           "$type": "gradient",
-          "$value": "linear-gradient(180deg, #28BEE3 0%, #129CC6 100%)"
+          "$value": "linear-gradient(180deg, #2EC0DC 0%, #10A5C8 100%)"
+        },
+        "statusBarAsset": {
+          "$type": "asset",
+          "$value": "assets/status-white.svg"
+        },
+        "referenceWithRecords": {
+          "$type": "asset",
+          "$value": "assets/composition/reference-history-records.png"
+        },
+        "referenceEmpty": {
+          "$type": "asset",
+          "$value": "assets/composition/reference-history-empty.png"
+        },
+        "headerHeight": {
+          "$type": "dimension",
+          "$value": "212px"
         },
         "sheetTop": {
           "$type": "dimension",
@@ -1668,7 +1908,31 @@
         },
         "sheetRadius": {
           "$type": "dimension",
-          "$value": "{radius.5xl}"
+          "$value": "20px"
+        },
+        "monthPillWidth": {
+          "$type": "dimension",
+          "$value": "100px"
+        },
+        "monthPillHeight": {
+          "$type": "dimension",
+          "$value": "26px"
+        },
+        "listX": {
+          "$type": "dimension",
+          "$value": "16px"
+        },
+        "listWidth": {
+          "$type": "dimension",
+          "$value": "358px"
+        },
+        "rowHeight": {
+          "$type": "dimension",
+          "$value": "86px"
+        },
+        "emptyTop": {
+          "$type": "dimension",
+          "$value": "444px"
         },
         "filterBackground": {
           "$type": "color",
