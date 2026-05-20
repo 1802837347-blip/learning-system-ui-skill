@@ -17,6 +17,7 @@ Use this file to map arbitrary target pages into the AI自主学习系统 visual
 - Prefer dense but calm information layout over oversized hero text.
 - Cards and controls should feel rounded and soft, but not childish: common radii are 8px, 10px, 12px, 16px, and 18px.
 - Icons should be product-like SVG/assets, not emoji.
+- Normal light app pages use `SystemStatusBar` from `component-specs.md`, backed by `assets/status-light.svg`; do not redraw or restyle the status bar.
 - Do not invent new text, modules, or states when optimizing a Figma/screenshot target.
 
 ## Pattern: Home
