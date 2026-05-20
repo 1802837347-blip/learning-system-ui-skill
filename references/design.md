@@ -25,9 +25,11 @@ Required agent behavior:
 4. Preserve required Chinese copy exactly where this document gives exact copy.
 5. Use exact dimensions when this document says `must`, `exact`, or gives a single value.
 6. If a required real image asset is unavailable, use a neutral placeholder with the same size and layout, and label it as an asset placeholder in code comments only. Do not replace it with a different brand, mascot, cartoon person, or unrelated illustration.
-7. After implementation, run the QA checklist and explicitly fix all failed items before final output.
+7. Treat source illustrations, icons, tabbar icons, course covers, photos, and report previews as locked visual assets when optimizing an existing screenshot or Figma node. If no bundled asset or clearly better product asset exists, crop, extract, or faithfully trace the source asset and place it back into the optimized UI instead of drawing a simplified replacement from scratch.
+8. Use the AI自主学习系统 status bar component for normal light app pages by placing [assets/status-light.svg](../assets/status-light.svg) at the top of the canvas. Do not substitute generic iOS status bars, yellow battery pills, or mismatched signal/Wi-Fi/battery drawings.
+9. After implementation, run the QA checklist and explicitly fix all failed items before final output.
 
-For tests, a result should be considered failed if it uses an unlisted brand name, adds a subtitle not present in the source page, changes the required page order, replaces real course covers with generic cartoon cards, or hides any bottom content behind the tabbar.
+For tests, a result should be considered failed if it uses an unlisted brand name, adds a subtitle not present in the source page, changes the required page order, replaces real course covers with generic cartoon cards, redraws source illustrations/icons into lower-fidelity substitutes, uses a non-system status bar on normal app pages, or hides any bottom content behind the tabbar.
 
 ## Product Character
 
@@ -104,6 +106,23 @@ Carry these colors through calendar dots, subject tags, legends, and knowledge/c
 | Course task card shadow | `0 1px 1px rgba(0,0,0,0.05)` |
 
 ## Global Components
+
+### Asset Fidelity
+
+- Preserve source visual assets before improving them. Original screenshots and Figma nodes can contain product-specific illustration systems, tabbar icons, course covers, decorative module icons, and expand/play/status icons that are part of the UI language.
+- Asset replacement priority: source-cropped/extracted bitmap asset, existing bundled product asset, faithful traced SVG/vector, then a neutral placeholder only when the source asset is absent or unusable.
+- Do not hand-draw a new simplified icon or illustration when the source already provides one and the replacement is not clearly better. Low-fidelity redraws, mismatched stroke styles, generic cartoons, emoji, or unrelated icon families fail the design contract.
+- When extracting from a screenshot, keep the source asset's proportions, opacity, color relationship, and visual weight. Clean cropping or light retouching is allowed; changing the asset's style family is not.
+
+### System Status Bar
+
+- Use this status bar on normal AI自主学习系统 app pages, including home, learning-plan, all-courses, plan creation, knowledge-point, report, history, auth, and modal states.
+- Light status bar asset: [assets/status-light.svg](../assets/status-light.svg). This 390px by 44px SVG is the source of truth for the normal app status bar.
+- Place the SVG at the top of the canvas at full width on 390px pages. On 375px pages, scale proportionally to 375px width and preserve its 44px vertical area relationship.
+- It sits at the top safe area and overlays or precedes the page's pale cyan atmosphere. It should not be placed inside a card.
+- The SVG already includes `9:41`, black cellular bars, black Wi-Fi, and black battery. Do not redraw or restyle those sub-icons when the asset is available.
+- Do not use yellow battery pills, emoji/text glyphs, platform-default pasted icons, mixed stroke weights, or a different time unless the source explicitly locks another time.
+- Dark camera/correction screens may use the same geometry in white. Browser/webview challenge pages may preserve their shown browser chrome, but ordinary app pages should still use this system status bar.
 
 ### Bottom Tabbar
 
