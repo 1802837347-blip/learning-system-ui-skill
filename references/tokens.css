@@ -66,6 +66,24 @@
   --ls-action-danger: var(--ls-color-red-500);
   --ls-action-price: var(--ls-color-red-600);
 
+  /* Palette lock for screenshot optimization */
+  --ls-palette-policy: "Do not inherit arbitrary source screenshot colors";
+  --ls-palette-dominant-hue: "cyan-blue";
+  --ls-asset-color-policy: "Decorative source icons and illustrations preserve geometry but remap warm colors to cyan-blue tokens";
+  --ls-remap-primary-action: var(--ls-color-blue-500);
+  --ls-remap-primary-action-gradient: var(--ls-gradient-stepper-active);
+  --ls-remap-illustration-dark: var(--ls-color-blue-500);
+  --ls-remap-illustration-mid: var(--ls-color-blue-400);
+  --ls-remap-illustration-light: var(--ls-color-cyan-100);
+  --ls-remap-score-fill: var(--ls-color-blue-400);
+  --ls-remap-score-soft-fill: var(--ls-color-blue-100);
+  --ls-remap-tag-fill: var(--ls-color-blue-50);
+  --ls-remap-tag-text: var(--ls-color-blue-500);
+  --ls-remap-detail-border: rgba(0, 167, 216, 0.18);
+  --ls-remap-secondary-action-border: var(--ls-color-blue-100);
+  --ls-remap-secondary-action-text: var(--ls-color-blue-500);
+  --ls-remap-muted-warm-text: var(--ls-color-gray-700);
+
   /* Subject colors */
   --ls-subject-chinese: #ff3333;
   --ls-subject-math: #338bff;
@@ -164,6 +182,7 @@
 
   /* System status bar */
   --ls-statusbar-asset-light: url("../assets/status-light.svg");
+  --ls-statusbar-asset-white: url("../assets/status-white.svg");
   --ls-statusbar-width: var(--ls-canvas-app-width);
   --ls-statusbar-height: var(--ls-status-bar-height);
   --ls-statusbar-bg: transparent;
@@ -530,6 +549,17 @@
   --ls-history-filter-bg: #f5f7fc;
   --ls-history-row-divider: #f1f1f1;
   --ls-history-month-sheet-height: 369px;
+  --ls-history-header-height: 212px;
+  --ls-history-header-gradient: linear-gradient(180deg, #2ec0dc 0%, #10a5c8 100%);
+  --ls-history-sheet-radius: 20px;
+  --ls-history-title-color: #ffffff;
+  --ls-history-summary-color: #ffffff;
+  --ls-history-month-pill-width: 100px;
+  --ls-history-month-pill-height: 26px;
+  --ls-history-list-row-height: 86px;
+  --ls-history-list-x: 16px;
+  --ls-history-list-width: 358px;
+  --ls-history-empty-top: 444px;
   --ls-feedback-sheet-height: 451px;
   --ls-feedback-chip-height: 40px;
   --ls-feedback-chip-border: #e4e4eb;
@@ -539,6 +569,33 @@
   --ls-empty-illustration-width: 132px;
   --ls-empty-illustration-height: 74px;
   --ls-empty-illustration-opacity: 0.8;
+  --ls-composition-rank-tag-width: 40px;
+  --ls-composition-rank-tag-height: 18px;
+  --ls-composition-locked-tag-width: 40px;
+  --ls-composition-locked-tag-height: 44px;
+  --ls-composition-medal-width: 104px;
+  --ls-composition-medal-height: 108px;
+  --ls-composition-single-card-radius: 18px;
+  --ls-composition-single-card-padding-x: 18px;
+  --ls-composition-single-card-padding-y: 20px;
+  --ls-composition-single-card-gap: 16px;
+  --ls-composition-list-score-column: 66px;
+  --ls-composition-list-item-radius: 14px;
+  --ls-composition-list-item-padding-x: 14px;
+  --ls-composition-list-item-padding-y: 14px;
+  --ls-composition-list-item-gap: 12px;
+  --ls-composition-score-text: var(--ls-color-blue-500);
+  --ls-composition-title-text: var(--ls-color-blue-600);
+  --ls-composition-time-text: var(--ls-color-gray-700);
+  --ls-asset-composition-badge-valued: url("../assets/composition/badge-valued.svg");
+  --ls-asset-composition-badge-empty: url("../assets/composition/badge-empty.svg");
+  --ls-asset-composition-empty-no-content: url("../assets/composition/empty-no-content.svg");
+  --ls-asset-composition-tag-locked: url("../assets/composition/tag-locked.svg");
+  --ls-asset-composition-tag-rank-1: url("../assets/composition/tag-rank-1.svg");
+  --ls-asset-composition-tag-rank-2: url("../assets/composition/tag-rank-2.svg");
+  --ls-asset-composition-tag-rank-3: url("../assets/composition/tag-rank-3.svg");
+  --ls-asset-composition-tag-rank-4: url("../assets/composition/tag-rank-4.svg");
+  --ls-asset-composition-tag-rank-5: url("../assets/composition/tag-rank-5.svg");
 }
 
 [data-theme="dark-camera"] {
