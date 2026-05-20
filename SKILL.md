@@ -1,6 +1,6 @@
 ---
 name: 学习系统UI-skill
-description: Use this skill when creating or extending mobile mini-program UI pages for the AI自主学习系统, including login and phone verification, onboarding/profile setup modals, learning home pages, purchased/unpurchased states, pending/update/completed plan states, welcome cards, plan setup cards, AI learning tools, composition correction entry cards, composition score selection sheets, composition photo capture flows, photo order confirmation, OCR recognition and review, benefit-consumption confirmation, correction loading states, composition audio explanation pages, annotated essay walkthroughs, correction report generation, report preview/download, report intro/landing, composition correction history, monthly record filters, quota-exhausted composition entry states, feedback sheets, camera permission prompts, plan creation flows, learning information forms, plan knowledge-point selection, date picker sheets, validation/error states, generation loading states, generated plan overview pages, APP learning-plan pages, knowledge-point overview pages, short-answer challenge / 闯关专项 pages, APP all-courses catalog pages, course outline/video-list pages, expanded or collapsed calendar states, scrolled calendar states, login-required learning-plan states, daily study plans, course recommendation grids, course commerce cards, plan history, sticky filters, empty states, and related education-product screens in the same visual style.
+description: Use this skill when creating, optimizing, or reviewing mobile mini-program UI pages for the AI自主学习系统. It enforces the AI自主学习系统 cyan/blue palette, bundled status bar asset, source-content preservation, source illustration/icon extraction, composition score/rank assets, immersive single-data cards, essay record lists, and page patterns for learning plans, courses,作文批改/report/history, login, onboarding, plan creation, APP learning-plan pages, knowledge-point pages, short-answer challenge pages, all-courses pages, empty/loading/error states, and related education-product screens.
 metadata:
   short-description: Generate AI自主学习系统 UI and作文批改 flows
 ---
@@ -15,6 +15,17 @@ Use this skill to generate new pages that match the existing AI自主学习系�
 - Keep the product feeling quiet, clean, trustworthy, and study-focused.
 - Use a pale cool background, soft blue top atmosphere, rounded white cards, compact tags, and direct task-oriented content.
 - Do not create a marketing hero. The first screen should show useful learning content or the current learning state.
+
+## Hard Output Contract
+
+These constraints override source screenshots and generic UI instincts:
+
+1. Reference screenshots provide information architecture, copy, counts, spacing clues, and extractable assets. They are not palette sources.
+2. All UI chrome must use AI自主学习系统 tokens: cyan/blue atmosphere, blue/cyan selected states, white cards, gray-blue text, and blue actions. Orange, brown, beige, peach, amber, tan, and warm gradients from arbitrary references are failures unless an exact component spec explicitly allows that warm token.
+3. Source illustrations and icons are locked for shape/detail/style, but their UI-facing colors are not locked. If an extracted icon or illustration contains warm colors that conflict with the cyan/blue system, keep its geometry and detail while remapping non-content colors into the cyan/blue token family. Preserve natural colors only for photos, course covers,作文 images, manuscript/report evidence, and other real content media.
+4. Normal light app pages must use [assets/status-light.svg](assets/status-light.svg) directly for the status bar. Full cyan/blue immersive header pages such as `历史批改记录` must use [assets/status-white.svg](assets/status-white.svg). Do not redraw `9:41`, cellular signal, Wi-Fi, or battery.
+5. If the source contains required data, the optimized UI must keep it. For batch/composition report list pages, cards must not collapse to avatar/name/phone only; they must preserve report action, title, submit time, score, and category/dang when present.
+6. When content matches作文 score/rank summaries, use the bundled composition rank/tag assets instead of drawing new badges. Single data display pages use an immersive card with the title/content on the left and the badge/medal on the right. Essay record lists use left score+rank and right title+time.
 
 ## When to Apply
 
@@ -41,12 +52,14 @@ Skip it for pure backend logic, database/API work, or non-visual automation.
 8. Preserve the user's original text and information architecture unless they explicitly ask for content changes.
 9. When outputting HTML or code, prefer resilient layout primitives: flex/grid, `box-sizing: border-box`, `min-height`, safe-area padding, and content-driven spacing.
 10. Treat real images, course covers,作文 photos, icons, and report previews as primary content assets. Preserve them when provided; create meaningful fallbacks only when assets are unavailable.
-11. When optimizing from a screenshot or existing UI, preserve the source illustration and icon style. If no bundled asset or clearly better product asset exists, extract/crop/trace the original illustration or icon from the source and place it back into the optimized UI; do not redraw a simplified replacement from scratch.
-12. Use the AI自主学习系统 status bar consistently. For light app pages, use the bundled [assets/status-light.svg](assets/status-light.svg) as the source of truth at 390px by 44px, scaling proportionally for 375px pages. Do not redraw the signal, Wi-Fi, battery, or `9:41` time when this asset is available. Do not invent yellow battery pills, mismatched icon weights, or alternate status chrome unless the source page explicitly requires a different shell; dark camera/correction screens may use the same geometry in white.
-13. If the source is a high-resolution screenshot, normalize it to a 375px or 390px CSS canvas before choosing font sizes, spacing, and icon sizes. Do not copy raw screenshot pixels as CSS pixels.
-14. If a Figma node or screenshot is provided, treat every visible text string, tab, date, subject legend item, card count, and icon family as locked unless the user asks to redesign content.
-15. For APP learning-plan screens, preserve the foundational UI tokens from the Figma reference: top tab selected style, assistant avatar/bubble, collapsed calendar heights and date states, course-card anatomy, and right play button style.
-16. Before final delivery, verify the screen at the target phone width and fix any oversized type, missing icons, overflow, clipping, hidden fixed-bar content, low-contrast text, tiny tap targets, or misaligned borders.
+11. When optimizing from a screenshot or existing UI, preserve the source illustration and icon style. If no bundled asset or clearly better product asset exists, extract/crop/trace the original illustration or icon from the source and place it back into the optimized UI; do not redraw a simplified replacement from scratch. For UI illustrations/icons, preserve shape/detail while recoloring warm non-content fills/strokes into cyan/blue tokens when the source palette conflicts with this skill.
+12. Use the AI自主学习系统 status bar consistently. For ordinary light app pages, use bundled [assets/status-light.svg](assets/status-light.svg) at 390px by 44px. For full cyan/blue immersive header pages such as `历史批改记录`, use bundled [assets/status-white.svg](assets/status-white.svg) with the same geometry. Do not redraw the signal, Wi-Fi, battery, or `9:41` time when these assets are available. Do not invent yellow battery pills, mismatched icon weights, or alternate status chrome unless the source page explicitly requires a different shell.
+13. Do not inherit color from arbitrary source/reference screenshots. Use the screenshot for content, layout, hierarchy, and asset extraction only; remap all UI fills, borders, gradients, badges, CTAs, and emphasis colors to this skill's AI自主学习系统 tokens, with a cyan/blue-dominant palette. Orange, brown, beige, peach, and warm gradients from the source are forbidden unless the target page section in this skill explicitly defines that exact warm token for that exact component.
+14. If the source is a high-resolution screenshot, normalize it to a 375px or 390px CSS canvas before choosing font sizes, spacing, and icon sizes. Do not copy raw screenshot pixels as CSS pixels.
+15. If a Figma node or screenshot is provided, treat every visible text string, tab, date, subject legend item, card count, and icon family as locked unless the user asks to redesign content. Treat source colors as unlocked unless the source is the explicit target Figma for this skill.
+16. For APP learning-plan screens, preserve the foundational UI tokens from the Figma reference: top tab selected style, assistant avatar/bubble, collapsed calendar heights and date states, course-card anatomy, and right play button style.
+17. For HTML/CSS output, run `node scripts/audit-ui-output.mjs <output-file>` before final delivery when the file is available, then fix any failures it reports.
+18. Before final delivery, verify the screen at the target phone width and fix any oversized type, missing icons, overflow, clipping, hidden fixed-bar content, low-contrast text, tiny tap targets, source-color leakage, missing batch-statistics fields, or misaligned borders.
 
 ## Page Types
 
@@ -55,6 +68,7 @@ Use this skill for:
 - Learning home with pending plan cards and history cards.
 - Home recommendation pages with brand header, grade selector, welcome/plan setup card, AI学习工具 modules, and hot course recommendations.
 - AI learning tool pages and overlays for作文批改, including monthly report cards, photo-correction entry cards, quota badges, quota-exhausted disabled entry states, full-score selection sheets, camera permission prompts, two-step photo capture, thumbnails, sorting, example overlays, photo order confirmation, OCR loading/review, benefit-consumption confirmation, correction loading, audio explanation walkthroughs, report generation, report preview/download, correction history records, monthly record filters, and feedback sheets.
+- Composition score/rank summary pages, including single data display pages with a medal on the right, essay record lists with score/rank on the left and title/time on the right, one-to-five category tags, locked category states, valued/empty medal states, and no-content fallbacks.
 - Login, phone verification, guest mode, and first-use grade/province setup flows.
 - Purchased/unpurchased learning home states, including no-history empty states and sticky history filters.
 - Plan creation flows, especially `学习信息` -> `计划考点` -> `生成计划`, score inputs, study-frequency chips, daily course-hour steppers, period cards, date picker sheets, knowledge-point selection sheets, generation loading, generated plan overview, and validation states.
@@ -112,6 +126,8 @@ For作文批改 capture flows:
 - Use distinct walkthrough stages for起评分/审题立意, 加分项, 扣分项, 整体评价, and the final `查看批改报告` handoff.
 - Report flow can include a promotional intro, report-generation loading, a scrollable report document preview, `重看讲解`/`下载报告`, and feedback bottom sheets.
 - History flow can include `历史批改记录`, a monthly badge summary, score/category rows, `待解锁` rows, empty records, and a bottom month selector sheet.
+- For `批改统计`, 作文批改历史, report-list, or batch-correction management pages, do not inherit source orange. Use cyan/blue score pills, pale-blue category tags, blue outlined `查看报告` actions, and pale-blue detail borders unless the exact target Figma node says otherwise.
+- For score/rank summary pages that match the Figma nodes `4424:491` or `5201:3715`, preserve the source style one-to-one: use bundled [assets/composition/badge-valued.svg](assets/composition/badge-valued.svg), [assets/composition/badge-empty.svg](assets/composition/badge-empty.svg), [assets/composition/empty-no-content.svg](assets/composition/empty-no-content.svg), [assets/composition/tag-locked.svg](assets/composition/tag-locked.svg), and rank tag assets [tag-rank-1.svg](assets/composition/tag-rank-1.svg) through [tag-rank-5.svg](assets/composition/tag-rank-5.svg). Do not replace these with CSS pills, emoji medals, or generic icons.
 
 For daily learning-plan pages:
 
