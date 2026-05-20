@@ -25,6 +25,29 @@ Use this file before generating or optimizing a page. It defines reusable compon
 - Default card shadow: subtle, around `0 1px 1px rgba(0,0,0,0.05)`.
 - Blue card shadow: `0 9px 18px rgba(50,131,198,0.22)`.
 
+## SystemStatusBar
+
+Use for normal AI自主学习系统 app pages. This component replaces ad hoc iOS-style status bars.
+
+- Source asset: [assets/status-light.svg](../assets/status-light.svg).
+- Asset size: 390px by 44px.
+- Use the SVG directly for light app pages instead of recreating its time, cellular, Wi-Fi, or battery parts.
+- Height: 44px.
+- Background: transparent over the page atmosphere or white/pale page surface; do not put it in a separate card.
+- Time:
+  - Text: `9:41`.
+  - Position: left safe-area, about x 28px on 390px canvas.
+  - Color: black on light pages, white on dark camera/correction pages.
+  - Size: about 15px to 17px, semibold/bold.
+- Right status group:
+  - Cellular bars, Wi-Fi, and outlined battery.
+  - Color: black on light pages, white on dark camera/correction pages.
+  - Battery is an outline rounded rectangle with a right nub; no filled yellow battery pill.
+  - Keep icon baseline, stroke/fill weight, and spacing consistent with the Figma status bar.
+- On 390px pages, place the SVG at native width. On 375px pages, scale it proportionally to page width rather than altering internal icon positions.
+- Do not use emoji, text glyphs, copied platform screenshots, yellow battery capsules, or mixed icon families.
+- Browser/webview pages may preserve their source browser chrome when visible; otherwise use this component.
+
 ## HomeHeader
 
 Use for 首页 states.
