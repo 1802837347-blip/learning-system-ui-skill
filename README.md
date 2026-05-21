@@ -28,13 +28,31 @@
 使用 学习系统UI-skill 生成一个 AI 自主学习系统的作文批改页面
 ```
 
-Codex 会通过 `SKILL.md` 触发 skill，并按其中指引优先读取 `references/design.md` 和 `references/design.tokens.json`。
+Codex 会通过 `SKILL.md` 触发 skill，并按其中的 Automatic Execution Protocol 自动读取并应用设计规则、tokens、页面模式、组件规格和质量门禁。
+
+用户不需要在 prompt 中逐个列出所有规则文件。只要触发本 skill，执行者就应该自动读取并应用 `SKILL.md` 中列出的核心 reference 文件，并在交付前修复 `references/quality-gates.md` 的 Hard Failures。
 
 如果是在修 UI 问题或优化已有页面，可以这样说：
 
 ```text
 使用 学习系统UI-skill 优化这个页面，并按 references/quality-gates.md 做交付前检查
 ```
+
+结合 PRD 时，可以简写为：
+
+```text
+使用 learning-system-ui-skill，根据这个 PRD 优化页面，输出可交互 HTML。
+```
+
+PRD 负责信息架构，例如 Tab 数量、字段、状态、卡片内容和要删除的模块；skill 负责视觉系统，例如色彩、字号、间距、圆角、图标、卡片、渐变和质量验收。交付前如果存在 `references/quality-gates.md` 的 Hard Failures，应该先修复再交付。
+
+没有 PRD、只提供页面或截图时，也可以直接说：
+
+```text
+使用 learning-system-ui-skill 优化这个页面，输出可交互 HTML。
+```
+
+这时原页面本身就是信息架构来源：Tab 数量、文案、模块顺序、卡片数量、字段、状态和数据都要保留；skill 只负责把视觉样式优化成 AI 自主学习系统风格。
 
 ### Claude Code 或其他 AI 助手
 

@@ -42,20 +42,69 @@ Use this file as the final review pass before delivering optimized UI. These gat
 
 ## Hard Failures
 
-If any item below occurs, revise before delivery:
+If any item below occurs, revise before delivery. These are blocker conditions, not suggestions.
 
-- Text escapes a card, button, tag, date cell, tab, modal, or fixed bar.
-- A source icon is missing, replaced by emoji, or replaced by a visibly unrelated shape.
-- A source illustration, tabbar icon, decorative module icon, course cover, photo, or report preview is replaced by a lower-fidelity self-drawn substitute when the original asset could have been cropped, extracted, or faithfully traced.
+Information architecture failures:
+
+- PRD-required tabs, labels, state counts, fields, card content, or section order are missing, renamed, merged, split, or invented without user instruction.
+- When no PRD is provided, source-page tabs, labels, state counts, fields, card content, or section order are missing, renamed, merged, split, or invented without user instruction.
+- The output adds explanation cards, summary modules, helper text, counters, or promotional blocks that are not present in the PRD/source.
+- The implementation changes source text, data, card count, visible status count, or information order without user instruction.
+- A page is mapped to the wrong product domain, such as learning/course pages becoming CRM, office schedule, work dashboard, or generic task-list UI.
+- Source copy is paraphrased when the user asked to optimize UI rather than rewrite content.
+
+Layout and containment failures:
+
+- Text, metrics, buttons, badges, tabs, tags, date cells, icons, images, or borders escape their parent card, sheet, modal, tabbar, or fixed action area.
+- Required text or numbers are clipped, hidden with accidental `overflow: hidden`, overlapped, or squeezed until unreadable.
+- A tab row wraps unintentionally when the PRD/source requires one-line tabs.
+- Cards use tight fixed heights that crop real content, metric labels, tags, or CTA buttons.
+- Fixed tabbars, sticky CTAs, browser chrome, or home indicators cover scroll content.
+- Repeated rows do not share stable column edges; right values, chevrons, locks, tags, and dividers drift row by row.
+- Step/timeline rails have nodes, locks, or vertical lines that do not share one x-axis or do not align with their corresponding cards.
+- Calendar cells lose selected/default/planned styles, subject dots, weekday alignment, or become a different component.
+
+Asset and icon failures:
+
+- A source icon is missing, replaced by emoji, replaced by a visibly unrelated shape, or hand-drawn when a bundled/source/mature-library icon exists.
+- A default parent/student/customer avatar is hand-drawn, emoji-based, initials-based, or CSS-only instead of using `assets/avatars/default-parent.svg` when no real photo is provided.
+- Bottom tabbar icons mix unrelated icon families, stroke widths, baselines, or active/inactive treatments.
+- A source illustration, tabbar icon, decorative module icon, course cover, photo,作文 manuscript, or report preview is replaced by a lower-fidelity self-drawn substitute when the original asset could have been cropped, extracted, faithfully traced, or represented by a bundled asset.
+- 作文 photo/manuscript areas are replaced by repeated gray horizontal bars, empty ruled paper, abstract lines, or generic skeletons.
+- Composition rank/score assets are recreated as CSS pills, emoji medals, generic trophies, or new hand-drawn badges instead of using bundled assets. This includes `1档/1类/一档/一类` through `5档/5类/五档/五类` and `待解锁`.
 - A normal light app page uses a generic, mismatched, or self-redrawn status bar instead of bundled `assets/status-light.svg`.
-- Orange, brown, beige, peach, amber, or warm gradients from an arbitrary source screenshot appear in a cyan/blue target page's score pills, category pills, report buttons, card detail borders, tabs, or primary CTAs.
-- A `批改统计` completed-report card omits `查看报告`, `作文标题`, `提交时间`, score, or category/dang when that information exists in the source.
-- A gradient panel, CTA, or selected state is flattened into a plain block when the source uses gradient/depth.
-- A component listed in `component-specs.md` has obviously wrong size, radius, spacing, or state treatment.
+- A white/immersive history header uses black status icons instead of `assets/status-white.svg`.
+- Browser/webview chrome visible in the source is replaced with native mini-program chrome, or a domain pill such as `uinotes.com` is omitted.
+
+Visual-system failures:
+
+- Orange, brown, beige, peach, amber, tan, or warm gradients from an arbitrary source screenshot appear in a cyan/blue target page's score pills, category pills, report buttons, card detail borders, tabs, or primary CTAs.
+- Colors, shadows, radii, spacing, gradients, or typography are invented when an equivalent token/spec exists.
+- A gradient panel, CTA, selected state, top atmosphere, recommendation module, or challenge intro module is flattened into a plain block when the target/source requires gradient and depth.
+- A component listed in `component-specs.md` has obviously wrong size, radius, spacing, state treatment, or visual hierarchy.
+- Font sizes are copied from a 2x/3x screenshot and become oversized on a 375px/390px CSS canvas.
+- Text contrast is too low against its background, or state meaning depends on color alone.
+- The page mixes unrelated visual languages: different icon families, random shadows, inconsistent radii, or off-system decorative assets.
+
+Product-pattern failures:
+
+- Any作文 result structure omits visible source fields such as `查看报告`, `作文标题`, `提交时间`, score, category/dang, locked state, title, time, or status.
+- Any作文 result structure renders `1档` to `5档`, `一档` to `五档`, `1类` to `5类`, `一类` to `五类`, or `待解锁` as generic CSS pills instead of bundled rank/locked assets.
+- Any repeated作文 result row uses avatar/name/phone/report-button hierarchy in place of the required score/rank/title/time grouping. Avatar/name/phone can exist only as an outer shell when the result grouping remains intact.
+- Any single作文 metric/result puts the medal/rank asset below the text instead of using the left-title/right-medal immersive card structure.
 - Course cards become schedule cards, CRM cards, or generic task cards.
-- Calendar cells lose their selected/default/planned states or become a different component.
-- Fixed tabbars or CTAs cover scroll content.
-- The implementation changes source text, data, card count, or information order without user instruction.
+- APP learning-plan incomplete states become time-slot schedules or show `今日无计划~` empty content.
+- Knowledge-point pages lose topic cards, progress rail, expand/collapse icons, lock states, progress values, or active tab underline.
+- Short-answer challenge pages lose browser chrome, level tabs, gradient intro module, left step rail, locked nodes, or fixed purchase CTA.
+- Home pages lose brand header, grade selector, main state card, course recommendation grid, or bottom tabbar.
+
+Interaction and delivery failures:
+
+- Tappable targets are smaller than comfortable mobile hit areas, or icon-only controls lack accessible labels.
+- Pressed, selected, disabled, loading, locked, expanded, completed, or error states are absent or visually indistinguishable.
+- A generated interactive HTML page is not actually interactive where tabs, expandable cards, drawers, filters, or toggles are visible.
+- The HTML/CSS output was not checked at the target 375px or 390px width.
+- A known audit script or available browser inspection reports failures that are left unfixed.
 
 ## Professional UI Baseline
 
@@ -202,16 +251,28 @@ If any item below occurs, revise before delivery:
 - Decorative warm icon/illustration fills -> cyan/blue tokens such as `#00639E`, `#00A7D8`, `#0EC5FF`, `#BFF9FF`, `#CCE9FB`, or gray-blue neutrals.
 - Scan CSS/HTML for warm literals such as `#F97316`, `#FF8`, `#FF9`, `#F59`, `orange`, `amber`, `peach`, `brown`, `beige`, `tan`, and replace them unless they correspond to an explicit allowed token.
 
-## Composition Batch Statistics QA
+## Composition Result Structure QA
 
-- Use this for `批改统计`, 作文批改历史, report-list, and batch-correction management pages.
+- Use this for any visible作文 result data, regardless of page title: score, rank/category/dang, locked state,作文 title, submit/correction time, report status, or report action.
+- The result unit must keep related fields together. Score/rank/title/time/status cannot be scattered into unrelated card regions.
+- Repeated result rows use left score plus rank/locked asset and right title plus time/status unless the source explicitly uses a different one-off layout and still preserves the grouping.
+- Embedded result details inside user/report cards must still show title/time plus score/rank/category when present.
+- Single result cards use left title/data/copy and right medal/rank asset.
+- Use rank SVG assets for mapped `一类` to `五类`, `1档` to `5档`, `1类` to `5类`, `一档` to `五档`, and `待解锁`; do not recreate them as text pills.
+- Preserve every visible score, title, category, time, status, row count, and action from the source.
+- Fail if page title or route name is used to skip this structure when the data fields match.
+
+## Composition Report Management Shell QA
+
+- Use this only for management shells with state tabs, avatar/name/phone rows, report actions, or bottom tabbar.
 - Each completed report card must include, when present in the source: avatar, user name, phone number, `查看报告`, `作文标题`, `提交时间`, score, and category/dang.
 - Card hierarchy must be preserved:
   - First level: avatar, user information, and report action.
-  - Second level: title/time detail panel plus score/category result row.
+  - Second level: title/time detail panel plus score/category result row using Composition Result Structure.
 - Names should be list-card scale, usually 16px to 18px, and phone/detail text should be 13px to 15px. Oversized profile-card typography fails.
 - The active tab should not be taller than needed; segmented controls should be compact and not consume excessive vertical space.
 - Page background gradients should continue naturally to the page bottom or into the content sheet; they must not visibly stop at the tab bar boundary.
+- Essay rank/category values inside completed cards are checked by Composition Result Structure QA.
 - Default avatars must come from provided/bundled assets when available; do not create decorative profile art that changes the product style.
 
 ## Composition Score Snapshot QA
@@ -224,9 +285,9 @@ If any item below occurs, revise before delivery:
 - Surrounding UI must remain cyan/blue; warm rank asset colors are allowed only inside the bundled SVG assets.
 - Fail if the page replaces the medal/rank assets with emoji, generic trophies, CSS pills, or newly drawn badges.
 
-## Composition Essay Record List QA
+## Composition Essay Record List Variant QA
 
-- Use this for作文列表, 作文批改列表, 历史作文记录, and repeated essay records where rows contain score/category plus title/time.
+- Use this when Composition Result Structure appears as repeated rows where score/category plus title/time are the main data.
 - Each list item must use the hierarchy: left score plus rank/locked asset, right title plus time.
 - Score/rank must not move to the right side, and title/time must not move below avatar/name structures unless the source includes avatars.
 - Use the rank SVG assets for `一类` to `五类` and `待解锁`; do not recreate them as text pills.
@@ -235,7 +296,7 @@ If any item below occurs, revise before delivery:
 
 ## Composition Correction History Records QA
 
-- Use this for `历史批改记录` and monthly correction history pages matching the exported target references.
+- Use this for the immersive monthly correction-history shell matching the exported target references.
 - Header must be a full cyan/teal gradient with white status bar `assets/status-white.svg`, white back chevron, and centered `历史批改记录`.
 - White sheet must start around y 212px with 20px top corner radius. It must not be a floating card.
 - With-records state must show monthly copy, `badge-valued.svg`, `批改记录`, month filter, row dividers, score/rank left column, title/time right column, and chevrons.
@@ -344,7 +405,7 @@ Use this pattern as a starting point, then adapt dimensions to the exact compone
 - [ ] Normal light app pages use bundled `assets/status-light.svg` for the AI自主学习系统 status bar.
 - [ ] Composition score/rank pages use bundled medal, rank, locked, and empty-state SVG assets from `assets/composition/`.
 - [ ] Single作文数据展示页 uses left title/data and right medal/rank asset inside an immersive card.
-- [ ] 作文列表 rows use left score plus rank/locked asset and right title plus time.
+- [ ] Repeated作文 result rows use left score plus rank/locked asset and right title plus time.
 - [ ] Back chevron shape and container match the source; no invented boxed button.
 - [ ] Font sizes are normalized to a 375px/390px CSS canvas and are not inflated from screenshot pixels.
 - [ ] Repeated rows use stable alignment columns for left rail, content, tags, progress, and lock/play icons.
@@ -354,7 +415,7 @@ Use this pattern as a starting point, then adapt dimensions to the exact compone
 - [ ] Color is not the only way important state or meaning is communicated.
 - [ ] Arbitrary source screenshot colors were not inherited; all UI colors come from AI自主学习系统 tokens and the page remains cyan/blue dominant.
 - [ ] No warm source-color leakage remains in score pills, category tags, card borders, report buttons, tabs, or primary CTAs.
-- [ ] `批改统计` cards keep the required two-level hierarchy and include report action, title/time, score, and category when those fields exist.
+- [ ] Report-management cards keep the required two-level hierarchy and include report action, title/time, score, and category when those fields exist.
 - [ ] Management-list typography stays compact and does not turn names/phone numbers into oversized profile-card text.
 - [ ] Page/background gradient continues naturally behind content and is not visibly cut off at the tabbar.
 - [ ] Learning-plan screens do not drift into CRM/work schedule semantics or unrelated tab labels.

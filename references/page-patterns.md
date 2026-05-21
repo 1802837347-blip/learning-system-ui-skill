@@ -5,10 +5,21 @@ Use this file to map arbitrary target pages into the AI自主学习系统 visual
 ## Page Adaptation Method
 
 1. Identify the page's job: plan, course, practice,作文批改, report, auth, commerce, empty, or modal.
-2. Keep the source page's information architecture unless the user explicitly asks for redesign.
-3. Choose a page pattern below.
-4. Build from shared components in `component-specs.md`.
-5. Run `quality-gates.md` before delivery.
+2. If a PRD exists, extract its required tabs, fields, states, counts, card content, removed modules, and interaction requirements before applying visual style. If no PRD exists, extract those facts from the source page itself.
+3. Keep the source/PRD information architecture unless the user explicitly asks for redesign.
+4. Choose a page pattern below.
+5. Build from shared components in `component-specs.md`.
+6. Run `quality-gates.md` before delivery. Any hard failure blocks delivery.
+
+## PRD And Source Priority
+
+- PRD controls information architecture: tab count, tab labels, field lists, state names, card content, status counts, and which modules should be removed.
+- If no PRD is provided, the source page controls information architecture: visible tab count, labels, sections, card count, field labels, status names, data values, and current interaction shell.
+- Source screenshots/Figma nodes always control visible copy, visual assets, data values, browser/native shell, and interaction context.
+- This skill controls visual system: color, type, spacing, radius, card treatment, icons, gradients, component states, and quality gates.
+- Do not add summary cards, explanation modules, counters, helper text, or promotional sections unless they exist in the PRD/source or the user asks for them.
+- If the PRD says there are three tabs, render exactly those three tabs. If a tab label is long, solve it with spacing, font scale, or equal-width layout; do not wrap or invent abbreviations unless the PRD provides them.
+- If the PRD says a module should be deleted, remove it even if a similar module exists in a page pattern.
 
 ## Universal Style Principles
 
@@ -187,23 +198,58 @@ Core rules:
 - Audio/control bars must not hide content.
 - Preserve annotation colors and report stages.
 
-## Pattern: Composition Batch Statistics
+## Structure: Composition Result Record
 
-Use for `批改统计`, 作文批改历史, report-list, and batch-correction management pages.
+This is an information-structure rule, not a page-type rule. Apply it anywhere visible data describes a作文 result, including lists, history sheets, report cards, management cards, monthly summaries, user cards, or arbitrary pages that contain similar fields.
+
+Trigger when any repeated item, card detail, or single block contains two or more of:
+
+- score such as `52分`, `44分`, `0/7`, or a scored result label
+- rank/category/dang such as `一类`, `二类`, `3档`, `4类`, `待解锁`
+- 作文 title or report title
+- submit/correction time such as `批改时间：4月11日 14:55`, `提交时间`, `今天 14:32`
+- report state/action such as `查看报告`, `待领取`, `完成讲解即可解锁完整批改报告`
+
+Required anatomy:
+
+1. Keep score/rank/title/time/status as one result unit. Do not scatter them into unrelated card areas.
+2. List variant: left column is score plus rank/locked asset; right column is title plus time/status; far-right chevron/action only when the source has drill-in.
+3. Embedded card-detail variant: an outer avatar/name/phone/report-action shell may wrap the result, but the inner result panel still contains title/time plus score/rank using the same mapping.
+4. Single-data variant: left side is title/data/copy; right side is medal/rank asset.
+5. Empty/no-value variant: use the bundled empty/no-value assets and preserve source empty copy.
+
+Rank asset mapping:
+
+- `1档`, `1类`, `一档`, `一类` -> `assets/composition/tag-rank-1.svg`
+- `2档`, `2类`, `二档`, `二类` -> `assets/composition/tag-rank-2.svg`
+- `3档`, `3类`, `三档`, `三类` -> `assets/composition/tag-rank-3.svg`
+- `4档`, `4类`, `四档`, `四类` -> `assets/composition/tag-rank-4.svg`
+- `5档`, `5类`, `五档`, `五类` -> `assets/composition/tag-rank-5.svg`
+- `待解锁` -> `assets/composition/tag-locked.svg`
+
+Core rules:
+
+- Do not render mapped rank/category/dang values as generic CSS pills.
+- Do not replace result records with avatar/name/phone rows unless those fields are present and the result fields remain visible inside the same card.
+- Do not choose this structure by the page title. Choose it by the visible data fields above.
+- Preserve exact source scores, titles, categories, dates, times, status copy, and row count.
+
+## Shell: Composition Report Management
+
+Use only as an outer shell when the source contains a report-management list: native title bar, segmented state tabs, optional avatar/name/phone primary row, report action, and bottom tabbar. It does not decide the inner作文 result detail style; `Structure: Composition Result Record` owns that.
 
 Required structure:
 
 1. `SystemStatusBar` using `assets/status-light.svg`
 2. Native title bar with back chevron, centered `批改统计`, and mini-program capsule when present
 3. Segmented tabs for states such as `已领取15/分享30`, `待批改5`, `完成批改10`
-4. Scrollable report list using `CompositionReportListCard`
+4. Scrollable report list using a management card shell plus `Composition Result Record` detail when result fields exist
 5. Bottom tabbar when the source shell includes it
 
 Card required structure:
 
 1. Primary row: avatar, user name, phone number, and `查看报告` action when the report is available
-2. Detail panel: `作文标题` and `提交时间`
-3. Result row: score such as `42分` and category such as `3档`
+2. Result detail panel using `Composition Result Record`: `作文标题`, `提交时间`, score, rank/category/dang/locked state when present
 
 Core rules:
 
@@ -211,14 +257,15 @@ Core rules:
 - Do not simplify cards to only avatar/name/phone. Missing `查看报告`, `作文标题`, `提交时间`, score, or category fails this pattern.
 - Use `assets/avatars/default-parent.svg` when a real avatar is unavailable; do not invent decorative profile art.
 - Bottom tabbar and row actions use local icon assets: `house.svg`, `file-check.svg`, `circle-user-round.svg`, `chevron-right.svg`, and `chevron-left.svg` as appropriate.
-- Use cyan/blue palette mapping only: blue score pills, pale-blue category tags, blue outlined `查看报告`, and pale-blue detail borders.
+- Use cyan/blue palette mapping for the card shell: blue score emphasis, blue outlined `查看报告`, and pale-blue detail borders.
+- For作文档次/category inside completed cards, follow `Composition Result Record` rank asset mapping.
 - Do not inherit source orange, peach, beige, or brown colors into the list UI.
 - Decorative icons, avatars, and empty-state illustrations should preserve source geometry or bundled assets, but any warm non-content fills/strokes must be recolored to cyan/blue tokens.
 - Keep list card typography compact: names around 16px to 18px, phone/details around 13px to 15px, not oversized.
 
 ## Pattern: Composition Score Snapshot
 
-Use when the page is close to the Figma score/rank pages `4424:491` or `5201:3715`, or when the source/product requirement is a single作文 metric, category result, rank summary, score snapshot, no-value score state, or locked score/category state.
+Use when the visible information structure is a single作文 metric, category result, rank summary, score snapshot, no-value score state, or locked score/category state.
 
 Required structure:
 
@@ -240,7 +287,7 @@ Core rules:
 
 ## Pattern: Composition Correction History Records
 
-Use when the target is `历史批改记录`, monthly作文批改 records, month-filtered correction history, or when the UI closely matches [reference-history-records.png](../assets/composition/reference-history-records.png) / [reference-history-empty.png](../assets/composition/reference-history-empty.png).
+Use only as the outer shell when the target visually matches a monthly作文 history sheet: immersive cyan/teal header, white status bar, monthly summary, white rounded-top sheet, month filter, and record/empty state. The row anatomy inside this shell is still governed by `Structure: Composition Result Record`.
 
 Required structure:
 
@@ -273,7 +320,7 @@ Exact layout anchors from Figma `4424:491` / `5201:3715`:
 
 ## Pattern: Composition Essay Record List
 
-Use when the source/product requirement is a作文列表, 作文批改列表, 历史作文记录, report/essay record list, or repeated items where each row contains a score/category plus title/time.
+Use when `Structure: Composition Result Record` appears as a repeated list. This is a structural list variant, not a page-type trigger.
 
 Required structure:
 
@@ -289,9 +336,9 @@ Card/list item structure:
 
 Core rules:
 
-- Match the exact left-score/right-title-time hierarchy. Do not use avatar/name/phone or report-button hierarchy unless the source actually contains it.
+- Match the exact left-score/right-title-time hierarchy. If avatar/name/phone/report-button fields also exist, keep them as an outer shell and preserve this result structure inside it.
 - Keep score/rank on the left and title/time on the right.
-- Use bundled rank SVGs for category tags; do not draw CSS text pills.
+- Use bundled rank SVGs for category tags; do not draw CSS text pills. Map `1档/1类/一档/一类` to `tag-rank-1.svg`, `2档/2类/二档/二类` to `tag-rank-2.svg`, through `5档/5类/五档/五类` to `tag-rank-5.svg`.
 - Preserve exact titles, scores, categories, and times.
 - Use cool white cards, gray-blue detail text, and blue/cyan score emphasis.
 
@@ -310,6 +357,7 @@ Core rules:
 
 If the source page is not one of the known screens:
 
+- First scan for reusable information structures. If any作文 result data appears, apply `Structure: Composition Result Record` to those blocks regardless of page title.
 - Product landing/home/recommendation entry -> Home.
 - Learning dashboard or schedule -> APP Learning Plan.
 - Course catalog or curriculum -> APP All Courses.
@@ -317,12 +365,11 @@ If the source page is not one of the known screens:
 - Gated practice/challenge -> Short-Answer Challenge.
 - Multi-step setup/form -> Plan Creation Flow.
 - Photo/report/writing feedback -> Composition Correction.
-- `历史批改记录` or monthly correction records -> Composition Correction History Records.
-- Single作文 score/category summary -> Composition Score Snapshot.
-- 作文列表 or repeated title/time rows with score/category -> Composition Essay Record List.
+- Monthly correction history shell -> Composition Correction History Records shell plus Composition Result Record rows.
+- Single作文 metric/result block -> Composition Score Snapshot shell plus Composition Result Record assets.
+- Repeated作文 result rows -> Composition Essay Record List variant of Composition Result Record.
 - Dialog/picker -> Modal And Sheet.
 
-For `批改统计`, 作文批改历史, report-list, or batch-correction management screens, map to Composition Batch Statistics.
-If a作文 page has no avatar/phone/report action and instead shows score/category with title/time, map to Composition Essay Record List instead of Composition Batch Statistics.
+Report-management shells with tabs, avatar/name/phone, report actions, or bottom tabbar map to Composition Report Management. Any score/rank/title/time detail inside those cards still uses Composition Result Record.
 
 When uncertain, use shared tokens and components, but keep the source hierarchy. The goal is style transfer, not content redesign.

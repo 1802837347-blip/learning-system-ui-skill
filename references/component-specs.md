@@ -5,9 +5,10 @@ Use this file before generating or optimizing a page. It defines reusable compon
 ## Component Workflow
 
 1. Identify which components exist in the target page.
-2. Preserve the target page's original content and hierarchy.
+2. Preserve the target page's original content and hierarchy. If a PRD exists, use it as the authority for tabs, fields, state counts, removed modules, and required card content.
 3. Replace only the visual treatment with the closest component specs below.
 4. After implementation, check containment, icon rendering, gradients, spacing, and state styles.
+5. If a component violates a hard failure in `quality-gates.md`, revise the component before delivery.
 
 ## Global Tokens
 
@@ -117,7 +118,7 @@ Use for normal AI自主学习系统 app pages. This component replaces ad hoc iO
 
 ## CompositionCorrectionHistoryHeader
 
-Use for the `历史批改记录` pages shown in reference assets [reference-history-records.png](../assets/composition/reference-history-records.png) and [reference-history-empty.png](../assets/composition/reference-history-empty.png).
+Use as the outer immersive monthly-history shell shown in reference assets [reference-history-records.png](../assets/composition/reference-history-records.png) and [reference-history-empty.png](../assets/composition/reference-history-empty.png).
 
 - Canvas: 390px by 844px CSS frame.
 - Header background: full-width cyan/teal gradient from about `#2EC0DC` at the top to `#10A5C8` lower left, with a pale mint/cyan glow on the upper-right. The gradient area extends to the white sheet at y 212px.
@@ -405,9 +406,35 @@ Use for daily learning-plan unfinished course cards.
 - Inactive text color `#7C88B4`.
 - Icons are product assets or close SVG/CSS reproductions, not emoji.
 
+## CompositionResultRecord
+
+Use this component whenever visible data forms a作文 result unit, regardless of page title or route. Trigger from the fields, not from the page type.
+
+Trigger fields:
+
+- score, rank/category/dang, locked state,作文 title, submit/correction time, report state, or report action
+- repeated records where score/rank/title/time appear together
+- embedded details inside a larger user/report card
+- single metric cards where a title/data block pairs with a medal or rank asset
+
+Shared rules:
+
+- Keep result fields grouped. Score, rank, title, time, and status must not be split into unrelated regions.
+- Use bundled rank assets for mapped values: `1档/1类/一档/一类` -> `tag-rank-1.svg`, `2档/2类/二档/二类` -> `tag-rank-2.svg`, `3档/3类/三档/三类` -> `tag-rank-3.svg`, `4档/4类/四档/四类` -> `tag-rank-4.svg`, `5档/5类/五档/五类` -> `tag-rank-5.svg`, and `待解锁` -> `tag-locked.svg`.
+- Do not recreate mapped rank values as CSS pills.
+- Preserve source titles, dates, times, scores, ranks, status copy, and result count exactly.
+
+Variants:
+
+- `list-row`: left score plus rank/locked asset, right title plus time/status, far-right chevron/action when present.
+- `embedded-detail`: title/time panel plus score/rank row inside a larger user/report card.
+- `single-data`: left title/data/copy and right medal/rank asset.
+- `locked`: use `tag-locked.svg`; do not fake a score.
+- `empty`: use `empty-no-content.svg` or no-value medal assets when the source has empty/no-value content.
+
 ## CompositionReportListCard
 
-Use for `批改统计`, 作文批改历史, report-list, and batch-correction management cards.
+Use only as an outer management-card shell when the source contains user/report context such as avatar, name, phone, state tabs, and `查看报告`. It does not replace `CompositionResultRecord`; any作文 result fields inside this card must use the embedded-detail variant above.
 
 - Source screenshots may define card order and copy, but not palette. Recolor to cyan/blue tokens.
 - Card fill: white, radius 16px to 18px, subtle cool shadow, width about 362px on a 390px canvas.
@@ -422,7 +449,8 @@ Use for `批改统计`, 作文批改历史, report-list, and batch-correction ma
   - Uses pale blue border `#CCE9FB` or `rgba(0,167,216,0.18)`, not peach/orange.
 - Result row:
   - Score pill such as `42分` uses cyan/blue fill `#00A7D8` or the blue action gradient, with white text.
-  - Category/dang tag such as `3档` uses pale blue fill `#F0F6FD` or `#CCE9FB`, blue/primary text.
+  - Category/dang values follow `CompositionResultRecord` rank asset mapping.
+  - Use a generic pale-blue category pill only when the category text is not an essay rank/dang value and no rank asset mapping applies.
   - The row sits below the detail panel with compact spacing.
 - Required content per completed report card: avatar, user name, phone, `查看报告`, `作文标题`, `提交时间`, score, category/dang.
 - Do not use orange score pills, beige category pills, peach borders, brown labels, or orange report actions unless the exact target Figma node explicitly contains those tokens.
@@ -450,14 +478,14 @@ Use these bundled assets when a page shows作文档次, score category, unlock s
 Rank tag rules:
 
 - Use the SVG asset directly at native size or proportional size. Default rank tag size is 40px by 18px with 9px radius.
-- Do not recreate `一类` to `五类` as plain text pills. Their gradients, text treatment, and compact capsule shape are part of the target style.
+- Do not recreate `一类` to `五类`, `一档` to `五档`, `1类` to `5类`, or `1档` to `5档` as plain text pills. Map them to the rank assets. Their gradients, text treatment, and compact capsule shape are part of the target style.
 - `待解锁` uses the 40px by 44px locked asset, not a generic lock icon plus text.
 - Warm gold/cream inside rank assets is allowed because these assets are explicit target components. Do not reuse those warm colors elsewhere.
 - If the page has no rank value, use the empty medal/no-value asset and preserve the no-content illustration where appropriate.
 
 ## CompositionSingleDataImmersiveCard
 
-Use when the source or product requirement is a single作文数据展示页, score/rank snapshot, category summary, monthly rank result, or any page dominated by one primary metric plus a medal/badge.
+Use when the visible information structure is a single作文数据展示, score/rank snapshot, category summary, monthly rank result, or one primary metric plus a medal/badge.
 
 Layout:
 
@@ -478,7 +506,7 @@ Do not:
 
 ## CompositionEssayRecordListItem
 
-Use when the source or requirement is a作文列表, history list, report record list, or any repeated essay item with score/category plus title/time.
+Use when `CompositionResultRecord` appears as repeated rows with score/category plus title/time. This is a list variant of the information structure, not a page-type-specific component.
 
 Layout:
 
@@ -492,7 +520,7 @@ Layout:
 Do not:
 
 - Use the user/avatar/phone/report-action hierarchy from `CompositionReportListCard` for this structure.
-- Move score/rank to the right side. For作文列表, score and rank stay on the left; title and time stay on the right.
+- Move score/rank to the right side when the source structure is a repeated作文 result row; score and rank stay on the left, title and time stay on the right.
 - Rebuild rank tags as CSS text pills.
 
 ## PrimaryActionButton

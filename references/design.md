@@ -30,9 +30,12 @@ Required agent behavior:
 8. Use the AI自主学习系统 status bar component for normal light app pages by placing [assets/status-light.svg](../assets/status-light.svg) at the top of the canvas. Do not substitute generic iOS status bars, yellow battery pills, or mismatched signal/Wi-Fi/battery drawings.
 9. Do not inherit colors from arbitrary reference screenshots. Source screenshots provide layout, information, and extractable assets only. UI colors must come from this document's tokens and stay cyan/blue-dominant unless this document explicitly assigns a warm token to that exact component.
 10. For source illustrations/icons, preserve geometry/detail but remap non-content warm fills/strokes to cyan/blue tokens when they conflict with the target system. Preserve natural colors only for real content media such as photos, course covers,作文 manuscript images, report previews, and other evidence-like assets.
-11. After implementation, run the QA checklist and explicitly fix all failed items before final output.
+11. If a PRD exists, treat it as the information-architecture authority for tabs, fields, states, card content, status counts, and removed modules. This design system controls visual treatment, not the right to invent or delete PRD content.
+12. If no PRD exists, treat the source page itself as the information-architecture authority. Preserve visible tabs, sections, card count, field labels, status names, data values, source copy, and shell while improving only visual treatment.
+13. Do not assume the user will name every reference file. Once this skill is triggered, apply `SKILL.md`, this design document, `design.tokens.json`, `page-patterns.md`, `component-specs.md`, and `quality-gates.md`.
+14. After implementation, run the QA checklist and explicitly fix all failed items before final output.
 
-For tests, a result should be considered failed if it uses an unlisted brand name, adds a subtitle not present in the source page, changes the required page order, replaces real course covers with generic cartoon cards, redraws source illustrations/icons into lower-fidelity substitutes, uses a non-system status bar on normal app pages, inherits orange/brown/warm source colors into a cyan/blue target page, or hides any bottom content behind the tabbar.
+For tests, a result should be considered failed if it uses an unlisted brand name, adds a subtitle/module not present in the source or PRD, changes the required page order, violates PRD tab count, replaces real course covers with generic cartoon cards, redraws source illustrations/icons into lower-fidelity substitutes, uses a non-system status bar on normal app pages, inherits orange/brown/warm source colors into a cyan/blue target page, or hides any bottom content behind the tabbar.
 
 ## Product Character
 
@@ -184,19 +187,31 @@ Rank tag visual contract:
 
 Do not redraw these assets or replace them with CSS pills. Their exact gradient, compact shape, and text treatment are part of the page style extracted from the target Figma nodes.
 
-### Composition Score And List Layout
+Rank value mapping:
 
-- Single data display pages use an immersive card: left side contains the title, metric, and supporting copy; right side contains the medal/rank asset.
-- The card uses a cool white or pale cyan-white surface, 16px to 20px radius, soft cool shadow, 16px to 20px horizontal padding, and 12px to 18px gap between text and medal.
-- Typography is compact: labels 12px to 14px, titles 15px to 17px Semibold, metric numbers 28px to 36px bold when they are the primary data.
-- `历史批改记录` uses a full cyan/teal header and white rounded-top sheet, not a normal card stack.
-- 作文列表 uses a two-column list item: left column is score plus rank tag; right column is title plus time.
-- List item title uses 14px to 16px Semibold, time uses 12px to 13px gray-blue, score uses 22px to 28px bold numeric style.
-- Preserve source title/time/score/category copy exactly. Do not swap left and right columns.
+- `1档`, `1类`, `一档`, and `一类` use `assets/composition/tag-rank-1.svg`.
+- `2档`, `2类`, `二档`, and `二类` use `assets/composition/tag-rank-2.svg`.
+- `3档`, `3类`, `三档`, and `三类` use `assets/composition/tag-rank-3.svg`.
+- `4档`, `4类`, `四档`, and `四类` use `assets/composition/tag-rank-4.svg`.
+- `5档`, `5类`, `五档`, and `五类` use `assets/composition/tag-rank-5.svg`.
+- `待解锁` uses `assets/composition/tag-locked.svg`.
+- This mapping applies inside any completed report-management card too. Do not use a generic blue category pill for mapped essay rank values.
+
+### Composition Result Structure
+
+作文 result styling is triggered by the information structure, not the page type. Whenever visible content includes score, rank/category/dang, locked state,作文 title, submit/correction time, report state, or report action, keep those fields as one result unit and use the composition assets above.
+
+- List result: left column is score plus rank/locked asset; right column is title plus time/status; optional chevron/action stays at the far right.
+- Embedded result: an avatar/name/phone/report-action shell may wrap the result, but title/time plus score/rank remain grouped inside the detail area.
+- Single result: immersive card with left title/data/copy and right medal/rank asset.
+- Empty/no-value result: use `badge-empty.svg` or `empty-no-content.svg` when source content indicates no result.
+- Typography is compact: labels 12px to 14px, titles 15px to 17px Semibold, metric numbers 28px to 36px only when they are the primary single metric.
+- List item title uses 14px to 16px Semibold, time uses 12px to 13px gray-blue, score uses 18px to 28px depending on row density.
+- Preserve source title/time/score/category/status copy exactly. Do not swap left and right columns.
 
 ### Composition History Records Page
 
-Use this exact page family when the source or product requirement resembles Figma `4424:491` or `5201:3715`: `历史批改记录`, monthly作文 history, scored essay records, empty monthly history, or locked report rows.
+Use this page family as an outer shell when the source visually resembles Figma `4424:491` or `5201:3715`: immersive monthly作文 history, scored essay records, empty monthly history, or locked report rows. The inner rows still follow the general Composition Result Structure, so the row anatomy can also be reused in other page shells with similar result data.
 
 - Canvas: 390px x 844px.
 - Page background: vertical gradient `#28BEE3` at top to `#129CC6` around 32%, then white sheet covers the lower page.

@@ -1826,6 +1826,10 @@
         }
       },
       "scoreSnapshot": {
+        "trigger": {
+          "$type": "string",
+          "$value": "Use when the visible information structure is a single composition metric/result, not because of a page name."
+        },
         "cardRadius": {
           "$type": "dimension",
           "$value": "18px"
@@ -1856,6 +1860,10 @@
         }
       },
       "essayRecordList": {
+        "trigger": {
+          "$type": "string",
+          "$value": "Use when composition result data repeats as rows: score/rank/title/time/status. This is a result-record variant, not a page-type trigger."
+        },
         "itemRadius": {
           "$type": "dimension",
           "$value": "14px"
@@ -2007,6 +2015,58 @@
         "textareaHeight": {
           "$type": "dimension",
           "$value": "84px"
+        }
+      },
+      "resultRecord": {
+        "trigger": {
+          "$type": "string",
+          "$value": "Apply anywhere visible data contains two or more composition result fields: score, rank/category/dang, locked state, title, submit/correction time, report state, or report action."
+        },
+        "fieldGrouping": {
+          "$type": "string",
+          "$value": "Keep score, rank/category, title, time, status, and action as one result unit; do not scatter them into unrelated regions."
+        },
+        "listLayout": {
+          "$type": "string",
+          "$value": "left score plus rank/locked asset, right title plus time/status, optional far-right chevron/action"
+        },
+        "embeddedLayout": {
+          "$type": "string",
+          "$value": "outer avatar/name/phone/report shell may wrap the result; inner detail still uses title/time plus score/rank"
+        },
+        "singleDataLayout": {
+          "$type": "string",
+          "$value": "left title/data/copy, right medal/rank asset"
+        }
+      },
+      "rankValueMapping": {
+        "1档_1类_一档_一类": {
+          "$type": "asset",
+          "$value": "assets/composition/tag-rank-1.svg"
+        },
+        "2档_2类_二档_二类": {
+          "$type": "asset",
+          "$value": "assets/composition/tag-rank-2.svg"
+        },
+        "3档_3类_三档_三类": {
+          "$type": "asset",
+          "$value": "assets/composition/tag-rank-3.svg"
+        },
+        "4档_4类_四档_四类": {
+          "$type": "asset",
+          "$value": "assets/composition/tag-rank-4.svg"
+        },
+        "5档_5类_五档_五类": {
+          "$type": "asset",
+          "$value": "assets/composition/tag-rank-5.svg"
+        },
+        "待解锁": {
+          "$type": "asset",
+          "$value": "assets/composition/tag-locked.svg"
+        },
+        "usage": {
+          "$type": "string",
+          "$value": "Apply this mapping anywhere composition result data appears. Do not render mapped rank values as generic CSS pills, regardless of page type or outer shell."
         }
       }
     },
@@ -3136,6 +3196,24 @@
         "$type": "dimension",
         "$value": "48px"
       }
+    }
+  },
+  "governance": {
+    "automaticExecutionProtocol": {
+      "$type": "string",
+      "$value": "When learning-system-ui-skill is triggered, automatically apply SKILL.md, design.md, design.tokens.json, page-patterns.md, component-specs.md, ui-style-guide.md when relevant, and quality-gates.md before delivery. Users do not need to name these files."
+    },
+    "prdPriority": {
+      "$type": "string",
+      "$value": "PRD/source controls information architecture: tab count, labels, fields, states, counts, card content, removed modules, source copy, data values, and shell. The skill controls visual treatment: palette, type, spacing, radius, icons, cards, gradients, states, and QA gates."
+    },
+    "hardFailurePolicy": {
+      "$type": "string",
+      "$value": "Any hard failure in references/quality-gates.md blocks delivery and must be fixed before final output."
+    },
+    "sourceOnlyPriority": {
+      "$type": "string",
+      "$value": "When no PRD is provided, the source page itself controls information architecture: visible tabs, labels, sections, card count, fields, status names, data values, copy, and shell. Optimize visual treatment only."
     }
   }
 }

@@ -16,6 +16,42 @@ Use this skill to generate new pages that match the existing AI自主学习系�
 - Use a pale cool background, soft blue top atmosphere, rounded white cards, compact tags, and direct task-oriented content.
 - Do not create a marketing hero. The first screen should show useful learning content or the current learning state.
 
+## Automatic Execution Protocol
+
+Users are not expected to know which files to name or which rules to repeat. When this skill is triggered by a request such as `使用 learning-system-ui-skill 优化页面`, the agent must automatically run this protocol before delivery:
+
+1. Read [references/design.md](references/design.md) and [references/design.tokens.json](references/design.tokens.json) for the visual system and tokens.
+2. Read [references/page-patterns.md](references/page-patterns.md) to select the closest page pattern.
+3. Read [references/component-specs.md](references/component-specs.md) for component anatomy, dimensions, icon sources, assets, states, and spacing.
+4. Read [references/ui-style-guide.md](references/ui-style-guide.md) when the page resembles a previously extracted pattern or needs detailed fallback guidance.
+5. Read [references/quality-gates.md](references/quality-gates.md) before final delivery and fix every hard failure.
+6. For implementation work, use [references/tokens.css](references/tokens.css) and [references/tailwind.config.ts](references/tailwind.config.ts) when relevant instead of inventing one-off values.
+
+Reading a reference list is not enough. The agent must apply the rules, audit the output against them, and revise before delivery. If any hard failure remains, the screen is not deliverable.
+
+## PRD To UI Contract
+
+When a PRD, screenshot, or existing page is provided:
+
+- PRD decides information architecture: tab count, labels, sections, fields, state counts, status names, card contents, and data priority.
+- Source screenshots decide existing copy, visible data, interaction shell, and extractable assets.
+- This skill decides visual treatment: palette, type scale, spacing, radius, gradients, icons, cards, states, and quality gates.
+- Do not add explanation cards, summary modules, helper text, counters, tabs, or states that are not in the PRD/source unless the user explicitly asks for them.
+- If PRD/source content conflicts with a page pattern, preserve the PRD/source information architecture and adapt the closest AI自主学习系统 visual pattern around it.
+- Information structures override page names. Page titles, tabs, and route names choose the outer shell only; repeated data structures such as作文结果、学习任务、课程目录、日历、闯关节点 choose the component anatomy wherever they appear.
+- If a generated result violates PRD tab count, field list, status count, card count, visible data, or source copy, revise before delivery.
+
+## Source-Only Optimization Contract
+
+When the user provides only an existing page, screenshot, HTML, or Figma node and no PRD:
+
+- Treat the source page as the information-architecture authority.
+- Preserve visible tab count, tab labels, section order, card count, data values, field labels, status names, empty/loading/error states, and interaction shell.
+- Optimize visual treatment only: color mapping, typography scale, spacing, radius, icon fidelity, card containment, gradients, state clarity, and responsive behavior.
+- Do not infer missing business requirements, add explanation cards, add new counters, add summary modules, remove existing modules, rename tabs, or reorganize sections just because a nearby page pattern has them.
+- If source content is unclear or cropped, preserve the visible structure and use neutral placeholders only for truly unreadable content. Do not invent domain copy.
+- If the source resembles an AI自主学习系统 pattern, apply that pattern's visual language while keeping the source page's content structure intact.
+
 ## Hard Output Contract
 
 These constraints override source screenshots and generic UI instincts:
@@ -24,10 +60,11 @@ These constraints override source screenshots and generic UI instincts:
 2. All UI chrome must use AI自主学习系统 tokens: cyan/blue atmosphere, blue/cyan selected states, white cards, gray-blue text, and blue actions. Orange, brown, beige, peach, amber, tan, and warm gradients from arbitrary references are failures unless an exact component spec explicitly allows that warm token.
 3. Source illustrations and icons are locked for shape/detail/style, but their UI-facing colors are not locked. If an extracted icon or illustration contains warm colors that conflict with the cyan/blue system, keep its geometry and detail while remapping non-content colors into the cyan/blue token family. Preserve natural colors only for photos, course covers,作文 images, manuscript/report evidence, and other real content media.
 4. Normal light app pages must use [assets/status-light.svg](assets/status-light.svg) directly for the status bar. Full cyan/blue immersive header pages such as `历史批改记录` must use [assets/status-white.svg](assets/status-white.svg). Do not redraw `9:41`, cellular signal, Wi-Fi, or battery.
-5. If the source contains required data, the optimized UI must keep it. For batch/composition report list pages, cards must not collapse to avatar/name/phone only; they must preserve report action, title, submit time, score, and category/dang when present.
-6. When content matches作文 score/rank summaries, use the bundled composition rank/tag assets instead of drawing new badges. Single data display pages use an immersive card with the title/content on the left and the badge/medal on the right. Essay record lists use left score+rank and right title+time.
-7. When content matches `历史批改记录`, monthly作文 records, or the Figma nodes `4424:491` / `5201:3715`, use the exact history-record structure: cyan/blue immersive header, white status bar, white rounded-top sheet, month filter, and record rows with left score/rank asset plus right title/time. Do not fall back to generic cards, avatars, phone numbers, or report-button rows.
+5. If the source contains required data, the optimized UI must keep it. Cards and rows must not collapse to a subset such as avatar/name/phone only when title, submit time, report action, score, category/dang, lock state, or status is present.
+6. Any visible作文 result information structure must use the standard composition result anatomy wherever it appears. Triggers include score plus rank/category/dang, rank/category plus title/time, locked report state plus title/status, or title/time plus report result action. Use bundled composition rank/tag assets for mapped values instead of drawing new badges.
+7. Page shells such as `历史批改记录`, `批改统计`, monthly history, or report management can determine the header, tab bar, sheet, avatar row, and navigation shell. They must not override the inner作文 result structure: score/rank/title/time/status stays grouped and uses the standard result anatomy/assets.
 8. Never draw structural icons or default avatars from scratch when a mature icon-library match can be used. Use source/Figma assets first; otherwise use bundled Lucide-derived assets in `assets/icons/` and `assets/avatars/`, or add a local SVG from Lucide, Tabler, Heroicons, Phosphor, MingCute, Iconoir, or Material Symbols before drawing.
+9. A result is not deliverable if it has any hard failure listed in [references/quality-gates.md](references/quality-gates.md), even if it otherwise looks polished.
 
 ## When to Apply
 
@@ -44,13 +81,13 @@ Skip it for pure backend logic, database/API work, or non-visual automation.
 
 ## Workflow
 
-1. Identify the page family and state: home, daily plan, all courses, plan creation,作文批改 capture, report, history, auth, or empty/loading/error state.
-2. For UI generation and review, first read [references/design.md](references/design.md) and [references/design.tokens.json](references/design.tokens.json). These are the primary source of truth for spacing, type scale, radius, color, gradients, icons, and component behavior.
-3. For implementation work, also use [references/tokens.css](references/tokens.css) and [references/tailwind.config.ts](references/tailwind.config.ts) when relevant instead of inventing one-off CSS values.
-4. Read [references/page-patterns.md](references/page-patterns.md) and choose the closest page pattern. For arbitrary pages, map the source to the nearest pattern instead of inventing a new visual system.
-5. Read [references/component-specs.md](references/component-specs.md) for reusable component anatomy, dimensions, spacing, colors, radius, shadows, and icon rules.
-6. Read [references/ui-style-guide.md](references/ui-style-guide.md) when the task needs older extracted page details or a page-specific fallback not yet covered by `design.md`.
-7. If optimizing or reviewing a generated page, also read [references/quality-gates.md](references/quality-gates.md) and run the priority checks before final output.
+1. Run the Automatic Execution Protocol above. Do not wait for the user to list the reference files.
+2. Identify visible information structures before page family: tabs, calendars, task cards, course lists,作文 result records, single metrics, user/report shells, step rails, filters, empty states, and fixed actions. Then identify the page shell/state.
+3. If a PRD exists, extract its required tabs, fields, states, counts, card content, and forbidden/removed modules before touching visual style. If no PRD exists, extract the same facts from the source page itself and treat them as locked.
+4. Choose the closest page shell and component structures. For arbitrary pages, map information structures to existing components before using a page title as the deciding rule.
+5. Check reusable component anatomy, dimensions, spacing, colors, radius, shadows, and icon rules before implementing each repeated component.
+6. For implementation work, use `tokens.css`, `tailwind.config.ts`, and `design.tokens.json` when relevant instead of inventing one-off CSS values.
+7. Before final output, run `quality-gates.md` as a blocker checklist, not as optional advice.
 8. Preserve the user's original text and information architecture unless they explicitly ask for content changes.
 9. When outputting HTML or code, prefer resilient layout primitives: flex/grid, `box-sizing: border-box`, `min-height`, safe-area padding, and content-driven spacing.
 10. Treat real images, course covers,作文 photos, icons, and report previews as primary content assets. Preserve them when provided; create meaningful fallbacks only when assets are unavailable.
@@ -130,10 +167,11 @@ For作文批改 capture flows:
 - The作文 photo area is the core evidence of this flow. Preserve real photo texture when available; otherwise render a plausible essay manuscript, not a skeleton placeholder.
 - Use distinct walkthrough stages for起评分/审题立意, 加分项, 扣分项, 整体评价, and the final `查看批改报告` handoff.
 - Report flow can include a promotional intro, report-generation loading, a scrollable report document preview, `重看讲解`/`下载报告`, and feedback bottom sheets.
-- History flow can include `历史批改记录`, a monthly badge summary, score/category rows, `待解锁` rows, empty records, and a bottom month selector sheet.
-- For `批改统计`, 作文批改历史, report-list, or batch-correction management pages, do not inherit source orange. Use cyan/blue score pills, pale-blue category tags, blue outlined `查看报告` actions, and pale-blue detail borders unless the exact target Figma node says otherwise.
-- For score/rank summary pages that match the Figma nodes `4424:491` or `5201:3715`, preserve the source style one-to-one: use bundled [assets/composition/badge-valued.svg](assets/composition/badge-valued.svg), [assets/composition/badge-empty.svg](assets/composition/badge-empty.svg), [assets/composition/empty-no-content.svg](assets/composition/empty-no-content.svg), [assets/composition/tag-locked.svg](assets/composition/tag-locked.svg), and rank tag assets [tag-rank-1.svg](assets/composition/tag-rank-1.svg) through [tag-rank-5.svg](assets/composition/tag-rank-5.svg). Do not replace these with CSS pills, emoji medals, or generic icons.
-- For `历史批改记录`, use [assets/status-white.svg](assets/status-white.svg) and the reference screenshots [assets/composition/reference-history-records.png](assets/composition/reference-history-records.png) and [assets/composition/reference-history-empty.png](assets/composition/reference-history-empty.png) as visual anchors.
+- History flow can include a cyan/blue immersive header, monthly badge summary, white rounded sheet, month filter, score/category rows, `待解锁` rows, empty records, and a bottom month selector sheet.
+- For any作文 result record/detail block, match by information structure rather than page title. If visible data includes score, rank/category/dang, locked state,作文 title, submit/correction time, report status, or report action, keep those fields together as the standard composition result structure.
+- Result records use left score plus bundled rank/locked asset and right title plus time/status in list form. When nested inside a user/report management card, the avatar/name/phone/report action may remain as the card shell, but the result detail still uses the standard score/rank/title/time structure.
+- Single作文 metric or summary data uses the immersive card form: left title/data/copy and right medal/badge asset. Use [assets/composition/badge-valued.svg](assets/composition/badge-valued.svg), [assets/composition/badge-empty.svg](assets/composition/badge-empty.svg), [assets/composition/empty-no-content.svg](assets/composition/empty-no-content.svg), [assets/composition/tag-locked.svg](assets/composition/tag-locked.svg), and rank tag assets [tag-rank-1.svg](assets/composition/tag-rank-1.svg) through [tag-rank-5.svg](assets/composition/tag-rank-5.svg). Do not replace these with CSS pills, emoji medals, or generic icons.
+- Use the `历史批改记录` references only when the outer shell matches a monthly history sheet. The result row structure from that reference is reusable anywhere similar作文 result data appears.
 
 For daily learning-plan pages:
 
