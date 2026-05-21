@@ -232,10 +232,12 @@ History subject tag colors:
 ### Icon Rendering Rules
 
 - Basic structural icons must be rendered, not silently omitted.
-- Prefer source-cropped/extracted assets first, then bundled assets, then faithful traced SVG/vector, then a simple fallback only when the source asset is absent or unusable.
+- Prefer source-cropped/extracted assets first, then bundled assets in `assets/icons/` or `assets/avatars/`, then a mature open-source library SVG copied locally, then faithful traced SVG/vector, then a simple fallback only when the source asset is absent or unusable.
 - For normal light app status bars, use bundled `assets/status-light.svg` directly. Do not redraw its `9:41`, cellular, Wi-Fi, or battery elements.
-- Prefer inline SVG or the project icon library for: back chevron, dropdown caret, sparkle/diamond, expand/collapse chevron-in-circle, lock, play, close, calendar arrows, tabbar icons, status/help/share icons when no source or bundled asset exists.
+- Use bundled icon assets for common controls before drawing: `chevron-left.svg`, `chevron-right.svg`, `chevron-down.svg`, `lock-keyhole.svg`, `play.svg`, `calendar-days.svg`, `search.svg`, `house.svg`, `file-check.svg`, `circle-user-round.svg`, `clipboard-list.svg`, and `user-round.svg`.
+- If a needed icon is still missing, select the closest SVG from Lucide, Tabler, Heroicons, Phosphor, MingCute, Iconoir, or Material Symbols, copy it into `assets/icons/`, and normalize it to `currentColor` and a consistent stroke.
 - Keep one stroke style per screen: usually round caps/joins and 1.5px to 2px stroke.
+- For parent/student/customer rows without real photos, use `assets/avatars/default-parent.svg` at 40px to 48px. Do not draw custom faces, emoji, random initials, or CSS-only avatars.
 - If an icon asset is unavailable, draw a simple inline SVG fallback matching the reference instead of leaving a blank square or text-only control.
 - Icons must align visually to the text baseline or control centerline.
 
@@ -739,6 +741,7 @@ Previous-season review card:
   - Fixed bottom bar uses `rgba(255,255,255,0.88)` with 6px blur and top border `rgba(0,0,0,0.08)`.
   - Three tabs only: `首页`、`学习`、`我的`.
   - `学习` is active with orange `#FF6200`; do not use CRM/办公/消息 labels.
+  - Use bundled tab icons where applicable: `house.svg` for `首页`, `file-check.svg` for correction/report-like tabs, and `circle-user-round.svg` for `我的`. Keep all tab icons on the same baseline and visual weight.
   - Include a 34px iPhone home area.
 
 ### APP All-Courses Catalog Page
@@ -1219,7 +1222,7 @@ Previous-season review card:
     - Subtitle 13px `#77838B`: `批改时间：4月11日 14:55`, `你的作文分析报告待领取`, or other state text.
     - Right chevron indicates drill-in.
 - Locked record row:
-  - Use a lock icon above a `待解锁` pill when report is not available yet.
+  - Use the bundled `tag-locked.svg` full asset when the row shows `待解锁`; use `lock-keyhole.svg` only for generic lock states outside the composition rank/tag system.
   - Subtitle: `完成讲解即可解锁完整批改报告`.
   - Keep title active-looking, but the score/category area is replaced by the lock state.
 - Empty state:

@@ -48,6 +48,48 @@ Use this policy whenever a source screenshot includes illustrations or icons.
 - If a decorative asset contains warm orange/peach/brown/beige colors, remap them to `#00639E`, `#00A7D8`, `#0EC5FF`, `#BFF9FF`, `#CCE9FB`, or gray-blue neutrals.
 - Do not create a new simplified drawing to avoid recoloring. First extract/trace the source asset, then recolor it.
 
+## Icon Library And Avatar Assets
+
+Use this whenever a page needs structural icons, tabbar icons, row chevrons, locks, play buttons, search controls, or default user avatars.
+
+Icon selection priority:
+
+1. Source/Figma icon or product asset, if present and usable.
+2. Bundled local asset in `assets/icons/` or `assets/avatars/`.
+3. Mature open-source icon library match copied locally: Lucide first, then Tabler, Heroicons, Phosphor, MingCute, Iconoir, or Material Symbols.
+4. Custom drawing only when none of the above can match the required metaphor.
+
+Bundled Lucide-derived assets:
+
+| Purpose | Asset | Notes |
+|---|---|---|
+| Home tab | [house.svg](../assets/icons/house.svg) | Use for `首页` tab or home action |
+| Batch/correction tab | [file-check.svg](../assets/icons/file-check.svg) | Use for `批改` tab or report completion action |
+| Profile tab | [circle-user-round.svg](../assets/icons/circle-user-round.svg) | Use for `我的` tab |
+| Back | [chevron-left.svg](../assets/icons/chevron-left.svg) | Use for native back navigation |
+| Drill-in | [chevron-right.svg](../assets/icons/chevron-right.svg) | Use for list row navigation |
+| Dropdown | [chevron-down.svg](../assets/icons/chevron-down.svg) | Use for month/date/filter pills |
+| Search | [search.svg](../assets/icons/search.svg) | Use for search controls |
+| Lock | [lock-keyhole.svg](../assets/icons/lock-keyhole.svg) | Use for generic locked states when no custom asset exists |
+| Play | [play.svg](../assets/icons/play.svg) | Use inside circular play controls |
+| Calendar | [calendar-days.svg](../assets/icons/calendar-days.svg) | Use for date/calendar affordances |
+| Checklist | [clipboard-list.svg](../assets/icons/clipboard-list.svg) | Use for tasks, records, or pending lists |
+| User | [user-round.svg](../assets/icons/user-round.svg) | Use for simple inline user markers |
+
+Default avatar:
+
+- Use [assets/avatars/default-parent.svg](../assets/avatars/default-parent.svg) for parent/student/customer rows when no real avatar is available.
+- Default size: 40px to 48px. Keep it circular, pale cyan/blue, and calm.
+- Do not draw cartoon faces, sad faces, expressive mouths, emoji, random initials, or CSS-generated profile art.
+
+SVG normalization:
+
+- Store selected icons locally under `assets/icons/` before referencing them.
+- Prefer `viewBox="0 0 24 24"`, `fill="none"`, `stroke="currentColor"`, `stroke-width="2"`, `stroke-linecap="round"`, and `stroke-linejoin="round"` for outline icons.
+- Use `currentColor` so active/inactive states can be controlled by text color tokens.
+- Keep one icon family per component group. Do not mix thick Material filled icons with thin Lucide outline icons in the same tabbar/list unless the source explicitly does so.
+- Do not paste remote CDN URLs in generated UI. The skill must produce local, durable assets.
+
 ## SystemStatusBar
 
 Use for normal AI自主学习系统 app pages. This component replaces ad hoc iOS-style status bars.
@@ -385,6 +427,8 @@ Use for `批改统计`, 作文批改历史, report-list, and batch-correction ma
 - Required content per completed report card: avatar, user name, phone, `查看报告`, `作文标题`, `提交时间`, score, category/dang.
 - Do not use orange score pills, beige category pills, peach borders, brown labels, or orange report actions unless the exact target Figma node explicitly contains those tokens.
 - If card icons or empty-state illustrations are extracted from a warm source, recolor decorative warm fills/strokes to cyan/blue tokens while preserving their geometry.
+- If no real user avatar is provided, use [assets/avatars/default-parent.svg](../assets/avatars/default-parent.svg) at 40px to 48px. Do not generate a new face, emoji, initials badge, or ad hoc CSS avatar.
+- Use local mature-library icons for row actions: [chevron-right.svg](../assets/icons/chevron-right.svg) for drill-in, [file-check.svg](../assets/icons/file-check.svg) for report/completed actions, and [circle-user-round.svg](../assets/icons/circle-user-round.svg) only for profile/tab contexts.
 - Do not enlarge names or phone numbers into display-scale text; this is a dense management list, not a profile card.
 
 ## CompositionRankAssets
@@ -478,7 +522,7 @@ Do not:
 ## IconFallbacks
 
 - Structural icons are content, not optional decoration.
-- If an asset is unavailable, draw inline SVG/CSS fallback for:
+- First use source/Figma icons, bundled `assets/icons/`, or a mature open-source library SVG copied locally. Only draw inline SVG/CSS fallback when no appropriate asset exists for:
   - back chevron
   - dropdown caret
   - play
@@ -486,5 +530,6 @@ Do not:
   - expand/collapse
   - status battery/wifi/cell
   - tabbar icons
+- For parent/student/customer default avatars, use `assets/avatars/default-parent.svg`; do not draw a custom face fallback.
 - Keep stroke caps/joins rounded where the reference uses rounded icons.
 - Keep one stroke style within the same screen.

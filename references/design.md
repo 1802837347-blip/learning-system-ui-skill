@@ -125,9 +125,42 @@ Carry these colors through calendar dots, subject tags, legends, and knowledge/c
 ### Asset Fidelity
 
 - Preserve source visual assets before improving them. Original screenshots and Figma nodes can contain product-specific illustration systems, tabbar icons, course covers, decorative module icons, and expand/play/status icons that are part of the UI language.
-- Asset replacement priority: source-cropped/extracted bitmap asset, existing bundled product asset, faithful traced SVG/vector, then a neutral placeholder only when the source asset is absent or unusable.
+- Asset replacement priority: source-cropped/extracted bitmap asset, existing bundled product asset, mature open-source icon library asset copied locally, faithful traced SVG/vector, then a neutral placeholder only when the source asset is absent or unusable.
 - Do not hand-draw a new simplified icon or illustration when the source already provides one and the replacement is not clearly better. Low-fidelity redraws, mismatched stroke styles, generic cartoons, emoji, or unrelated icon families fail the design contract.
 - When extracting from a screenshot, keep the source asset's proportions, opacity, geometry, and visual weight. Clean cropping or light retouching is allowed; changing the asset's style family is not. For decorative UI icons/illustrations, recolor conflicting warm fills/strokes into cyan/blue tokens while preserving detail.
+
+### Icon Library Assets
+
+Structural icons are product infrastructure. Do not improvise them from rough CSS or hand-drawn paths when a mature library match exists.
+
+Use this order:
+
+1. Source/Figma icon or product asset when visible and usable.
+2. Bundled local icon/avatar asset.
+3. Mature open-source icon library asset copied into this skill: Lucide first, then Tabler, Heroicons, Phosphor, MingCute, Iconoir, or Material Symbols.
+4. Custom drawing only when none of the above matches the needed metaphor.
+
+Bundled local assets:
+
+- `assets/icons/house.svg`: home tab or home action.
+- `assets/icons/file-check.svg`: `批改`/report/check tab.
+- `assets/icons/circle-user-round.svg`: `我的`/profile tab.
+- `assets/icons/chevron-left.svg`: back navigation.
+- `assets/icons/chevron-right.svg`: row drill-in navigation.
+- `assets/icons/chevron-down.svg`: dropdown/date/month controls.
+- `assets/icons/search.svg`: search controls.
+- `assets/icons/lock-keyhole.svg`: locked state when no custom rank asset is required.
+- `assets/icons/play.svg`: circular play controls.
+- `assets/icons/calendar-days.svg`: calendar/date affordances.
+- `assets/icons/clipboard-list.svg`: task/report/pending list affordances.
+- `assets/icons/user-round.svg`: compact inline user markers.
+- `assets/avatars/default-parent.svg`: default parent/student/customer avatar for list rows without real photos.
+
+SVG icon contract:
+
+- Prefer `viewBox="0 0 24 24"`, `fill="none"`, `stroke="currentColor"`, `stroke-width="2"`, and rounded caps/joins for outline icons.
+- Use one icon family per component group. Bottom tabbar icons must share weight, size, baseline, and active/inactive color behavior.
+- Default avatars should be 40px to 48px, circular, calm cyan/blue, and asset-based. Do not draw expressive faces, emoji, random initials, or CSS-generated profile art.
 
 ### Composition Rank Assets
 

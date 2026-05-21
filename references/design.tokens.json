@@ -764,6 +764,18 @@
       "inactiveColor": {
         "$type": "color",
         "$value": "#7C88B4"
+      },
+      "homeIconAsset": {
+        "$type": "asset",
+        "$value": "assets/icons/house.svg"
+      },
+      "batchIconAsset": {
+        "$type": "asset",
+        "$value": "assets/icons/file-check.svg"
+      },
+      "profileIconAsset": {
+        "$type": "asset",
+        "$value": "assets/icons/circle-user-round.svg"
       }
     },
     "button": {
@@ -3049,6 +3061,80 @@
       "loginButtonRadius": {
         "$type": "dimension",
         "$value": "{radius.lg}"
+      }
+    },
+    "iconLibrary": {
+      "sourcePriority": {
+        "$type": "string",
+        "$value": "source/Figma asset > bundled local asset > mature open-source SVG copied locally > custom draw"
+      },
+      "preferredLibraries": {
+        "$type": "string",
+        "$value": "Lucide, Tabler, Heroicons, Phosphor, MingCute, Iconoir, Material Symbols"
+      },
+      "normalization": {
+        "$type": "string",
+        "$value": "Prefer viewBox 0 0 24 24, currentColor, 2px stroke, round caps and joins, and one icon family per component group."
+      },
+      "strokeWidth": {
+        "$type": "dimension",
+        "$value": "2px"
+      },
+      "house": {
+        "$type": "asset",
+        "$value": "assets/icons/house.svg"
+      },
+      "fileCheck": {
+        "$type": "asset",
+        "$value": "assets/icons/file-check.svg"
+      },
+      "profile": {
+        "$type": "asset",
+        "$value": "assets/icons/circle-user-round.svg"
+      },
+      "chevronLeft": {
+        "$type": "asset",
+        "$value": "assets/icons/chevron-left.svg"
+      },
+      "chevronRight": {
+        "$type": "asset",
+        "$value": "assets/icons/chevron-right.svg"
+      },
+      "chevronDown": {
+        "$type": "asset",
+        "$value": "assets/icons/chevron-down.svg"
+      },
+      "search": {
+        "$type": "asset",
+        "$value": "assets/icons/search.svg"
+      },
+      "lock": {
+        "$type": "asset",
+        "$value": "assets/icons/lock-keyhole.svg"
+      },
+      "play": {
+        "$type": "asset",
+        "$value": "assets/icons/play.svg"
+      },
+      "calendar": {
+        "$type": "asset",
+        "$value": "assets/icons/calendar-days.svg"
+      },
+      "checklist": {
+        "$type": "asset",
+        "$value": "assets/icons/clipboard-list.svg"
+      },
+      "user": {
+        "$type": "asset",
+        "$value": "assets/icons/user-round.svg"
+      },
+      "defaultParentAvatar": {
+        "$type": "asset",
+        "$value": "assets/avatars/default-parent.svg"
+      },
+      "defaultAvatarSize": {
+        "$type": "dimension",
+        "$value": "48px"
       }
     }
   }

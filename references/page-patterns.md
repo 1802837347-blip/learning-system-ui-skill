@@ -17,6 +17,7 @@ Use this file to map arbitrary target pages into the AI自主学习系统 visual
 - Prefer dense but calm information layout over oversized hero text.
 - Cards and controls should feel rounded and soft, but not childish: common radii are 8px, 10px, 12px, 16px, and 18px.
 - Icons should be product-like SVG/assets, not emoji.
+- Missing structural icons and default avatars must use the source/Figma asset, bundled `assets/icons/` or `assets/avatars/`, or a mature open-source icon library SVG copied locally. Do not hand-draw rough icons, expressive face avatars, emoji, or random initials as substitutes.
 - Normal light app pages use `SystemStatusBar` from `component-specs.md`, backed by `assets/status-light.svg`; do not redraw or restyle the status bar.
 - Arbitrary reference screenshots are not palette sources. Preserve their content and structure, but recolor UI fills, borders, CTAs, tabs, and badges with AI自主学习系统 cyan/blue tokens unless a page pattern explicitly defines another token.
 - Do not invent new text, modules, or states when optimizing a Figma/screenshot target.
@@ -208,7 +209,8 @@ Core rules:
 
 - Preserve the source's visible names, phone numbers, counts, tab labels, titles, times, scores, and categories.
 - Do not simplify cards to only avatar/name/phone. Missing `查看报告`, `作文标题`, `提交时间`, score, or category fails this pattern.
-- Use default avatar assets when a real avatar is unavailable; do not invent decorative profile art.
+- Use `assets/avatars/default-parent.svg` when a real avatar is unavailable; do not invent decorative profile art.
+- Bottom tabbar and row actions use local icon assets: `house.svg`, `file-check.svg`, `circle-user-round.svg`, `chevron-right.svg`, and `chevron-left.svg` as appropriate.
 - Use cyan/blue palette mapping only: blue score pills, pale-blue category tags, blue outlined `查看报告`, and pale-blue detail borders.
 - Do not inherit source orange, peach, beige, or brown colors into the list UI.
 - Decorative icons, avatars, and empty-state illustrations should preserve source geometry or bundled assets, but any warm non-content fills/strokes must be recolored to cyan/blue tokens.

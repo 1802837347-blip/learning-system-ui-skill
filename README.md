@@ -63,6 +63,8 @@ references/quality-gates.md
 
 `references/component-specs.md` 用于沉淀可复用组件规格，包括顶部标签、AI 助手气泡、日历、课程卡、底部导航、按钮、标签、渐变卡和基础 icon fallback。
 
+图标和默认头像不靠临场手画。生成时应先使用 Figma/source 原图资产，其次使用 `assets/icons/`、`assets/avatars/` 中的本地资产；仍缺失时从 Lucide、Tabler、Heroicons、Phosphor、MingCute、Iconoir 或 Material Symbols 等成熟开源图标库中选择最贴近的 SVG，复制到仓库后再引用。
+
 `references/ui-style-guide.md` 包含早期提炼的画布、色彩、字体、页面细节、状态和文案规范，可作为页面细节补充。
 
 `references/quality-gates.md` 用于优化和验收，重点检查卡片内容是否出界、按钮是否在容器内、文字/指标是否被裁切、标签描边是否异常、真实图片是否被占位替代、固定底栏是否遮挡内容，以及触控、可读性、状态和安全区等通用 UI 质量问题。
@@ -82,6 +84,21 @@ references/quality-gates.md
 ├── README.md
 ├── assets
 │   ├── assistant-avatar.png
+│   ├── avatars
+│   │   └── default-parent.svg
+│   ├── icons
+│   │   ├── calendar-days.svg
+│   │   ├── chevron-down.svg
+│   │   ├── chevron-left.svg
+│   │   ├── chevron-right.svg
+│   │   ├── circle-user-round.svg
+│   │   ├── clipboard-list.svg
+│   │   ├── file-check.svg
+│   │   ├── house.svg
+│   │   ├── lock-keyhole.svg
+│   │   ├── play.svg
+│   │   ├── search.svg
+│   │   └── user-round.svg
 │   ├── status-light.svg
 │   ├── status-white.svg
 │   └── composition

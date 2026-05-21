@@ -337,6 +337,9 @@ Use this pattern as a starting point, then adapt dimensions to the exact compone
 - [ ] Tappable elements have visible pressed/disabled/loading states without shifting layout.
 - [ ] Structural icons use a consistent vector/icon style, not emoji.
 - [ ] All source icons are represented by real SVG/icon/CSS fallbacks; none are silently missing.
+- [ ] Missing structural icons were filled from source/Figma assets, bundled `assets/icons/`, or a copied mature icon-library SVG before any custom drawing.
+- [ ] Default parent/student/customer avatars use `assets/avatars/default-parent.svg` when no real photo exists; no expressive face, emoji, initials badge, or rough CSS avatar is present.
+- [ ] Bottom tabbar icons share the same family, stroke weight, active/inactive color treatment, and baseline.
 - [ ] Browser/webview chrome is preserved when present, including domain pill and status controls.
 - [ ] Normal light app pages use bundled `assets/status-light.svg` for the AI自主学习系统 status bar.
 - [ ] Composition score/rank pages use bundled medal, rank, locked, and empty-state SVG assets from `assets/composition/`.
