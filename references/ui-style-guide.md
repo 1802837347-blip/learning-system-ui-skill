@@ -391,6 +391,8 @@ History subject tag colors:
 - Use the exact three steps: `学习信息`, `计划考点`, `生成计划`.
 - Place around y 92px, full width 390px, horizontal padding 24px, vertical padding 16px.
 - Step item uses a 22px numbered circle, 6px gap to label, and 16px Medium label.
+- Keep all three step markers on the same outer footprint. Active, inactive, and completed states must share the same 22px circle size and the same reserved label row height, so the stepper does not visually jump between steps.
+- The visible label is only the step name. Do not prefix labels with `1`、`2`、`3`, and do not use `01`、`02`、`03` text badges; the number belongs inside the circle only.
 - Active step:
   - Circle uses vertical gradient `#00B3E8 -> #0288FF`.
   - Number is white, 13px Semibold.
@@ -407,6 +409,7 @@ History subject tag colors:
   - Circle fill becomes `#15C691`.
   - Label returns to main text `#191C1E`.
   - In step 2, step 1 is completed; in final result pages, all three steps are completed.
+- Completed check icons keep the same optical center and circle size as numeric states. Do not enlarge the completed circle, add a second badge, or shrink future-step circles to make the active step feel louder.
 
 ### Companion Planning Advice Card
 
@@ -816,7 +819,10 @@ Previous-season review card:
   - Icon 2: `甄选内容`
   - Icon 3: `检测和提升`
 - Step icons sit in glassy rounded squares/circles about 40px to 46px, connected with dotted or segmented lines.
-- Step labels are 13px Regular, `#3E5A7D`.
+- All three step icons must use the same container size, icon size, stroke/fill weight, and baseline. If source icons have different natural sizes, normalize their viewBox or rendered width/height instead of letting one icon dominate.
+- Do not show `1`、`2`、`3` index labels on top of the value-chain icons. The visual sequence is communicated by left-to-right order and connectors.
+- Step labels are compact, about 12px to 13px Regular, `#3E5A7D`, placed below the icon with a small gap. They should read like captions, not large tags or buttons.
+- Keep connector lines visually subordinate. Connectors should not push icon containers apart or create uneven icon spacing.
 
 ### Plan Setup Compact Card
 

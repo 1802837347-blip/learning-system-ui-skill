@@ -25,6 +25,7 @@ Use this file as the final review pass before delivering optimized UI. These gat
 | 17 | System status bar | Normal light app pages use bundled `assets/status-light.svg` at 390px by 44px or proportional width | Yellow battery pills, generic iOS bars, self-redrawn status icons, mismatched icon weights, or wrong status-bar chrome |
 | 18 | Palette lock | Arbitrary screenshot colors are remapped to AI自主学习系统 cyan/blue tokens | Orange/brown/beige/peach source-color leakage into badges, borders, CTAs, cards, or tabs |
 | 19 | Composition batch card completeness | Completed report cards include avatar, name, phone, report action, title, submit time, score, and category | Simplified avatar/name/phone-only cards or missing second-level report details |
+| 20 | Icon and label hierarchy | Repeated icon groups use identical outer size, optical weight, and compact captions | One icon appearing larger, numeric overlays on each icon, or captions styled like oversized tags |
 
 ## Output Workflow
 
@@ -67,6 +68,9 @@ Layout and containment failures:
 Asset and icon failures:
 
 - A source icon is missing, replaced by emoji, replaced by a visibly unrelated shape, or hand-drawn when a bundled/source/mature-library icon exists.
+- A repeated icon group uses inconsistent outer boxes, icon sizes, stroke/fill weights, caption baselines, or connector alignment.
+- Decorative numeric overlays such as `1`、`2`、`3` remain on a left-to-right icon group where sequence is already clear.
+- Icon captions are oversized into label pills or CTA-like badges when they should read as subordinate captions.
 - A default parent/student/customer avatar is hand-drawn, emoji-based, initials-based, or CSS-only instead of using `assets/avatars/default-parent.svg` when no real photo is provided.
 - Bottom tabbar icons mix unrelated icon families, stroke widths, baselines, or active/inactive treatments.
 - A source illustration, tabbar icon, decorative module icon, course cover, photo,作文 manuscript, or report preview is replaced by a lower-fidelity self-drawn substitute when the original asset could have been cropped, extracted, faithfully traced, or represented by a bundled asset.
@@ -145,6 +149,14 @@ Interaction and delivery failures:
 - Do not redraw source tabbar icons, expand/play buttons, or decorative module icons into a different style family unless the replacement is a clearly better product asset.
 - Icon size should follow the reference scale: small inline icons around 12px to 16px, control icons around 20px to 28px, large assistant/tool icons around 40px.
 - Icons must be centered within their hit areas and aligned to nearby text.
+
+## Icon Group Hierarchy QA
+
+- Repeated icon groups must normalize container size, icon drawing area, stroke/fill weight, caption line-height, and baseline across every item.
+- If a sequence already reads left-to-right, remove numeric overlays such as `1`、`2`、`3` unless they carry functional progress state.
+- Captions under icons should be visually quieter than section titles and CTAs; shrink oversized tags before reducing card padding.
+- Connectors between icons must not change item spacing, icon size, or caption alignment.
+- Completed/active/inactive stepper states must preserve the same marker footprint. State changes should come from fill, color, halo, or check mark, not inconsistent sizing.
 
 ## Browser Chrome And Navigation QA
 

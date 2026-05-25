@@ -130,6 +130,7 @@ For every generated screen:
 - Use `min-height` instead of tight fixed heights when card content includes stats, two-line copy, badges, or buttons.
 - Before final output, check that no text, tag, button, icon, or border crosses its parent card edge or is clipped by insufficient height.
 - Tags and stage badges use a single clear fill plus one border; avoid doubled outlines, misaligned pseudo-element borders, or clipped gradient strokes.
+- Repeated icon groups and steppers must normalize icon/container size, optical weight, baseline, and caption scale. Remove decorative `1`、`2`、`3` labels when order is already communicated by position or connectors.
 - Treat作文 photos as content assets, not decorative placeholders. If no real image asset is provided, create a believable handwritten essay sheet with Chinese text strokes, grid paper, score marks, and colored annotations; never replace the essay image with only generic horizontal bars.
 - Treat source illustrations and icons as locked visual assets during UI optimization. Prefer source-cropped PNG/WebP assets, traced SVGs that faithfully match the source, or existing bundled assets. Only create a new self-drawn fallback when the source asset is absent/unusable and no better replacement exists; the fallback must stay visually subordinate and must not degrade the original icon/illustration style.
 - Reuse bundled assets when available. For the APP learning-plan assistant avatar, use [assets/assistant-avatar.png](assets/assistant-avatar.png) at 40px visual size instead of redrawing a generic `AI` icon.
@@ -216,8 +217,10 @@ For APP all-courses pages:
 For plan creation flows:
 
 - Use a normal mini-program title bar with back arrow, centered title like `高二数学-春季自主计划`, and the WeChat capsule on the right.
-- Place a three-step progress stepper below the title bar: `1 学习信息`、`2 计划考点`、`3 生成计划`.
+- Place a three-step progress stepper below the title bar with steps `学习信息`、`计划考点`、`生成计划`.
 - Keep the active step cyan-blue with a 22px numbered circle and soft halo; inactive steps are pale blue-gray with 2px gray dividers.
+- Step labels are only `学习信息`、`计划考点`、`生成计划`. Do not duplicate the number in the label text, and do not use `01`、`02`、`03` badges outside the marker circle.
+- Active, inactive, and completed step markers all keep the same outer size. Completed checks replace the number inside the same circle instead of creating a larger badge.
 - Use a compact blue-green `伴学规划建议` card under the stepper before the form.
 - Show season and enrollment context inside the advice card, e.g. `春季学季 · 在读 1 科` or `寒季学季 · 在读 2 科`.
 - The advice card should explain the next two steps with short bullet lines and show recommended study-hour limits.
